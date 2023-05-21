@@ -1,0 +1,23 @@
+{
+  "name": "Cloud-Native-Development-Project",
+  "version": "1.0.0",
+  "description": "This is the repo for Cloud Native Development: towards Best Practice final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david-chenyu/Cloud-Native-Development-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/david-chenyu/Cloud-Native-Development-Project/issues"
+  },
+  "homepage": "https://github.com/david-chenyu/Cloud-Native-Development-Project#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
