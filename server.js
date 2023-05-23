@@ -1,5 +1,5 @@
 const express = require("express");
-
+// import express from "express";
 class Server {
     constructor(){
         this.app = express();
@@ -17,10 +17,10 @@ class Server {
         this.app.use(this.logRequest); // Custom middleware
     }
     addRoutes(){
-        const homeRoute = require("./routes/home")
-        this.app.use('/home',homeRoute)
+        const driverRoute = require("./routes/driver")
+        this.app.use('/',driverRoute)
         const userRoute = require("./routes/user")
-        this.app.use('/user',userRoute)
+        this.app.use('/',userRoute)
        
     }
     start(){
