@@ -1,8 +1,8 @@
-module.exports= {
-    driver:(req, res) =>{
-        res.send("driver")
-    },
-    allDriver:(req, res) =>{
-        res.send("allDriver")
-    }
+module.exports= class driverController{
+    driver(req, res){
+        res.send("driver");
+    };
+    allDriver(req, res){
+        res.send("allDriver");
+    };
 }

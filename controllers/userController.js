@@ -1,8 +1,8 @@
-module.exports= {
-    user:(req, res)=>{
-        res.send("user")
-    },
-    allUser:(req, res)=>{
-        res.send("allUser")
-    }
+module.exports= class userController{
+    user(req, res){
+        res.send("user");
+    };
+    alluser(req, res){
+        res.send("alluser");
+    };
 }
