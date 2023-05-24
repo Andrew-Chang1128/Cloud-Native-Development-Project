@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const driverController = require("../controllers/driverController")
+const controller = require("../controllers/driverController")
 
-controller = new driverController()
-router.get('/driver', controller.driver)
-router.get('/allDriver', controller.allDriver)
+const driverController = new controller()
+router.get('/driver', driverController.driver)
+router.get('/allDriver', driverController.allDriver)
 module.exports = router
