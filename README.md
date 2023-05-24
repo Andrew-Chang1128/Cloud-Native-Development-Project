@@ -7,8 +7,10 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
 
  $ docker images
 
- docker run -p 5000:5000 -v $(pwd):/src -d username/node-web-app
- ```
+ docker run -p 5000:5000 -v $(pwd):/usr/src/app -d david/node-web-app
+
+ docker exec -it <container-id> /bin/bash
+```
 
 
  CNP API
@@ -85,4 +87,5 @@ GET /reservation
 ## 付款
 
 現金
+
 
