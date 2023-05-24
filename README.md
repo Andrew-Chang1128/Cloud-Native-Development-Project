@@ -3,13 +3,13 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
 
 ## Environment set up
  ```
- docker build . -t username/node-web-app
+ $ docker build . -t username/node-web-app
 
  $ docker images
 
- docker run -p 5000:5000 -v $(pwd):/usr/src/app -d david/node-web-app
+ $ docker run -p 5000:5000 -v $(pwd):/usr/src/app -d david/node-web-app
 
- docker exec -it <container-id> /bin/bash
+ $ docker exec -it <container-id> /bin/bash
 ```
 
 
