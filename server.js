@@ -18,9 +18,9 @@ class Server {
     }
     addRoutes(){
         const driverRoute = require("./routes/driver")
-        this.app.use('/',driverRoute)
+        this.app.use('/driver',driverRoute)
         const userRoute = require("./routes/user")
-        this.app.use('/',userRoute)
+        this.app.use('/user',userRoute)
        
     }
     start(){
