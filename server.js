@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 // import express from "express";
 class Server {
@@ -21,7 +22,8 @@ class Server {
         this.app.use('/driver',driverRoute)
         const userRoute = require("./routes/user")
         this.app.use('/user',userRoute)
-       
+        const routesRoute = require("./routes/route")
+        this.app.use('/',routesRoute)
     }
     start(){
         this.app.listen(this.port, () => {
