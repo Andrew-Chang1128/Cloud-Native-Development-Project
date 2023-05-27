@@ -12,9 +12,9 @@ module.exports= class userController{
         res.send("alluser");
     };
     login(req, res){
-        console.log("name: ", req.body.name,"password: ",req.body.password)
-        if (req.body.name == "david" && req.body.password == "123"){
-            const username = req.body.name;
+        // console.log("name: ", req.body.username,"password: ",req.body.password)
+        if (req.body.username == "david" && req.body.password == "123"){
+            const username = req.body.username;
             const user = {"user": username};
             // console.log(process.env.tokenSecret);
             const jwtToken = jwt.sign(user, process.env.tokenSecret);

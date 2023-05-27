@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
 // import express from "express";
 class Server {
@@ -7,7 +7,7 @@ class Server {
         this.port = 5000;
         this.applyMiddleWares();
         this.addRoutes();
-        this.start()
+        this.start();
     }
     logRequest(req, res, next) {
         console.log(`Received request: ${req.method}`);
@@ -18,12 +18,12 @@ class Server {
         this.app.use(this.logRequest); // Custom middleware
     }
     addRoutes(){
-        const driverRoute = require("./routes/driver")
-        this.app.use('/driver',driverRoute)
-        const userRoute = require("./routes/user")
-        this.app.use('/user',userRoute)
-        const routesRoute = require("./routes/route")
-        this.app.use('/',routesRoute)
+        const driverRoute = require("./routes/driver");
+        this.app.use('/driver',driverRoute);
+        const userRoute = require("./routes/user");
+        this.app.use('/user',userRoute);
+        const routesRoute = require("./routes/route");
+        this.app.use('/',routesRoute);
     }
     start(){
         this.app.listen(this.port, () => {
@@ -33,3 +33,10 @@ class Server {
 }
 
 const server = new Server();
+exports.server = server
+
+const name = "John"
+obj = {[name]:"david",password:"123"};
+console.log(obj)
+jobj = JSON.stringify(obj)
+console.log(jobj)
