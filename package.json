@@ -4,7 +4,7 @@
   "description": "This is the repo for Cloud Native Development: towards Best Practice final project",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -33,4 +33,5 @@
       "/node_modules/"
     ]
   }
+  
 }

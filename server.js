@@ -26,8 +26,18 @@ class Server {
         this.app.use('/',routesRoute);
     }
     start(){
-        this.app.listen(this.port, () => {
+        this.server = this.app.listen(this.port, () => {
             console.log(`Server is running on port ${this.port}`);
+        });
+    }
+    close(){
+        console.log("Closing the server...");
+        this.server.close((err) => {
+            if (err) {
+                // console.error("Error occurred while closing the server:", err);
+            } else {
+                // console.log("Server closed successfully.");
+            }
         });
     }
 }
@@ -40,3 +50,4 @@ obj = {[name]:"david",password:"123"};
 console.log(obj)
 jobj = JSON.stringify(obj)
 console.log(jobj)
+

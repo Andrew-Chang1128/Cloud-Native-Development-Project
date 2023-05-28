@@ -84,3 +84,6 @@ describe('Server', () => {
   })
 })
   
+afterAll(() => {
+  server.close()
+})
