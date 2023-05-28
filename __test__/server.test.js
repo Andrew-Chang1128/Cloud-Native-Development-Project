@@ -47,16 +47,23 @@ describe('Server', () => {
         })
       })
       describe("name or password is missing",()=>{
-        test("name or password is missing", async ()=>{
-        testCases = [
-          {username:"david"},
-          {password:"123"},
-          {}
-        ]
-        for( const testCase of testCases){  
-            const res = await request(server.app).post("/user/login").send(testCase)
-            expect(res.text).toBe("Unauthorized!")
-          }
+        test("name  is missing", async ()=>{
+          const res = await request(server.app).post("/user/login").send({
+            username:"david"
+          })
+          expect(res.text).toBe("Unauthorized!")
+        })
+        test(" password is missing", async ()=>{
+          const res = await request(server.app).post("/user/login").send({
+            username:"david"
+          })
+          expect(res.text).toBe("Unauthorized!")
+        })
+        test("name and password are missing", async ()=>{
+          const res = await request(server.app).post("/user/login").send({
+            username:"david"
+          })
+          expect(res.text).toBe("Unauthorized!")
         })
       })
     })
