@@ -1,6 +1,10 @@
 # Cloud-Native-Development-Project
 This is the repo for Cloud Native Development: towards Best Practice final project
+
+
 ![example workflow](https://github.com/david-chenyu/Cloud-Native-Development-Project/actions/workflows/CI.yml/badge.svg)    
+
+
 ## Environment set up
  ```
  $ docker build . -t username/node-web-app
