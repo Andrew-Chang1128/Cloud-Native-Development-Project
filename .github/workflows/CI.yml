@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Cloud Native Development backend CI
 
 on:
   push:
