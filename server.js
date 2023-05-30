@@ -10,7 +10,7 @@ class Server {
         this.start();
     }
     logRequest(req, res, next) {
-        console.log(`Received request: ${req.method}`);
+        console.log(`Received request: ${req.method}, URL: ${req.url}`);
         next();
     }
     applyMiddleWares(){
@@ -45,9 +45,9 @@ class Server {
 const server = new Server();
 exports.server = server
 
-const name = "John"
-obj = {[name]:"david",password:"123"};
-console.log(obj)
-jobj = JSON.stringify(obj)
-console.log(jobj)
+// const name = "John"
+// obj = {[name]:"david",password:"123"};
+// console.log(obj)
+// jobj = JSON.stringify(obj)
+// console.log(jobj)
 

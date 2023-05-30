@@ -2,6 +2,12 @@ const request = require('supertest');
 let server = require('../server');
 //since we export the server object using exports.server = server, we need to access app via server.server.app
 server = server.server
+// jest.mock('../models/userModel', () => {
+//   return {
+//     login: jest.fn().mockResolvedValue("wdwww"),
+//   };
+// });
+// jest.mock("../models/userModel");
 describe('Server', () => {
   describe("public endpoint",()=>{
     describe("GET /driver", ()=>{
@@ -30,17 +36,19 @@ describe('Server', () => {
     });
     describe("POST /user/login",()=>{
       describe("name and password is passed",()=>{
+       
         test("correct user and password", async ()=>{
           const res = await request(server.app).post("/user/login").send({
-              username: "david",
+              username: "user1",
               password: "123"
             })
+          console.log(`res test: ${res.text}`)
           expect(res.text).not.toBe("Unauthorized!")
           // console.log(res.text)
         })
         test("incorrect user and password", async ()=>{
           const res = await request(server.app).post("/user/login").send({
-              username: "david",
+              username: "user1",
               password: "456"
             })
           expect(res.text).toBe("Unauthorized!")
@@ -71,7 +79,7 @@ describe('Server', () => {
       test("use /allRoutes to test authorization (first login to get token then get allRoutes)", async()=>{
         //get toekn
         const res = await request(server.app).post("/user/login").send({
-          username: "david",
+          username: "user1",
           password: "123"
         });
         console.log("token: ",res.text);
@@ -81,9 +89,18 @@ describe('Server', () => {
         expect(resGetAllRoute.text).not.toBe("Forbidden");//successfully get routes
       })
     })
+    // describe("createUser", ()=>{
+    //   test("createUser unit test", async()=>{
+    //     const res = await request(server.app).post("/user/createUser").send({
+    //       username: "user3",
+    //       password: "3"
+    //     });
+        
+    //   })
+    // })
   })
 })
-  
+server.close()
 afterAll(() => {
   server.close()
 })

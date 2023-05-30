@@ -4,7 +4,7 @@
   "description": "This is the repo for Cloud Native Development: towards Best Practice final project",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "./node_modules/.bin/jest --forceExit"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@ const model = require("../models/userModel")
 module.exports= class userController{
     constructor(){
         console.log("creating userModel")
-        this.userModel = new model();
+        // this.userModel = new model();
         // console.log(this.userModel);
     };
     user(req, res){
@@ -16,10 +16,21 @@ module.exports= class userController{
         res.send("alluser");
     };
     async login(req, res){
-        console.log("name: ", req.body.username,"password: ",req.body.password)
-        const userModel = new model();
+        // console.log("name: ", req.body.username,"password: ",req.body.password);
         const { username, password } = req.body;
-        const result = await userModel.login(username, password,res);
+        if (!username || !password){
+            res.status(422).send("Unauthorized!");
+            return;
+        }
+        const userModel = new model();
+        const result = await userModel.login(username, password);
+        if (result == false){
+            res.status(400).send("Unauthorized!")
+        }else{
+            const jwtToken = result;
+            console.log(`jwtToken returned is:${jwtToken}`)
+            res.json(jwtToken);
+        }
         // console.log("fetch result: ",result);
         // if (result == password){
         //     const user = {"user": username};
@@ -43,6 +54,9 @@ module.exports= class userController{
           });
 
         const { username, password } = req.body;
+        if (!username || !password){
+            res.status(422).json({error: 'inappropriate parameters'})
+        }
         // Insert user information into the users table
         const result = userModel.queryPassword(username, password);
         if (result == false){
