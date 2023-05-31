@@ -41,7 +41,7 @@ module.exports= class userController{
         //     res.status(400).send("Unauthorized!")
         // }
     };
-    createUser(req, res){
+    async createUser(req, res){
         // const conResult = userModel.connection.connect();
         // console.log(this.userModel)
         const userModel = new model();
@@ -58,7 +58,7 @@ module.exports= class userController{
             res.status(422).json({error: 'inappropriate parameters'})
         }
         // Insert user information into the users table
-        const result = userModel.queryPassword(username, password);
+        const result = await userModel.createUser(username, password);
         if (result == false){
             res.status(500).json({ error: 'Failed to insert user information' });
         }else{

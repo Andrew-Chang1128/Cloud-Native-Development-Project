@@ -11,18 +11,20 @@ module.exports = class {
         });
     };
   
-    queryPassword(username, password){
-        console.log("inserting w ", username, password);
-        const query = 'INSERT INTO users (name, password) VALUES (?, ?)';
+    createUser(username, password){
+      console.log("inserting w ", username, password);
+      const query = 'INSERT INTO users (name, password) VALUES (?, ?)';
+      return new Promise((resolve, reject) => {
         this.connection.query(query, [username, password], (err, result) => {
-            if (err) {
-                console.error('Error inserting user information:', err);
-                return false;
-            }else{
-                return true;
-            }
-            
+          if (err) {
+              console.error('Error inserting user information:', err);
+              reject("Error creating user into  the database!");
+          }else{
+              resolve(true);
+          }
+          
         });
+      })
     };
     login(username, password){
         console.log("fetching result with: ",username);
