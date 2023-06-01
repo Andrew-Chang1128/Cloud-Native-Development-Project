@@ -18,7 +18,7 @@ module.exports = class {
         this.connection.query(query, [username, password], (err, result) => {
           if (err) {
               console.error('Error inserting user information:', err);
-              reject("Error creating user into  the database!");
+              reject(false);
           }else{
               resolve(true);
           }
@@ -42,7 +42,7 @@ module.exports = class {
                   const jwtToken = jwt.sign(user, process.env.tokenSecret);
                   resolve(jwtToken);
                 } else {
-                  resolve(false);
+                  reject(false);
                 }
               }
             });

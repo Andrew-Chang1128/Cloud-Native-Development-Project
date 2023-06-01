@@ -24,6 +24,8 @@ class Server {
         this.app.use('/user',userRoute);
         const routesRoute = require("./routes/route");
         this.app.use('/',routesRoute);
+        const itemRoute = require("./routes/item");
+        this.app.use('/item',itemRoute);
     }
     start(){
         this.server = this.app.listen(this.port, () => {
