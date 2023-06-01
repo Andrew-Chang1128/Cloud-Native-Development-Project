@@ -14,17 +14,21 @@ module.exports= class driverController{
         res.json(items);
     };
     async getUserItem(req, res){
-        const userID = req.query.userID;
+        // get user from req.user set by auth
+        const user = req.user;
         //use itemModel to fetch data from db
         const itemModel = new model();
-        const items = await itemModel.getUserItem(userID);
+        const items = await itemModel.getUserItem(user);
         // console.log(items);
         res.json(items);
     };
     async addItem(req, res){
-        const {userID, itemID }= req.query;
+        const user = req.user;
+        const { itemID }= req.query;
         //use itemModel to fetch data from db
         const itemModel = new model();
+        const userID = await itemModel.findUserIdByUsername(user);
+        console.log(`userID parsed by ${user} is: ${userID}`)
         const result = await itemModel.addItem(userID, itemID);
         // console.log(items);
         if (result){

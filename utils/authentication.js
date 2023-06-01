@@ -2,7 +2,7 @@ const jwt  = require("jsonwebtoken");
 
 const authentication = (req, res, next) => {
     const header = req.headers["authorization"]
-      console.log("allRoutes received header: ", header)
+      console.log("received header: ", header)
       let token = header && header.split(" ")[1]
       if (token.startsWith('"') && token.endsWith('"')) {
         // Remove the double quotes
