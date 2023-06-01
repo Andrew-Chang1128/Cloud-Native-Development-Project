@@ -41,7 +41,7 @@ module.exports = class {
         })
     };
     getUserItem(user){
-      console.log(`query with userID ${user}`);
+      console.log(`query with username ${user}`);
       const query = 'SELECT uniqlo_product.* from uniqlo_product \
                      JOIN userItem JOIN users ON userItem.itemId  =  uniqlo_product.id\
                      and userItem.userId = users.user_id\
