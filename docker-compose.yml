@@ -1,0 +1,16 @@
+version: '3'
+services:
+  node:
+    restart: always
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/usr/src/app
+  mongo:
+    image: mongo:6.0.6
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/db:/data/db
+      - ./mongo/configdb:/data/configdb

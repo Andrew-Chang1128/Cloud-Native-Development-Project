@@ -5,7 +5,16 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
     
 
 
-## Environment set up
+## Environment Setup
+
+### Node.js & MongoDB
+
+```
+ $ docker-compose up -d --build
+```
+
+### Node.js Only (Deprecated)
+
  ```
  $ docker build . -t <username>/node-web-app
 
