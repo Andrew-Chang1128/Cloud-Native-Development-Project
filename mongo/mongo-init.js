@@ -9,7 +9,6 @@ db.user.insertMany([{
     "name": "test",
     "email": "test@test",
     "password": 123456,
-    "type": 1,
     "avgStar": 0
 }]);
 
