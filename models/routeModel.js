@@ -31,14 +31,14 @@ module.exports = class {
         })
     };
 
-    getDiverRoute(diverId) {
-        console.log("Fetching route with: ", diverId);
+    getDiverRoute(driverId) {
+        console.log("Fetching route with: ", driverId);
         return [{
-            routeId: 0, driverId: diverId, dayOfWeek: ["Sunday", "Tuesday"],
+            routeId: 0, driverId: driverId, dayOfWeek: ["Sunday", "Tuesday"],
             maxNumOfPassenger: 4, startTime: "2021-05-01 10:00",
             routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
         }, {
-            routeId: 1, driverId: diverId, dayOfWeek: ["Monday", "Tuesday"],
+            routeId: 1, driverId: driverId, dayOfWeek: ["Monday", "Tuesday"],
             maxNumOfPassenger: 2, startTime: "2021-05-01 20:00",
             routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
         }]

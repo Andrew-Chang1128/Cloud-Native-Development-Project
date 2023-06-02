@@ -18,12 +18,10 @@ class Server {
         this.app.use(this.logRequest); // Custom middleware
     }
     addRoutes() {
-        const driverRoute = require("./routes/driver");
-        this.app.use('/driver', driverRoute);
         const userRoute = require("./routes/user");
         this.app.use('/user', userRoute);
         const routesRoute = require("./routes/route");
-        this.app.use('/', routesRoute);
+        this.app.use('/route', routesRoute);
         const test = require("./routes/test")
         this.app.use('/test', test)
     }
