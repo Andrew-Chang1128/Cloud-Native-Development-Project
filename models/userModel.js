@@ -1,6 +1,5 @@
-const jwt = require("jsonwebtoken")
-
 // mysql = require('mysql2');
+
 module.exports = class {
     constructor() {
         // this.connection = mysql.createConnection({
@@ -46,8 +45,7 @@ module.exports = class {
     login(email, password) {
         console.log("login with: ", email, password);
         const user = { user: email };
-        const jwtToken = jwt.sign(user, process.env.tokenSecret);
-        return jwtToken;
+        return 1; // userId
         // const query = 'SELECT * FROM users WHERE email = ?';
         return new Promise((resolve, reject) => {
             // this.connection.query(query, [email], (err, results) => {
@@ -68,9 +66,4 @@ module.exports = class {
             // });
         });
     };
-
-    getUserId(email) {
-        console.log("getUserId with: ", email);
-        return 1; // userid
-    }
 }

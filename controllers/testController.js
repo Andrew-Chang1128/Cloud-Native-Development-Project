@@ -68,23 +68,6 @@ module.exports = class testController {
         }
     }
 
-    async getUserId(req, res) {
-        console.log("/test/getUserId");
-
-        const { email } = req.body;
-        if (!email) {
-            res.status(422).json({ error: 'inappropriate parameters' });
-            return;
-        }
-        const userModel = new uModel();
-        const result = await userModel.getUserId(email);
-        if (result < 0) {
-            res.status(400).json({ error: 'No user found' });
-        } else {
-            res.status(200).json(result);
-        }
-    }
-
     // route model
     async createRoute(req, res) {
         console.log("/test/createRoute");
