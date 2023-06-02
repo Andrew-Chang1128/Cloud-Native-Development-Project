@@ -68,4 +68,9 @@ module.exports = class {
             // });
         });
     };
+
+    getUserId(email) {
+        console.log("getUserId with: ", email);
+        return 1; // userid
+    }
 }
