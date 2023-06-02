@@ -1,6 +1,7 @@
 const oModel = require('../models/orderModel');
 const uModel = require('../models/userModel');
 const rModel = require('../models/routeModel');
+const jwt = require("jsonwebtoken")
 
 module.exports = class testController {
     constructor() {
@@ -58,11 +59,11 @@ module.exports = class testController {
             return;
         }
         const userModel = new uModel();
-        const result = await userModel.login(email, password);
-        if (result == false) {
+        const userId = await userModel.login(email, password);
+        if (userId < 0) {
             res.status(400).json({ error: 'Wrong email or password' });
         } else {
-            const jwtToken = result;
+            const jwtToken = jwt.sign({ userId: userId }, process.env.tokenSecret);
             console.log(`jwtToken returned is:${jwtToken}`);
             res.json(jwtToken);
         }

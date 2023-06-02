@@ -1,39 +1,30 @@
-const model = require("../models/userModel")
-// const userModel = new model()
+const umodel = require("../models/userModel")
+const jwt = require("jsonwebtoken")
 
 module.exports = class userController {
     constructor() {
         console.log("creating userModel")
-        // this.userModel = new model();
-        // console.log(this.userModel);
     };
-    user(req, res) {
-        //use userModel to fetch data from db
-        res.send("user");
-    };
-    alluser(req, res) {
-        //use userModel to fetch data from db
-        res.send("alluser");
-    };
+
     async login(req, res) {
-        // console.log("name: ", req.body.username,"password: ",req.body.password);
         const { email, password } = req.body;
         if (!email || !password) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
-        const userModel = new model();
-        const result = await userModel.login(email, password);
-        if (result == false) {
+        const userModel = new umodel();
+        const userId = await userModel.login(email, password);
+        if (userId < 0) {
             res.status(400).json({ error: 'Wrong email or password' });
         } else {
-            const jwtToken = result;
+            const jwtToken = jwt.sign({ userId: userId }, process.env.tokenSecret);
             console.log(`jwtToken returned is:${jwtToken}`);
             res.json(jwtToken);
         }
     };
+
     async createUser(req, res) {
-        const userModel = new model();
+        const userModel = new umodel();
 
         const { username, password } = req.body;
         if (!username || !password) {
@@ -52,5 +43,4 @@ module.exports = class userController {
             res.status(200).json({ message: 'User information inserted successfully' });
         }
     };
-
 }

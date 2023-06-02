@@ -15,7 +15,7 @@ const authentication = (req, res, next) => {
       jwt.verify(token, process.env.tokenSecret, (err, user)=>{
           if (err) {return res.sendStatus(403)}
           console.log(`parsed user: ${user.user}`)
-          req.user = user.user
+          req.userId = user.userId
           next()
       })
   };
