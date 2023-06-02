@@ -10,7 +10,20 @@ module.exports = class {
             database: 'STproject',
         });
     };
-  
+    checkUserExist(username){
+      return new Promise((resolve, reject) => {
+        // this.connection.query(query, [username, password], (err, result) => {
+        //   if (err) {
+        //       console.error('Error inserting user information:', err);
+        //       reject(false);
+        //   }else{
+        //       resolve(true);
+        //   }
+        // });
+        reject(false);
+        // resolve(true);      
+      })
+    }
     createUser(username, password){
       console.log("inserting w ", username, password);
       const query = 'INSERT INTO users (name, password) VALUES (?, ?)';
@@ -22,7 +35,6 @@ module.exports = class {
           }else{
               resolve(true);
           }
-          
         });
       })
     };
