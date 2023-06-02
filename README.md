@@ -9,8 +9,18 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
 
 ### Node.js & MongoDB
 
+#### Start
+
 ```
+ $ mkdir -p mongo/db mongo/configdb; rm -rf mongo/db/* mongo/configdb/*
+
  $ docker-compose up -d --build
+```
+
+#### Stop
+
+```
+ $ docker-compose down
 ```
 
 ### Node.js Only (Deprecated)
