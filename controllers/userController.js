@@ -1,54 +1,54 @@
 const model = require("../models/userModel")
 // const userModel = new model()
 
-module.exports= class userController{
-    constructor(){
+module.exports = class userController {
+    constructor() {
         console.log("creating userModel")
         // this.userModel = new model();
         // console.log(this.userModel);
     };
-    user(req, res){
+    user(req, res) {
         //use userModel to fetch data from db
         res.send("user");
     };
-    alluser(req, res){
+    alluser(req, res) {
         //use userModel to fetch data from db
         res.send("alluser");
     };
-    async login(req, res){
+    async login(req, res) {
         // console.log("name: ", req.body.username,"password: ",req.body.password);
-        const { username, password } = req.body;
-        if (!username || !password){
-            res.status(422).send("Unauthorized!");
+        const { email, password } = req.body;
+        if (!email || !password) {
+            res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const userModel = new model();
-        const result = await userModel.login(username, password);
-        if (result == false){
-            res.status(400).send("Unauthorized!")
-        }else{
+        const result = await userModel.login(email, password);
+        if (result == false) {
+            res.status(400).json({ error: 'Wrong email or password' });
+        } else {
             const jwtToken = result;
-            console.log(`jwtToken returned is:${jwtToken}`)
+            console.log(`jwtToken returned is:${jwtToken}`);
             res.json(jwtToken);
         }
     };
-    async createUser(req, res){
+    async createUser(req, res) {
         const userModel = new model();
 
         const { username, password } = req.body;
-        if (!username || !password){
-            res.status(422).json({error: 'inappropriate parameters'})
+        if (!username || !password) {
+            res.status(422).json({ error: 'inappropriate parameters' })
         }
         // Insert user information into the users table
         const existResult = await userModel.checkUserExist(username);
-        if (existResult){
+        if (existResult) {
             res.status(500).json({ error: 'User already exist' });
             return;
         }
         const result = await userModel.createUser(username, password);
-        if (result == false){
+        if (result == false) {
             res.status(500).json({ error: 'Failed to insert user information' });
-        }else{
+        } else {
             res.status(200).json({ message: 'User information inserted successfully' });
         }
     };

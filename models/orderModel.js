@@ -1,4 +1,4 @@
-const routeModel = require('./routeModel');
+const rModel = require('./routeModel');
 
 module.exports = class {
     constructor() {
@@ -36,7 +36,7 @@ module.exports = class {
 
     getDriverAllOrder(driverId) {
         console.log("Fetching all orders of driver: ", driverId);
-        const routeModel = new routeModel();
+        const routeModel = new rModel();
         const allDiverRoute = routeModel.getDiverRoute(driverId);
         return [{
             orderId: 0, routeId: 1, datetime: "2021-05-01 10:00:00",

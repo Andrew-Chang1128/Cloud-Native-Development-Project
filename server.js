@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 // import express from "express";
 class Server {
-    constructor(){
+    constructor() {
         this.app = express();
         this.port = 5000;
         this.applyMiddleWares();
@@ -13,26 +13,26 @@ class Server {
         console.log(`Received request: ${req.method}, URL: ${req.url}`);
         next();
     }
-    applyMiddleWares(){
+    applyMiddleWares() {
         this.app.use(express.json()); // Parse JSON request bodies
         this.app.use(this.logRequest); // Custom middleware
     }
-    addRoutes(){
+    addRoutes() {
         const driverRoute = require("./routes/driver");
-        this.app.use('/driver',driverRoute);
+        this.app.use('/driver', driverRoute);
         const userRoute = require("./routes/user");
-        this.app.use('/user',userRoute);
+        this.app.use('/user', userRoute);
         const routesRoute = require("./routes/route");
-        this.app.use('/',routesRoute);
-        const itemRoute = require("./routes/item");
-        this.app.use('/item',itemRoute);
+        this.app.use('/', routesRoute);
+        const test = require("./routes/test")
+        this.app.use('/test', test)
     }
-    start(){
+    start() {
         this.server = this.app.listen(this.port, () => {
             console.log(`Server is running on port ${this.port}`);
         });
     }
-    close(){
+    close() {
         console.log("Closing the server...");
         this.server.close((err) => {
             if (err) {
@@ -46,10 +46,3 @@ class Server {
 
 const server = new Server();
 exports.server = server
-
-// const name = "John"
-// obj = {[name]:"david",password:"123"};
-// console.log(obj)
-// jobj = JSON.stringify(obj)
-// console.log(jobj)
-

@@ -1,7 +1,7 @@
 
 
-const model = require("../models/driverModel")
-const driverModel = new model
+// const model = require("../models/driverModel")
+// const driverModel = new model
 const route = {
     david: "david's route",
     frank: "frank's route"
