@@ -26,7 +26,8 @@ module.exports = class {
                 const result = await route.insertOne(data);
                 console.log('result', result);
                 if(!result.acknowledged) resolve(-1);
-                resolve(id);
+                else resolve(id);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
@@ -43,7 +44,8 @@ module.exports = class {
                 const data = await route.find(query).toArray();
                 console.log('data', data);
                 if(!data) resolve([]);
-                resolve(data);
+                else resolve(data);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
@@ -62,7 +64,8 @@ module.exports = class {
                 const data = await route.findOne(query);
                 console.log('data', data);
                 if(!data) resolve(-1);
-                resolve(data.driverId);
+                else resolve(data.driverId);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
@@ -81,7 +84,8 @@ module.exports = class {
                 const data = await route.find(query).toArray();
                 console.log('data', data);
                 if(!data) resolve([]);
-                resolve(data);
+                else resolve(data);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }

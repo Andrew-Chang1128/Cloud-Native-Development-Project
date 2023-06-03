@@ -19,7 +19,8 @@ module.exports = class {
                 const data = await user.findOne(query);
                 //console.log('data', data);
                 if (!data) resolve(false);
-                resolve(true);
+                else resolve(true);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
@@ -45,7 +46,8 @@ module.exports = class {
                 const result = await user.insertOne(data);
                 console.log('result', result);
                 if (!result.acknowledged) resolve(false);
-                resolve(true);
+                else resolve(true);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
@@ -66,7 +68,8 @@ module.exports = class {
                 const data = await user.findOne(query);
                 console.log('data', data);
                 if (!data) resolve(-1);
-                resolve(data.id);
+                else resolve(data.id);
+                return;
             } catch (err) {
                 console.error('Error:', err);
             }
