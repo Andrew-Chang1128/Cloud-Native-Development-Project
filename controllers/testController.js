@@ -143,8 +143,15 @@ module.exports = class testController {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
+
+        const latDiff = end.lat - start.lat;
+        const lngDiff = end.lng - start.lng;
+
+        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
+        const fee = distance * 10;
+
         const orderModel = new oModel();
-        const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end);
+        const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end, fee);
         if (result == false) {
             res.status(500).json({ error: 'Failed to insert order information' });
         } else {
