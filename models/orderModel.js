@@ -6,7 +6,7 @@ module.exports = class {
 
     addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end) {
         console.log("Adding Passenger", passengerId, " to ", routeId, numOfPassenger, start, end);
-        return 500; // fee
+        return True;
         return new Promise((resolve, reject) => {
         })
     }
