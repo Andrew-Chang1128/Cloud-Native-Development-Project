@@ -32,8 +32,8 @@ module.exports = class testController {
 
         const userModel = new uModel();
 
-        const { email, password } = req.body;
-        if (!email || !password) {
+        const { name, email, password } = req.body;
+        if (!name || !email || !password) {
             res.status(422).json({ error: 'inappropriate parameters' })
         }
         // Insert user information into the users table
@@ -42,7 +42,7 @@ module.exports = class testController {
             res.status(500).json({ error: 'User already exist' });
             return;
         }
-        const result = await userModel.createUser(email, password);
+        const result = await userModel.createUser(name, email, password);
         if (result == false) {
             res.status(500).json({ error: 'Failed to insert user information' });
         } else {

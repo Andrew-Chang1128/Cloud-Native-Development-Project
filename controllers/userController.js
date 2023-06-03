@@ -7,13 +7,13 @@ module.exports = class userController {
     };
 
     async login(req, res) {
-        const { email, password } = req.body;
-        if (!email || !password) {
+        const { name, email, password } = req.body;
+        if (!name || !email || !password) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const userModel = new umodel();
-        const userId = await userModel.login(email, password);
+        const userId = await userModel.login(name, email, password);
         if (userId < 0) {
             res.status(400).json({ error: 'Wrong email or password' });
         } else {
