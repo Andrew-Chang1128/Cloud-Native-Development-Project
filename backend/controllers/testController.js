@@ -147,8 +147,8 @@ module.exports = class testController {
         const latDiff = end.lat - start.lat;
         const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
-        const fee = distance * 10;
+        const distance = Math.sqrt((latDiff*110) ** 2 + (lngDiff*101) ** 2);
+        const fee = Math.ceil((distance * 5 + 20)*(1 + (numOfPassenger-1)*0.5));
 
         const orderModel = new oModel();
         const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end, fee);
