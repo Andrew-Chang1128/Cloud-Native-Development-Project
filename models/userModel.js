@@ -28,7 +28,7 @@ module.exports = class {
     }
 
     createUser(name, email, password) {
-        console.log("creating user with: ", email, password);
+        console.log("creating user with: ", name, email, password);
         return new Promise(async (resolve, reject) => {
             try {
                 const user = this.database.collection('user');
@@ -36,7 +36,7 @@ module.exports = class {
                 const id = row[0].id + 1;
                 const data = {
                     id: id,
-                    name: "null",
+                    name: name,
                     email: email.toString(),
                     password: password.toString(),
                     avgStar: 0
