@@ -3,14 +3,14 @@ const oModel = require("../models/orderModel")
 const uModel = require("../models/userModel")
 
 module.exports = class routeController {
-    addRoute(req, res) {
+    async addRoute(req, res) {
         const { dayOfWeek, maxNumOfPassenger, startTime, routeList } = req.body;
         if (!dayOfWeek || !maxNumOfPassenger || !startTime || !routeList) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const routeModel = new rmodel();
-        const routeId = routeModel.createRoute(req.userId, dayOfWeek, maxNumOfPassenger, startTime, routeList);
+        const routeId = await routeModel.createRoute(req.userId, dayOfWeek, maxNumOfPassenger, startTime, routeList);
         if (routeId < 0) {
             res.status(500).json({ error: 'Failed to insert route information' });
         } else {
@@ -20,11 +20,11 @@ module.exports = class routeController {
 
     };
 
-    getAllDriverRoutes(req, res) {
+    async getAllDriverRoutes(req, res) {
         const driverId = req.userId;
 
         const routeModel = new rmodel();
-        const result = routeModel.getDiverRoute(driverId);
+        const result = await routeModel.getDiverRoute(driverId);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to get route information' });
@@ -33,12 +33,14 @@ module.exports = class routeController {
         }
     };
 
-    getRoute(req, res) {
+    async getRoute(req, res) {
         const driverId = req.userId;
         const routeId = req.params.rid;
 
+        console.log("routeId", routeId)
+
         const routeModel = new rmodel();
-        const result = routeModel.getDiverRoute(driverId);
+        const result = await routeModel.getDiverRoute(driverId);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to get route information' });
@@ -59,9 +61,9 @@ module.exports = class routeController {
         }
     };
 
-    getAllRoutes(req, res) {
+    async getAllRoutes(req, res) {
         const routeModel = new rmodel();
-        const result = routeModel.getAllRoute();
+        const result = await routeModel.getAllRoute();
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to get route information' });
@@ -70,7 +72,7 @@ module.exports = class routeController {
         }
     };
 
-    addPassengerToRoute(req, res) {
+    async addPassengerToRoute(req, res) {
         const { numOfPassenger, datetime, start, end } = req.body;
 
         if (!numOfPassenger || !datetime || !start || !end) {
@@ -81,11 +83,11 @@ module.exports = class routeController {
         const latDiff = end.lat - start.lat;
         const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
-        const fee = distance * 10;
+        const distance = Math.sqrt((latDiff * 110) ** 2 + (lngDiff * 101) ** 2);
+        const fee = Math.ceil((distance * 5 + 20) * (1 + (numOfPassenger - 1) * 0.5));
 
         const orderModel = new oModel();
-        const result = orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end, fee);
+        const result = await orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end, fee);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to add passenger to route' });
@@ -94,9 +96,9 @@ module.exports = class routeController {
         }
     };
 
-    getPassengerAllRoutes(req, res) {
+    async getPassengerAllRoutes(req, res) {
         const orderModel = new oModel();
-        const result = orderModel.getPassengerAllOrder(req.userId);
+        const result = await orderModel.getPassengerAllOrder(req.userId);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to get route information' });
@@ -106,9 +108,9 @@ module.exports = class routeController {
     };
 
     getFee(req, res) {
-        const { start, end } = req.body;
+        const { numOfPassenger, start, end } = req.body;
 
-        if (!start || !end) {
+        if (!numOfPassenger || !start || !end) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
@@ -116,22 +118,18 @@ module.exports = class routeController {
         const latDiff = end.lat - start.lat;
         const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
+        const distance = Math.sqrt((latDiff * 110) ** 2 + (lngDiff * 101) ** 2);
+        const fee = Math.ceil((distance * 5 + 20) * (1 + (numOfPassenger - 1) * 0.5));
 
-        res.status(200).json({ fee: distance * 10 })
+        res.status(200).json({ fee: fee })
     };
 
-    getDriverAllOrders(req, res) {
+    async getDriverAllOrders(req, res) {
         const driverId = req.userId;
 
         const orderModel = new oModel();
-        const result = orderModel.getDriverAllOrder(driverId);
+        const result = await orderModel.getDriverAllOrder(driverId);
 
-        if (result == false) {
-            res.status(500).json({ error: 'Failed to get route information' });
-        }
-        else {
-            res.status(200).json(result);
-        }
+        res.status(200).json(result);
     };
 }
