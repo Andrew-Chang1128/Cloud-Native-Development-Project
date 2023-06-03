@@ -1,9 +1,19 @@
+html, body { 
+  height: 100vh; 
+  width: 100%; 
+  margin: 0; 
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  width: 100%;
+  /* align-items: center; */
 }
 
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -12,30 +22,67 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+}  */
 
 
-.profile-buttons {
+/* .profile-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 20px;
-}
+} */
 
-.profile-buttons button {
+/* .profile-buttons button {
   padding: 10px 20px;
-}
-.rectangle-background {
-  width: 390px;
-  height: 100px;
+} */
+
+.header, .menu-gesture {
+  width: 100%;
+  height: 13vh;
+  min-height: 50px;
   background-color: gray;
+  align-items: center; 
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.text {
-  font-size: 50px;
-  color: white;
-  padding: 10px;
+.menu-gesture {
+  justify-content: center;
 }
+
+.header-text {
+  font-size: calc(25px + 1vh);
+  color: black;
+  padding-left: 2.5vw;
+}
+
+.map {
+  flex-grow: 1;
+  display: flex;
+  background-color: white;
+}
+
+/* .content {
+  width: 100vw;
+  height: 87vh;
+  display: flex;
+} */
+
+/* .menu-gesture {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 13vh;
+  min-height: 50px;
+  background-color: gray;
+} */
+
+.ges-icon {
+  width: calc(25px + 4.5vh);
+  height: calc(25px + 4.5vh);
+  left: 0vw;
+  margin-left: calc(5px + 4.5vw);
+  margin-right: calc(5px + 4.5vw);
+}
+
+/* style={{ width: '50px', height: '50px',position: 'absolute', top: '25px', left: '160px' }} */
