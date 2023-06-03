@@ -134,16 +134,17 @@ module.exports = class testController {
         }
     }
 
+    // order model
     async addPassengerToOrder(req, res) {
         console.log("/test/addPassengerToOrder");
 
-        const { passengerId, routeId, numOfPassenger, start, end } = req.body;
-        if (!passengerId || !routeId || !numOfPassenger || !start || !end) {
+        const { passengerId, routeId, datetime, numOfPassenger, start, end } = req.body;
+        if (!passengerId || !routeId || !datetime || !numOfPassenger || !start || !end) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const orderModel = new oModel();
-        const fee = await orderModel.addPassengerToOrder(passengerId, routeId, numOfPassenger, start, end);
+        const fee = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end);
         if (fee == false) {
             res.status(500).json({ error: 'Failed to insert order information' });
         } else {
