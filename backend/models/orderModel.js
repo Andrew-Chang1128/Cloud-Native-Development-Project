@@ -9,16 +9,19 @@ module.exports = class {
         this.database = this.client.db('cnp');
     };
 
-    addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end) {
-        console.log("Adding Passenger", passengerId, " to ", routeId, numOfPassenger, start, end);
+    addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end, fee) {
+        console.log("Adding Passenger", passengerId, " to ", routeId, datetime, numOfPassenger, start, end);
         return new Promise(async (resolve, reject) => {
             try {
-                const route = this.database.collection('route');
-                const row = await route.find({}).sort({"routeId":-1}).limit(1).toArray();
+                const order = this.database.collection('order');
+                const query = {
+                    routeId: routeId,
+                    
+                };
+                const row = await order.findOne(query).toArray();
                 const id = row[0].routeId + 1;
                 const data = {
                     routeId: id,
-                    driverId: driverId,
                     dayOfWeek: dayOfWeek,
                     maxNumOfPassenger: maxNumOfPassenger,
                     startTime: startTime,
