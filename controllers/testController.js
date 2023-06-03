@@ -144,11 +144,10 @@ module.exports = class testController {
             return;
         }
         const orderModel = new oModel();
-        const fee = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end);
-        if (fee == false) {
+        const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end);
+        if (result == false) {
             res.status(500).json({ error: 'Failed to insert order information' });
         } else {
-            console.log(`fee returned is:${fee}`);
             res.status(200).json({ message: 'Order information inserted successfully' });
         }
 
