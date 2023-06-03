@@ -12,7 +12,9 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
 #### Start
 
 ```
- $ mkdir -p mongo/db mongo/configdb; rm -rf mongo/db/* mongo/configdb/*
+ $ rm -rf mongo/db/ mongo/configdb/
+ 
+ $ mkdir -p mongo/db mongo/configdb
 
  $ docker-compose up -d --build
 ```

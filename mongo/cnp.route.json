@@ -9,7 +9,7 @@
     "Tuesday"
   ],
   "maxNumOfPassenger": 4,
-  "startTime": "16:00:00",
+  "startTime": "2023-06-06T08:00:00.000Z",
   "routeList": [
     {
       "loc": "place1",
