@@ -7,13 +7,13 @@ module.exports = class userController {
     };
 
     async login(req, res) {
-        const { name, email, password } = req.body;
-        if (!name || !email || !password) {
+        const { email, password } = req.body;
+        if (!email || !password) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const userModel = new umodel();
-        const userId = await userModel.login(name, email, password);
+        const userId = await userModel.login(email, password);
         if (userId < 0) {
             res.status(400).json({ error: 'Wrong email or password' });
         } else {
@@ -26,8 +26,8 @@ module.exports = class userController {
     async createUser(req, res) {
         const userModel = new umodel();
 
-        const { username, password } = req.body;
-        if (!username || !password) {
+        const { name, username, password } = req.body;
+        if (!name || !username || !password) {
             res.status(422).json({ error: 'inappropriate parameters' })
         }
         // Insert user information into the users table
@@ -36,7 +36,7 @@ module.exports = class userController {
             res.status(500).json({ error: 'User already exist' });
             return;
         }
-        const result = await userModel.createUser(username, password);
+        const result = await userModel.createUser(name, username, password);
         if (result == false) {
             res.status(500).json({ error: 'Failed to insert user information' });
         } else {
