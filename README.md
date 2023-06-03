@@ -16,7 +16,7 @@ This is the repo for Cloud Native Development: towards Best Practice final proje
  
  $ mkdir -p mongo/db mongo/configdb
 
- $ docker-compose up -d --build
+ $ docker-compose up -d
 ```
 
 #### Stop
