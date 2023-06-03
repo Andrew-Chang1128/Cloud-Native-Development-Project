@@ -78,17 +78,18 @@ module.exports = class routeController {
             return;
         }
 
+        const latDiff = end.lat - start.lat;
+        const lngDiff = end.lng - start.lng;
+
+        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
+        const fee = distance * 10;
+
         const orderModel = new oModel();
-        const result = orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end);
+        const result = orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end, fee);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to add passenger to route' });
         } else {
-            const latDiff = end.lat - start.lat;
-            const lngDiff = end.lng - start.lng;
-
-            const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
-            const fee = distance * 10;
             res.status(200).json({ fee: fee });
         }
     };
