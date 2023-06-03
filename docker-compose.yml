@@ -1,13 +1,22 @@
 version: '3'
 services:
-  node:
-    container_name: cnp-node
+  frontend:
+    container_name: cnp-frontend
     restart: always
-    build: .
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/public/:/usr/src/app/public
+      - ./frontend/src/:/usr/src/app/src
+  backend:
+    container_name: cnp-backend
+    restart: always
+    build: ./backend
     ports:
       - 5000:5000
     volumes:
-      - ./:/usr/src/app
+      - ./backend/:/usr/src/app
   mongo:
     container_name: cnp-mongo
     image: mongo:6.0.6
