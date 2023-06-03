@@ -1,0 +1,21 @@
+version: '3'
+services:
+  node:
+    container_name: cnp-node
+    restart: always
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/usr/src/app
+  mongo:
+    container_name: cnp-mongo
+    image: mongo:6.0.6
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: cnp
+    volumes:
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo/db:/data/db
+      - ./mongo/configdb:/data/configdb

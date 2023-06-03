@@ -1,48 +1,91 @@
+const { MongoClient } = require("mongodb");
+const uri = "mongodb://mongo:27017/";
+
 module.exports = class {
     constructor() {
+        this.client = new MongoClient(uri);
+        this.database = this.client.db('cnp');
     };
 
     createRoute(driverId, dayOfWeek, maxNumOfPassenger, startTime, routeList) {
         console.log("Creating route with: ", driverId, dayOfWeek, maxNumOfPassenger, startTime, routeList);
-        return 1; // routeId
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const route = this.database.collection('route');
+                const row = await route.find({}).sort({"routeId":-1}).limit(1).toArray();
+                const id = row[0].routeId + 1;
+                const data = {
+                    routeId: id,
+                    driverId: driverId,
+                    dayOfWeek: dayOfWeek,
+                    maxNumOfPassenger: maxNumOfPassenger,
+                    startTime: startTime,
+                    routeList: routeList
+                };
+                console.log('data', data);
+                const result = await route.insertOne(data);
+                console.log('result', result);
+                if(!result.acknowledged) resolve(-1);
+                resolve(id);
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
         })
     }
 
     getAllRoute() {
         console.log("Fetching all routes");
-        return [{
-            routeId: 0, driverId: 1, dayOfWeek: ["Sunday", "Tuesday"],
-            maxNumOfPassenger: 4, startTime: "2021-05-01 10:00",
-            routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
-        }, {
-            routeId: 1, driverId: 2, dayOfWeek: ["Monday", "Tuesday"],
-            maxNumOfPassenger: 2, startTime: "2021-05-01 20:00",
-            routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
-        }]
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const route = this.database.collection('route');
+                const query = {};
+                const data = await route.find(query).toArray();
+                console.log('data', data);
+                if(!data) resolve([]);
+                resolve(data);
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
         })
     };
 
     getDiverId(routeId) {
         console.log("Fetching driver with: ", routeId);
-        return 0; // driverId
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const route = this.database.collection('route');
+                const query = {
+                    routeId: routeId
+                };
+                const data = await route.findOne(query);
+                console.log('data', data);
+                if(!data) resolve(-1);
+                resolve(data.driverId);
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
         })
     };
 
-    getDiverRoute(diverId) {
-        console.log("Fetching route with: ", diverId);
-        return [{
-            routeId: 0, driverId: diverId, dayOfWeek: ["Sunday", "Tuesday"],
-            maxNumOfPassenger: 4, startTime: "2021-05-01 10:00",
-            routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
-        }, {
-            routeId: 1, driverId: diverId, dayOfWeek: ["Monday", "Tuesday"],
-            maxNumOfPassenger: 2, startTime: "2021-05-01 20:00",
-            routeList: [{ loc: "起點", lat: 11, lng: 12 }, { loc: "停靠點", lat: 21, lng: 22 }, { loc: "終點", lat: 31, lng: 32 }]
-        }]
-        return new Promise((resolve, reject) => {
+    getDiverRoute(driverId) {
+        console.log("Fetching route with: ", driverId);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const route = this.database.collection('route');
+                const query = {
+                    driverId: driverId
+                };
+                const data = await route.find(query).toArray();
+                console.log('data', data);
+                if(!data) resolve([]);
+                resolve(data);
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
         })
     }
 }

@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "6479aaf05dbc0c70a3930616"
+  },
+  "routeId": 1,
+  "driverId": 1,
+  "dayOfWeek": [
+    "Sunday",
+    "Tuesday"
+  ],
+  "maxNumOfPassenger": 4,
+  "startTime": "16:00:00",
+  "routeList": [
+    {
+      "loc": "place1",
+      "lat": 23,
+      "lng": 120.1
+    },
+    {
+      "loc": "place2",
+      "lat": 23.1,
+      "lng": 120
+    },
+    {
+      "loc": "place3",
+      "lat": 23.1,
+      "lng": 119.9
+    }
+  ]
+}]
