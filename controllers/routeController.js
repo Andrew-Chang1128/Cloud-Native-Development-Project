@@ -71,19 +71,24 @@ module.exports = class routeController {
     };
 
     addPassengerToRoute(req, res) {
-        const { numOfPassenger, start, end } = req.body;
+        const { numOfPassenger, datetime, start, end } = req.body;
 
-        if (!numOfPassenger || !start || !end) {
+        if (!numOfPassenger || !datetime || !start || !end) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
 
         const orderModel = new oModel();
-        const fee = orderModel.addPassengerToOrder(req.userId, req.params.rid, numOfPassenger, start, end);
+        const result = orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end);
 
-        if (fee < 0) {
+        if (result == false) {
             res.status(500).json({ error: 'Failed to add passenger to route' });
         } else {
+            const latDiff = end.lat - start.lat;
+            const lngDiff = end.lng - start.lng;
+
+            const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
+            const fee = distance * 10;
             res.status(200).json({ fee: fee });
         }
     };
@@ -107,12 +112,12 @@ module.exports = class routeController {
             return;
         }
 
-        const xDiff = end.x - start.x;
-        const yDiff = end.y - start.y;
+        const latDiff = end.lat - start.lat;
+        const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt(xDiff ** 2 + yDiff ** 2);
+        const distance = Math.sqrt(latDiff ** 2 + lngDiff ** 2);
 
-        res.status(200).json({ fee: distance * 10})
+        res.status(200).json({ fee: distance * 10 })
     };
 
     getDriverAllOrders(req, res) {

@@ -9,7 +9,7 @@ module.exports = class {
         this.database = this.client.db('cnp');
     };
 
-    addPassengerToOrder(passengerId, routeId, numOfPassenger, start, end) {
+    addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end) {
         console.log("Adding Passenger", passengerId, " to ", routeId, numOfPassenger, start, end);
         return new Promise(async (resolve, reject) => {
             try {

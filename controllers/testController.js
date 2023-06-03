@@ -32,8 +32,8 @@ module.exports = class testController {
 
         const userModel = new uModel();
 
-        const { email, password } = req.body;
-        if (!email || !password) {
+        const { name, email, password } = req.body;
+        if (!name || !email || !password) {
             res.status(422).json({ error: 'inappropriate parameters' })
         }
         // Insert user information into the users table
@@ -42,7 +42,7 @@ module.exports = class testController {
             res.status(500).json({ error: 'User already exist' });
             return;
         }
-        const result = await userModel.createUser(email, password);
+        const result = await userModel.createUser(name, email, password);
         if (result == false) {
             res.status(500).json({ error: 'Failed to insert user information' });
         } else {
@@ -134,20 +134,20 @@ module.exports = class testController {
         }
     }
 
+    // order model
     async addPassengerToOrder(req, res) {
         console.log("/test/addPassengerToOrder");
 
-        const { passengerId, routeId, numOfPassenger, start, end } = req.body;
-        if (!passengerId || !routeId || !numOfPassenger || !start || !end) {
+        const { passengerId, routeId, datetime, numOfPassenger, start, end } = req.body;
+        if (!passengerId || !routeId || !datetime || !numOfPassenger || !start || !end) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
         const orderModel = new oModel();
-        const fee = await orderModel.addPassengerToOrder(passengerId, routeId, numOfPassenger, start, end);
-        if (fee == false) {
+        const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end);
+        if (result == false) {
             res.status(500).json({ error: 'Failed to insert order information' });
         } else {
-            console.log(`fee returned is:${fee}`);
             res.status(200).json({ message: 'Order information inserted successfully' });
         }
 
