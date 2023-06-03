@@ -18,7 +18,7 @@ module.exports = class {
                 console.log('query', query);
                 const data = await user.findOne(query);
                 //console.log('data', data);
-                if(!data) resolve(false);
+                if (!data) resolve(false);
                 resolve(true);
             } catch (err) {
                 console.error('Error:', err);
@@ -27,16 +27,16 @@ module.exports = class {
         })
     }
 
-    createUser(email, password) {
-        console.log("creating user with: ", email, password);
+    createUser(name, email, password) {
+        console.log("creating user with: ", name, email, password);
         return new Promise(async (resolve, reject) => {
             try {
                 const user = this.database.collection('user');
-                const row = await user.find({}).sort({"id":-1}).limit(1).toArray();
+                const row = await user.find({}).sort({ "id": -1 }).limit(1).toArray();
                 const id = row[0].id + 1;
                 const data = {
                     id: id,
-                    name: "null",
+                    name: name,
                     email: email.toString(),
                     password: password.toString(),
                     avgStar: 0
@@ -44,7 +44,7 @@ module.exports = class {
                 console.log('data', data);
                 const result = await user.insertOne(data);
                 console.log('result', result);
-                if(!result.acknowledged) resolve(false);
+                if (!result.acknowledged) resolve(false);
                 resolve(true);
             } catch (err) {
                 console.error('Error:', err);
@@ -65,7 +65,7 @@ module.exports = class {
                 console.log('query', query);
                 const data = await user.findOne(query);
                 console.log('data', data);
-                if(!data) resolve(-1);
+                if (!data) resolve(-1);
                 resolve(data.id);
             } catch (err) {
                 console.error('Error:', err);

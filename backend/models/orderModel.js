@@ -1,13 +1,38 @@
+const { MongoClient } = require("mongodb");
+const uri = "mongodb://mongo:27017/";
+
 const rModel = require('./routeModel');
 
 module.exports = class {
     constructor() {
+        this.client = new MongoClient(uri);
+        this.database = this.client.db('cnp');
     };
 
-    addPassengerToOrder(passengerId, routeId, numOfPassenger, start, end) {
+    addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end) {
         console.log("Adding Passenger", passengerId, " to ", routeId, numOfPassenger, start, end);
-        return 500; // fee
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const route = this.database.collection('route');
+                const row = await route.find({}).sort({"routeId":-1}).limit(1).toArray();
+                const id = row[0].routeId + 1;
+                const data = {
+                    routeId: id,
+                    driverId: driverId,
+                    dayOfWeek: dayOfWeek,
+                    maxNumOfPassenger: maxNumOfPassenger,
+                    startTime: startTime,
+                    routeList: routeList
+                };
+                console.log('data', data);
+                const result = await route.insertOne(data);
+                console.log('result', result);
+                if(!result.acknowledged) resolve(-1);
+                resolve(sid);
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
         })
     }
 
