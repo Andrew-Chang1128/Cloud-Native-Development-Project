@@ -14,7 +14,6 @@ import Ordercomplete from './page/Ordercomplete';
 import Orderdrivercomplete from './page/Orderdrivercomplete';
 import Ordernext from './page/Ordernext';
 import Orderdriver from './page/Orderdriver';
-import TestMap from './page/test/TestMap';
 import Fixed from './page/Fixed';
 import Fixedadd from './page/Fixedadd';
 import useToken from './page/useToken';
@@ -23,6 +22,11 @@ import Reserve from './page/Reserve';
 import Mycar from './page/Mycar';
 import driverImage from './image/driver.png'
 import passengerImage from './image/passenger.png'
+import TestMap from './page/test/TestMap';
+import TestMap2 from './page/test/TestMap2';
+
+import driverImage from './image/driver.png';
+import passengerImage from './image/passenger.png';
 
 
 function App() {
@@ -89,12 +93,13 @@ function App() {
           <Route path='/orderdrivercomplete' element={<Orderdrivercomplete />}></Route>
           <Route path='/ordernext' element={<Ordernext />}></Route>
           <Route path='/orderdriver' element={<Orderdriver />}></Route>
-          <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/fixed' element={<Fixed />}></Route>
           <Route path='/fixedadd' element={<Fixedadd />}></Route>
           <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
           <Route path='/reserve' element={<Reserve />}></Route>
           <Route path='/mycar' element={<Mycar />}></Route>
+          <Route path='/test/map' element={<TestMap />}></Route>
+          <Route path='/test/map2' element={<TestMap2 />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
