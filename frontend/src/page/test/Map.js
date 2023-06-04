@@ -19,18 +19,34 @@ export default class Map extends React.Component {
       const layers = platform.createDefaultLayers({
         lg: 'zh-tw'
       });
+
+      this.ref.current.style.width = '100%';
+      this.ref.current.style.height = '700px';
+
       const map = new H.Map(
         this.ref.current,
         layers.vector.normal.map,
         {
           pixelRatio: window.devicePixelRatio,
-          center: {lat: 25.040071298375924, lng: 121.51193410751563},
-          zoom: 2,
+          center: {lat: 25.04, lng: 121.52},
+          zoom: 14,
         },
       );
-      this.ref.current.style.width = '600px';
-      this.ref.current.style.height = '600px';
       this.map = map;
+
+      window.addEventListener('resize', () => map.getViewPort().resize());
+
+      // var marker = new H.map.Marker({lat: 25.04, lng: 121.52});
+      // map.addObject(marker);
+
+      var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+      var ui = H.ui.UI.createDefault(map, layers);
+      
+      map.addEventListener('pointerup', function (evt) {
+        var cnt = map.getCenter();
+        console.log('Center at ', cnt.lat, cnt.lng);
+      });
+
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log("Latitude is :", position.coords.latitude);
         console.log("Longitude is :", position.coords.longitude);
