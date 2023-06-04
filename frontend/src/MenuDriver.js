@@ -17,14 +17,14 @@ function MenuDriver() {
             <button onClick={() => navigate('/menu')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={passengerImage} alt="passenger" />
             </button>
-            <button onClick={() => navigate('/order')} style={{ background: 'none', border: 'none', padding: 0 }}>
+            <button onClick={() => navigate('/fixed')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={fixedImage} alt="fixed" />
             </button>
             <button onClick={() => navigate('/orderdriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={orderdriverImage} alt="Orderdriver" />
             </button >
-            <button onClick={() => navigate('/profile')} style={{ background: 'none', border: 'none', padding: 0 }}>
-                <img className="ges-icon" src={profileImage} alt="Profile" />
+            <button onClick={() => navigate('/profiledriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
+                <img className="ges-icon" src={profileImage} alt="Profiledriver" />
             </button>
         </div>
     </>

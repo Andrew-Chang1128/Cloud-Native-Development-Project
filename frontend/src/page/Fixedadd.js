@@ -1,32 +1,42 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import checkdriverImage from '../image/checkdriver.png'
-import falseImage from '../image/false.png';
-function Orderdriver(){
+import nextImage from '../image/next.png'
+import buttonImage from '../image/back.png';
+function Fixedadd(){
   const navigate = useNavigate();
     return (
       <>
         <div className="content" style={{ "flex-direction": "column" }}>
-        <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "5vh" }}>
-            <p>乘客: 王小明</p>
-            <p>乘客人數: 2人</p>
-            <p>出發地: 交通大學</p>
-            <p>目的地: 新竹火車站</p>
+          <div className="profile-div" style={{ "flex-direction": "column" }}>
+            <p>出發地</p>
+            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
+              {/* <img src={profilechangeImage} alt="Profilechange" /> */}
+              <span>交通大學</span>
+            </button>
+            <p>目的地</p>
+            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
+                {/* <img src={paymentImage} alt="Payments" /> */}
+                <span>新竹火車站</span>
+            </button>
+            <p>乘客人數</p>
+            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
+                {/* <img src={paymentImage} alt="Payments" /> */}
+                <span>2</span>
+            </button>
           </div>
           <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
-            <p>出發時間: 12 : 22</p>
-            <p>抵達時間: 12 : 57</p>
-            <p>預估車資: 80元</p>
+            <p>出發時間</p>
+            <p>平日, 星期六   09:50</p>
           </div>
           
         </div>
         
         <div className="menu-gesture">
           <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0}}>
-              <img className="ges-icon" src={falseImage} style={{ marginRight: '40vw' }} alt="false" />
+              <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
           </button>
-          <button onClick={() => navigate('/orderdrivercomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
-              <img className="ges-icon" src={checkdriverImage} alt="checkdriver" />
+          <button onClick={() => navigate('/fixedaddcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+              <img className="ges-icon" src={nextImage} alt="Next" />
           </button>
         </div>
     </>
@@ -34,7 +44,7 @@ function Orderdriver(){
     );
 }
 
-export default Orderdriver;
+export default Fixedadd;
 
 /* <div className="profile-buttons">
           <p style={{ fontSize: '30px', position: 'absolute', top: '125px', left: '50px' }}>出發地</p>

@@ -11,13 +11,13 @@ import Askhelp from './page/Askhelp';
 import Payments from './page/Payments';
 import Order from './page/Order';
 import Ordercomplete from './page/Ordercomplete';
+import Orderdrivercomplete from './page/Orderdrivercomplete';
 import Ordernext from './page/Ordernext';
-<<<<<<< HEAD
 import Orderdriver from './page/Orderdriver';
-=======
 import TestMap from './page/test/TestMap';
+import Fixed from './page/Fixed';
+import Fixedadd from './page/Fixedadd';
 
->>>>>>> 9465753b67c84156463db3bc82affab366e92288
 function App() {
   return (
    <BrowserRouter>
@@ -42,6 +42,8 @@ function App() {
         <Route path='/ordernext' element={<Ordernext />}></Route>
         <Route path='/orderdriver' element={<Orderdriver />}></Route>
         <Route path='/test/map' element={<TestMap />}></Route>
+        <Route path='/fixed' element={<Fixed />}></Route>
+        <Route path='/fixedadd' element={<Fixedadd />}></Route>
       </Routes>
     </div>
    </BrowserRouter>
