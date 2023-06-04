@@ -17,6 +17,7 @@ import Orderdriver from './page/Orderdriver';
 import TestMap from './page/test/TestMap';
 import Fixed from './page/Fixed';
 import Fixedadd from './page/Fixedadd';
+import Fixedcomplete from './page/Fixedcomplete';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/test/map' element={<TestMap />}></Route>
         <Route path='/fixed' element={<Fixed />}></Route>
         <Route path='/fixedadd' element={<Fixedadd />}></Route>
+        <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
       </Routes>
     </div>
    </BrowserRouter>

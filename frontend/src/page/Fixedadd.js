@@ -35,7 +35,7 @@ function Fixedadd(){
           <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0}}>
               <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
           </button>
-          <button onClick={() => navigate('/fixedaddcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <button onClick={() => navigate('/fixedcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={nextImage} alt="Next" />
           </button>
         </div>
