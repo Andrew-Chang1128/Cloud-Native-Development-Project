@@ -14,12 +14,13 @@ import Ordercomplete from './page/Ordercomplete';
 import Orderdrivercomplete from './page/Orderdrivercomplete';
 import Ordernext from './page/Ordernext';
 import Orderdriver from './page/Orderdriver';
-import TestMap from './page/test/TestMap';
 import Fixed from './page/Fixed';
 import Fixedadd from './page/Fixedadd';
 import useToken from './page/useToken';
 import Fixedcomplete from './page/Fixedcomplete';
 import Reserve from './page/Reserve';
+import TestMap from './page/test/TestMap';
+import TestMap2 from './page/test/TestMap2';
 
 function App() {
   const { token, setToken } = useToken();
@@ -55,11 +56,12 @@ function App() {
           <Route path='/orderdrivercomplete' element={<Orderdrivercomplete />}></Route>
           <Route path='/ordernext' element={<Ordernext />}></Route>
           <Route path='/orderdriver' element={<Orderdriver />}></Route>
-          <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/fixed' element={<Fixed />}></Route>
           <Route path='/fixedadd' element={<Fixedadd />}></Route>
           <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
           <Route path='/reserve' element={<Reserve />}></Route>
+          <Route path='/test/map' element={<TestMap />}></Route>
+          <Route path='/test/map2' element={<TestMap2 />}></Route>
         </Routes>
     </div>
    </BrowserRouter>
