@@ -10,6 +10,7 @@ import Payments from './page/Payments';
 import Order from './page/Order';
 import Ordercomplete from './page/Ordercomplete';
 import Ordernext from './page/Ordernext';
+import TestMap from './page/test/TestMap';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/askhelp' element={<Askhelp />}></Route>
         <Route path='/ordercomplete' element={<Ordercomplete />}></Route>
         <Route path='/ordernext' element={<Ordernext />}></Route>
+        <Route path='/test/map' element={<TestMap />}></Route>
       </Routes>
     </div>
    </BrowserRouter>
