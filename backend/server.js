@@ -1,5 +1,16 @@
 require("dotenv").config();
+var cors = require('cors');
 const express = require("express");
+
+// const corsOptions = {
+//     origin: [
+//       'http://www.example.com',
+//       'http://localhost:8080',
+//     ],
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//   };
+
 // import express from "express";
 class Server {
     constructor() {
@@ -14,6 +25,7 @@ class Server {
         next();
     }
     applyMiddleWares() {
+        this.app.use(cors());
         this.app.use(express.json()); // Parse JSON request bodies
         this.app.use(this.logRequest); // Custom middleware
     }
