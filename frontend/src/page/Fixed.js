@@ -12,11 +12,12 @@ function Fixed(){
           <div className="profile-div" style={{ "flex-direction": "column" }}>
             <h1>固定路線</h1>
           </div>
-          <div className="profile-button">
-            <button onClick={() => navigate('/fixed')}>
-                <span style={{ whiteSpace: 'pre-line' }}>4/25 的路線 3人預約</span>
-                <span style={{ whiteSpace: 'pre-line' }}>09:50 出發 170元</span>
-            </button>
+          <div className="profile-top">
+            <div onClick={() => navigate('/menu')}>
+                <span style={{ whiteSpace: 'pre-line' }}>4/25 的路線  3人預約{'\n'}09:50 出發  170元</span>
+            </div>
+
+     
 
             <button onClick={() => navigate('/fixed')}>
              

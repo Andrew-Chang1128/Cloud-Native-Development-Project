@@ -18,6 +18,7 @@ import TestMap from './page/test/TestMap';
 import Fixed from './page/Fixed';
 import Fixedadd from './page/Fixedadd';
 import Fixedcomplete from './page/Fixedcomplete';
+import Reserve from './page/Reserve';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path='/fixed' element={<Fixed />}></Route>
         <Route path='/fixedadd' element={<Fixedadd />}></Route>
         <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
+        <Route path='/reserve' element={<Reserve />}></Route>
       </Routes>
     </div>
    </BrowserRouter>
