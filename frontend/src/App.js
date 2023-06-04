@@ -58,43 +58,13 @@ function App() {
           <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/fixed' element={<Fixed />}></Route>
           <Route path='/fixedadd' element={<Fixedadd />}></Route>
+          <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
+          <Route path='/reserve' element={<Reserve />}></Route>
         </Routes>
-      </div>
-<<<<<<< HEAD
-    </BrowserRouter>
-          
-    );
-  
-
-  
-=======
-      <Routes>
-        <Route path="/" element={<Signin />}></Route>
-        <Route path="/menu" element={<Menu />}></Route>
-        <Route path="/menudriver" element={<MenuDriver />}></Route>
-        <Route path='/order' element={<Order />}></Route>
-        <Route path='/signin' element={<Signin />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/profiledriver' element={<Profiledriver />}></Route>
-        <Route path='/profilechange' element={<Profilechange />}></Route>
-        <Route path='/payments' element={<Payments/>}></Route>
-        <Route path='/Ordersearch' element={<Ordersearch />}></Route>
-        <Route path='/askhelp' element={<Askhelp />}></Route>
-        <Route path='/ordercomplete' element={<Ordercomplete />}></Route>
-        <Route path='/orderdrivercomplete' element={<Orderdrivercomplete />}></Route>
-        <Route path='/ordernext' element={<Ordernext />}></Route>
-        <Route path='/orderdriver' element={<Orderdriver />}></Route>
-        <Route path='/test/map' element={<TestMap />}></Route>
-        <Route path='/fixed' element={<Fixed />}></Route>
-        <Route path='/fixedadd' element={<Fixedadd />}></Route>
-        <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
-        <Route path='/reserve' element={<Reserve />}></Route>
-      </Routes>
     </div>
    </BrowserRouter>
          
   );
->>>>>>> 68fb3a64a6a9764a8651c53a6f64a59b508eef39
 }
 
 export default App;
