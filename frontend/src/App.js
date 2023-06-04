@@ -25,9 +25,6 @@ import passengerImage from './image/passenger.png'
 import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
 
-import driverImage from './image/driver.png';
-import passengerImage from './image/passenger.png';
-
 
 function App() {
   const { token, setToken } = useToken();
