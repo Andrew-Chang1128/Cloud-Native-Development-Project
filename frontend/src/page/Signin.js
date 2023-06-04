@@ -14,7 +14,7 @@ function Signin() {
         
         let response;
         if (activeItem === 'register') {
-            response = await fetch('http://localhost:5000/usr/createUser', {
+            response = await fetch('http://localhost:5000/user/createUser', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
