@@ -7,7 +7,9 @@ import cellphoneImage from '../image/cellphone.png'
 
 function OrderComplete() {
   const navigate = useNavigate();
-
+  const handleClick = () => {
+    window.location.replace('tel:+886-900-000-000');
+  };
   return (
     <>
         <div className="content" style={{ "flex-direction": "column" }}>
@@ -20,7 +22,7 @@ function OrderComplete() {
               <img src={messageImage} alt="Message" />
               <span>傳送訊息給司機</span>
             </button>
-            <button onClick={() => navigate('/menu')}>
+            <button onClick={handleClick}>
                 <img src={cellphoneImage} alt="Cellphone" />
                 <span>致電給司機</span>
             </button>
