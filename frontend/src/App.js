@@ -12,7 +12,12 @@ import Payments from './page/Payments';
 import Order from './page/Order';
 import Ordercomplete from './page/Ordercomplete';
 import Ordernext from './page/Ordernext';
+<<<<<<< HEAD
 import Orderdriver from './page/Orderdriver';
+=======
+import TestMap from './page/test/TestMap';
+
+>>>>>>> 9465753b67c84156463db3bc82affab366e92288
 function App() {
   return (
    <BrowserRouter>
@@ -36,6 +41,7 @@ function App() {
         <Route path='/orderdrivercomplete' element={<Orderdrivercomplete />}></Route>
         <Route path='/ordernext' element={<Ordernext />}></Route>
         <Route path='/orderdriver' element={<Orderdriver />}></Route>
+        <Route path='/test/map' element={<TestMap />}></Route>
       </Routes>
     </div>
    </BrowserRouter>
