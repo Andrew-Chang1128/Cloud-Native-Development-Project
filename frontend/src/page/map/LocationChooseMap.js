@@ -20,9 +20,6 @@ export default class LocationChooseMap extends React.Component {
         lg: 'zh-tw'
       });
 
-      this.ref.current.style.width = '100%';
-      this.ref.current.style.height = '700px';
-
       const map = new H.Map(
         this.ref.current,
         layers.vector.normal.map,
@@ -61,7 +58,7 @@ export default class LocationChooseMap extends React.Component {
   render() {
     return (
       <div
-        style={{ width: '300px', height:'300px' }}
+        style={{ width: '100%', height:'700px' }}
         ref={this.ref}
       />
     )
