@@ -9,11 +9,11 @@ function Menu() {
     const navigate = useNavigate();
     return (
      <>
-        <div className="map">
+        <div className="content">
             <p> map </p>
         </div>
         <div className="menu-gesture">
-            <button onClick={() => navigate('/signin')} style={{ background: 'none', border: 'none', padding: 0 }}>
+            <button onClick={() => navigate('/order')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={signinImage} alt="Signin" />
             </button>
             <button onClick={() => navigate('/order')} style={{ background: 'none', border: 'none', padding: 0 }}>

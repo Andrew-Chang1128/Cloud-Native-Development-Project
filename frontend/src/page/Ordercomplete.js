@@ -9,7 +9,37 @@ function OrderComplete() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <>
+        <div className="content" style={{ "flex-direction": "column" }}>
+          <div className="profile-div" style={{ "flex-direction": "column" }}>
+            <p>訂單已成立</p>
+            <p>請於 12:22 至指定搭車地點等候。</p>
+          </div>
+          <div className="profile-button" style={{ paddingTop: "calc(20px + 15vh)" }}>
+            <button onClick={() => navigate('/menu')}>
+              <img src={messageImage} alt="Message" />
+              <span>傳送訊息給司機</span>
+            </button>
+            <button onClick={() => navigate('/menu')}>
+                <img src={cellphoneImage} alt="Cellphone" />
+                <span>致電給司機</span>
+            </button>
+          </div>
+        </div>
+        
+        <div className="menu-gesture">
+          <button onClick={() => navigate('/menu')} style={{ background: 'none', border: 'none', padding: 0 }}>
+              <img className="ges-icon" src={homeImage} alt="Home" />
+          </button>
+        </div>
+    </>
+  );
+}
+
+export default OrderComplete;
+
+/*
+<div>
       <p style={{ fontSize: '30px', position: 'absolute', top: '125px', left: '50px' }}>訂單已成立!</p>
       <p style={{ fontSize: '30px', position: 'absolute', top: '200px', left: '50px' }}>請於指定時間內至指定搭車地點等候。</p>
 
@@ -33,7 +63,4 @@ function OrderComplete() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default OrderComplete;
+*/

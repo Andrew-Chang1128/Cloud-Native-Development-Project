@@ -1,5 +1,5 @@
 html, body { 
-  height: 100vh; 
+  height: 100%; 
   width: 100%; 
   margin: 0; 
 }
@@ -8,33 +8,8 @@ html, body {
   display: flex;
   flex-direction: column;
   height: 100vh; 
-  width: 100%;
-  /* align-items: center; */
+  width: 100vw;
 }
-
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}  */
-
-
-/* .profile-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-} */
-
-/* .profile-buttons button {
-  padding: 10px 20px;
-} */
 
 .header, .menu-gesture {
   width: 100%;
@@ -55,27 +30,33 @@ html, body {
   padding-left: 2.5vw;
 }
 
-.map {
+.content {
   flex-grow: 1;
+  height: auto;
   display: flex;
   background-color: white;
+  overflow: auto;
 }
 
-/* .content {
-  width: 100vw;
-  height: 87vh;
+.profile-div {
   display: flex;
-} */
+}
 
-/* .menu-gesture {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 13vh;
-  min-height: 50px;
-  background-color: gray;
-} */
+.profile-div > h1 {
+  font-size: calc(25px + 2vh);
+  padding-left: 6vw;
+  padding-top: 2.5vw;
+  padding-bottom: 2.5vw;
+  margin: 0;
+}
+
+.profile-div > p {
+  font-size: calc(12px + 1vh);
+  padding-left: 6vw;
+  padding-top: 2.5vw;
+  padding-bottom: 2.5vw;
+  margin: 0;
+}
 
 .ges-icon {
   width: calc(25px + 4.5vh);
@@ -85,4 +66,39 @@ html, body {
   margin-right: calc(5px + 4.5vw);
 }
 
-/* style={{ width: '50px', height: '50px',position: 'absolute', top: '25px', left: '160px' }} */
+.profile-button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-button > button {
+  width: 88vw;
+  height: 8vh;
+  min-height: 40px !important;
+  margin-top: 2.5vw;
+  margin-bottom: 2.5vw;
+  display: flex;
+  align-items: center;
+}
+
+.profile-button > button > img {
+  width: 5vh;
+  height: 5vh;
+  min-height: 30px;
+  min-width: 30px;
+  display: flex;
+}
+
+.profile-button > button > span {
+  font-size: calc(12px + 1vh);
+  padding-left: 20vw;
+  display: flex;
+}
+
+.inner {
+  width: 50%;
+  height: 50%;
+  float: left;
+  text-align: center;
+}
