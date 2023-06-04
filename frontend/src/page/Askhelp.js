@@ -5,19 +5,22 @@ import cellphoneImage from '../image/cellphone.png'
 import { useNavigate } from 'react-router-dom';
 function Askhelp(){
   const navigate = useNavigate();
+  const handleClick = () => {
+    window.location.replace('tel:+886-900-000-000');
+  };
   return (
     <div>
 
       <button onClick={() => navigate('/')} style={{ background: 'gray', border: 'none', padding: 0,position: 'absolute', top: '575px', left: '75px', width: '250px', height: '50px'  }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img style={{ width: '50px', height: '50px' }} src={messageImage} alt="Message" />
-              <span style={{ marginLeft: '50px'}}>傳送訊息給司機</span>
+              <span style={{ marginLeft: '50px', color: 'black'}}>傳送訊息給司機</span>
             </div>
       </button>
-      <button onClick={() => navigate('/')} style={{ background: 'gray', border: 'none', padding: 0,position: 'absolute', top: '650px', left: '75px', width: '250px', height: '50px'  }}>
+      <button onClick={handleClick} style={{ background: 'gray', border: 'none', padding: 0,position: 'absolute', top: '650px', left: '75px', width: '250px', height: '50px'  }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img style={{ width: '50px', height: '50px' }} src={cellphoneImage} alt="Cellphone" />
-              <span style={{ marginLeft: '50px'}}>致電給司機</span>
+              <span style={{ marginLeft: '50px', color: 'black'}}>致電給司機</span>
             </div>
       </button>
 
