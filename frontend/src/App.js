@@ -20,8 +20,10 @@ import Fixedadd from './page/Fixedadd';
 import useToken from './page/useToken';
 import Fixedcomplete from './page/Fixedcomplete';
 import Reserve from './page/Reserve';
+import Mycar from './page/Mycar';
 import driverImage from './image/driver.png'
 import passengerImage from './image/passenger.png'
+
 
 function App() {
   const { token, setToken } = useToken();
@@ -92,6 +94,7 @@ function App() {
           <Route path='/fixedadd' element={<Fixedadd />}></Route>
           <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
           <Route path='/reserve' element={<Reserve />}></Route>
+          <Route path='/mycar' element={<Mycar />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
