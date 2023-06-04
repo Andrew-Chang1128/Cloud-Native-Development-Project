@@ -19,11 +19,12 @@ import Fixedadd from './page/Fixedadd';
 import useToken from './page/useToken';
 import Fixedcomplete from './page/Fixedcomplete';
 import Reserve from './page/Reserve';
+import Mycar from './page/Mycar';
+import driverImage from './image/driver.png'
+import passengerImage from './image/passenger.png'
 import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
 
-import driverImage from './image/driver.png';
-import passengerImage from './image/passenger.png';
 
 function App() {
   const { token, setToken } = useToken();
@@ -93,6 +94,7 @@ function App() {
           <Route path='/fixedadd' element={<Fixedadd />}></Route>
           <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
           <Route path='/reserve' element={<Reserve />}></Route>
+          <Route path='/mycar' element={<Mycar />}></Route>
           <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/test/map2' element={<TestMap2 />}></Route>
         </Routes>
