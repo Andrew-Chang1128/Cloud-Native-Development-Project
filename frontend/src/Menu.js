@@ -17,7 +17,7 @@ function Menu() {
             <button onClick={() => navigate('/menudriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={driverImage} alt="driver" />
             </button>
-            <button onClick={() => navigate('/order')} style={{ background: 'none', border: 'none', padding: 0 }}>
+            <button onClick={() => navigate('/reserve')} style={{ background: 'none', border: 'none', padding: 0 }}>
                 <img className="ges-icon" src={signinImage} alt="Signin" />
             </button>
             <button onClick={() => navigate('/order')} style={{ background: 'none', border: 'none', padding: 0 }}>

@@ -23,7 +23,7 @@ function Orderdriver(){
         
         <div className="menu-gesture">
           <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0}}>
-              <img className="ges-icon" src={falseImage} style={{ marginRight: '40vw' }} alt="false" />
+              <img className="ges-icon" src={falseImage} style={{ marginRight: '40vw' }} alt="false1" />
           </button>
           <button onClick={() => navigate('/orderdrivercomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={checkdriverImage} alt="checkdriver" />

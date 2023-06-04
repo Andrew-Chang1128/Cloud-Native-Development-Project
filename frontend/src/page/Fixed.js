@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import homeImage from '../image/home.png';
+import plusImage from '../image/plus.png'
 import '../App.css';
 
 function Fixed(){
@@ -11,7 +12,26 @@ function Fixed(){
           <div className="profile-div" style={{ "flex-direction": "column" }}>
             <h1>固定路線</h1>
           </div>
-          
+          <div className="profile-top">
+            <div onClick={() => navigate('/menu')}>
+                <span style={{ whiteSpace: 'pre-line' }}>4/25 的路線  3人預約{'\n'}09:50 出發  170元</span>
+            </div>
+
+     
+
+            <button onClick={() => navigate('/fixed')}>
+             
+                <span>付款資訊</span>
+            </button>
+            <button onClick={() => navigate('/fixed')}>
+             
+                <span>訂單查詢</span>
+            </button>
+            <button onClick={() => navigate('/fixedadd')}>
+              <img src={plusImage} alt="Plus" />
+              <span>新增</span>
+            </button>
+          </div>
         
         </div>
         

@@ -2,28 +2,30 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
+import apiImage from '../image/api.png';
 function Fixedadd(){
   const navigate = useNavigate();
     return (
       <>
         <div className="content" style={{ "flex-direction": "column" }}>
-          <div className="profile-div" style={{ "flex-direction": "column" }}>
-            <p>出發地</p>
-            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
-              {/* <img src={profilechangeImage} alt="Profilechange" /> */}
-              <span>交通大學</span>
-            </button>
-            <p>目的地</p>
-            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
-                {/* <img src={paymentImage} alt="Payments" /> */}
-                <span>新竹火車站</span>
-            </button>
-            <p>乘客人數</p>
-            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
-                {/* <img src={paymentImage} alt="Payments" /> */}
-                <span>2</span>
-            </button>
-          </div>
+            <div className="profile-button">
+                <button onClick={() => navigate('/fixedadd')}>
+                    <img src={apiImage} alt="api1" />
+                    <span>新竹火車站</span>
+                </button>
+                <button onClick={() => navigate('/fixedadd')}>
+                    <img src={apiImage} alt="api1" />
+                    <span>交通大學南大門</span>
+                </button>
+                <button onClick={() => navigate('/fixedadd')}>
+                    <img src={apiImage} alt="api1" />
+                    <span>台積電12A</span>
+                </button>
+                <button onClick={() => navigate('/fixedadd')}>
+                    <img src={apiImage} alt="api1" />
+                    <span>新增地點</span>
+                </button>
+            </div>
           <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
             <p>出發時間</p>
             <p>平日, 星期六   09:50</p>
@@ -35,7 +37,7 @@ function Fixedadd(){
           <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0}}>
               <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
           </button>
-          <button onClick={() => navigate('/fixedaddcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <button onClick={() => navigate('/fixedcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={nextImage} alt="Next" />
           </button>
         </div>
