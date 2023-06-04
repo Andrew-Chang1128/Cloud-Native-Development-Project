@@ -34,7 +34,7 @@ module.exports = class {
             try {
                 const user = this.database.collection('user');
                 const row = await user.find({}).sort({ "id": -1 }).limit(1).toArray();
-                const id = row[0].id + 1;
+                const id = (row[0].id + 1) || 1;
                 const data = {
                     id: id,
                     name: name,
