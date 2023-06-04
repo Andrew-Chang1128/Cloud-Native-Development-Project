@@ -1,7 +1,7 @@
 import './App.css';
 import Menu from './Menu';
 import MenuDriver from './MenuDriver';
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Signin from './page/Signin';
 import Profile from './page/Profile';
 import Profiledriver from './page/Profiledriver';
@@ -20,9 +20,17 @@ import Fixedadd from './page/Fixedadd';
 import useToken from './page/useToken';
 import Fixedcomplete from './page/Fixedcomplete';
 import Reserve from './page/Reserve';
+import driverImage from './image/driver.png'
+import passengerImage from './image/passenger.png'
 
 function App() {
   const { token, setToken } = useToken();
+  const handleClick = () => {
+    window.location.replace('./menudriver');
+  };
+  const handleClick2 = () => {
+    window.location.replace('./menu');
+  };
   if(!token) {
     return (
       <div className="App">
@@ -32,13 +40,37 @@ function App() {
         <Signin setToken={setToken} />
       </div>
     );
-  } 
+  }
+  let checkid;
+  if (window.location.pathname === '/menu') {
+    checkid = (
+      <div className="header">
+        <p className="header-text">TSMC Uber</p>
+        <button className="driver-button" onClick={handleClick} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <img className="ges-icon" src={driverImage} alt="driver" />
+        </button>
+      </div>
+    );
+  } else if (window.location.pathname === '/menudriver') {
+    checkid = (
+      <div className="header">
+        <p className="header-text">TSMC Uber</p>
+        <button className="driver-button" onClick={handleClick2} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <img className="ges-icon" src={passengerImage} alt="passenger" />
+        </button>
+      </div>
+    );
+  } else {
+    checkid = (
+      <div className="header">
+        <p className="header-text">TSMC Uber</p>
+      </div>
+    ); 
+  }
   return (
     <BrowserRouter>
       <div className="App">
-        <div className="header">
-          <p className="header-text">TSMC Uber</p>
-        </div>
+        {checkid}
         <Routes>
           <Route path="/" element={<Menu />}></Route>
           <Route path="/menu" element={<Menu />}></Route>
@@ -61,9 +93,8 @@ function App() {
           <Route path='/fixedcomplete' element={<Fixedcomplete />}></Route>
           <Route path='/reserve' element={<Reserve />}></Route>
         </Routes>
-    </div>
-   </BrowserRouter>
-         
+      </div>
+    </BrowserRouter>
   );
 }
 

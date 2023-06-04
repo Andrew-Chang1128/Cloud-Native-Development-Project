@@ -65,6 +65,9 @@ html, body {
   margin-left: calc(5px + 4.5vw);
   margin-right: calc(5px + 4.5vw);
 }
+.driver-button {
+  margin-left: auto;
+}
 
 .profile-top {
   display: flex;
