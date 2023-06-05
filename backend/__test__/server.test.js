@@ -14,7 +14,16 @@ describe('Server', () => {
       expect(1).toBe(1);
      })
     });
-   
+    describe("POST /user/login",()=>{
+      test("correct username", async ()=>{
+        const res = await request(server.app).post("/user/login").send({
+          email: "user@gmail",
+          password: "1"
+        })
+        console.log(`res test: ${res.text}`)
+        expect(res.text).not.toBe("Unauthorized!")
+      })
+    })
     // describe("POST /user/login",()=>{
     //   describe("name and password is passed",()=>{
        
