@@ -15,7 +15,7 @@ const express = require("express");
 class Server {
     constructor() {
         this.app = express();
-        this.port = 5001;
+        this.port = 4000;
         this.applyMiddleWares();
         this.addRoutes();
         this.start();
