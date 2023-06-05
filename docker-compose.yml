@@ -14,7 +14,7 @@ services:
     restart: always
     build: ./backend
     ports:
-      - 5000:5000
+      - 4000:5000
     volumes:
       - ./backend/:/usr/src/app
   mongo:
