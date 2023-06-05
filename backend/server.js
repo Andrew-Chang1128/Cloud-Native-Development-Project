@@ -15,7 +15,7 @@ const express = require("express");
 class Server {
     constructor() {
         this.app = express();
-        this.port = 5000;
+        this.port = 4000;
         this.applyMiddleWares();
         this.addRoutes();
         this.start();
@@ -34,8 +34,8 @@ class Server {
         this.app.use('/user', userRoute);
         const routesRoute = require("./routes/route");
         this.app.use('/route', routesRoute);
-        const test = require("./routes/test")
-        this.app.use('/test', test)
+        const testapi = require("./routes/testapi")
+        this.app.use('/testapi', testapi)
         const check = require("./routes/check")
         this.app.use('/check', check)
     }

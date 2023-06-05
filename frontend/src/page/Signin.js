@@ -12,7 +12,7 @@ function Signin({ setToken }) {
         event.preventDefault();
         
         if (activeItem === 'register') {
-            const response = await fetch('http://localhost:5000/user/createUser', {
+            const response = await fetch('http://localhost:4000/user/createUser', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function Signin({ setToken }) {
                 }
               });
         } else if (activeItem === 'signin') {
-            const response = await fetch('http://localhost:5000/user/login', {
+            const response = await fetch('http://localhost:4000/user/login', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

@@ -25,7 +25,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 4000
 
 # legacy
 # CMD [ "node", "server.js" ] 
