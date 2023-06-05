@@ -164,3 +164,20 @@ html, body {
     float: left;
     text-align: center;
 }
+
+.auto-accept {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
