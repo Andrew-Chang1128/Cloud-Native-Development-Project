@@ -9,21 +9,33 @@ server = server.server
 // });
 // jest.mock("../models/userModel");
 describe('Server', () => {
-    describe("GET /driver", ()=>{
-     test("basic test", ()=>{
-      expect(1).toBe(1);
-     })
-    });
-    describe("POST /user/login",()=>{
-      test("correct username", async ()=>{
-        const res = await request(server.app).post("/user/login").send({
-          email: "user@gmail",
-          password: "1"
+    
+    describe("health check", ()=>{
+      test("post", async()=>{
+        const res = await request(server.app).post("/check/post").send({
+          postParam: "postParam",
         })
         console.log(`res test: ${res.text}`)
-        expect(res.text).not.toBe("Unauthorized!")
+        expect(res.text).toBe("receive post param postParam")
+      })
+      test("get", async()=>{
+        const res = await request(server.app).get("/check/get").query({
+          getParam: "getParam",
+        })
+        console.log(`res test: ${res.text}`)
+        expect(res.text).toBe("receive get param getParam")
       })
     })
+    // describe("POST /user/login",()=>{
+    //   test("correct username", async ()=>{
+    //     const res = await request(server.app).post("/user/login").send({
+    //       email: "user@gmail",
+    //       password: "1"
+    //     })
+    //     console.log(`res test: ${res.text}`)
+    //     expect(res.text).not.toBe("Unauthorized!")
+    //   })
+    // })
     // describe("POST /user/login",()=>{
     //   describe("name and password is passed",()=>{
        
