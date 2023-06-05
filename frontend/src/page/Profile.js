@@ -37,7 +37,7 @@ function Profile(){
                 <span>尋求協助</span>
             </button>
             
-            <button onClick={() => {localStorage.removeItem('token');window.location.reload(false);}}>
+            <button onClick={() => {localStorage.removeItem('token');navigate('/menu');}}>
                 <img src={profileImage} alt="logout" />
                 <span>登出</span>
             </button>
