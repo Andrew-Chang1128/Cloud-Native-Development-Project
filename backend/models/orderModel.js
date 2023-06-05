@@ -14,20 +14,20 @@ module.exports = class {
         return new Promise(async (resolve, reject) => {
             try {
                 var dstart = new Date(datetime);
-                dstart.setHours(0,0,0,0);
+                dstart.setHours(0, 0, 0, 0);
                 var dend = new Date(dstart);
-                dend.setDate(dstart.getDate()+1);
+                dend.setDate(dstart.getDate() + 1);
                 const order = this.database.collection('order');
                 const query = {
                     routeId: routeId,
                     datetime: {
                         $gte: dstart.toISOString(),
-                        $lt : dend.toISOString()
+                        $lt: dend.toISOString()
                     }
                 };
                 const row = await order.findOne(query);
                 console.log("row", row);
-                if(!row) {
+                if (!row) {
                     resolve(false);
                     return;
                 }
@@ -102,7 +102,7 @@ module.exports = class {
                 ];
                 const data = await order.aggregate(pipeline).toArray();
                 console.log('data', data);
-                if(!data) resolve([]);
+                if (!data) resolve([]);
                 else resolve(data);
                 return;
             } catch (err) {
@@ -132,7 +132,7 @@ module.exports = class {
                             as: "order"
                         }
                     }
-                    , 
+                    ,
                     {
                         $project: {
                             _id: 0,
@@ -140,17 +140,17 @@ module.exports = class {
                         }
                     },
                     {
-                        $unwind: "$order" 
+                        $unwind: "$order"
                     },
                     {
                         $replaceRoot: {
-                            newRoot: "$order" 
+                            newRoot: "$order"
                         }
                     }
                 ];
                 const data = await route.aggregate(pipeline).toArray();
                 console.log('data', data);
-                if(!data) resolve([]);
+                if (!data) resolve([]);
                 else resolve(data);
                 return;
             } catch (err) {
