@@ -86,8 +86,9 @@ module.exports = class routeController {
         const distance = Math.sqrt((latDiff * 110) ** 2 + (lngDiff * 101) ** 2);
         const fee = Math.ceil((distance * 5 + 20) * (1 + (numOfPassenger - 1) * 0.5));
 
+        const rid = parseInt(req.params.rid, 10);
         const orderModel = new oModel();
-        const result = await orderModel.addPassengerToOrder(req.userId, req.params.rid, datetime, numOfPassenger, start, end, fee);
+        const result = await orderModel.addPassengerToOrder(req.userId, rid, datetime, numOfPassenger, start, end, fee);
 
         if (result == false) {
             res.status(500).json({ error: 'Failed to add passenger to route' });
