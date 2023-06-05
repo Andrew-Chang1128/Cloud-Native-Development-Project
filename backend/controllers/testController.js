@@ -11,7 +11,7 @@ module.exports = class testController {
 
     // user model
     async checkUserExist(req, res) {
-        console.log("/test/checkUserExist");
+        console.log("/testapi/checkUserExist");
 
         const { email } = req.body;
         if (!email) {
@@ -28,7 +28,7 @@ module.exports = class testController {
     }
 
     async createUser(req, res) {
-        console.log("/test/createUser");
+        console.log("/testapi/createUser");
 
         const userModel = new uModel();
 
@@ -51,7 +51,7 @@ module.exports = class testController {
     }
 
     async login(req, res) {
-        console.log("/test/login");
+        console.log("/testapi/login");
 
         const { email, password } = req.body;
         if (!email || !password) {
@@ -71,7 +71,7 @@ module.exports = class testController {
 
     // route model
     async createRoute(req, res) {
-        console.log("/test/createRoute");
+        console.log("/testapi/createRoute");
 
         const { driverId, dayOfWeek, maxNumOfPassenger, startTime, routeList } = req.body;
         if (!driverId || !dayOfWeek || !maxNumOfPassenger || !startTime || !routeList) {
@@ -89,7 +89,7 @@ module.exports = class testController {
     }
 
     async getDiverRoute(req, res) {
-        console.log("/test/getDiverRoute");
+        console.log("/testapi/getDiverRoute");
 
         const { driverId } = req.body;
         if (!driverId) {
@@ -106,7 +106,7 @@ module.exports = class testController {
     }
 
     async getAllRoute(req, res) {
-        console.log("/test/getAllRoute");
+        console.log("/testapi/getAllRoute");
 
         const routeModel = new rModel();
         const result = await routeModel.getAllRoute();
@@ -118,7 +118,7 @@ module.exports = class testController {
     }
 
     async getDiverId(req, res) {
-        console.log("/test/getDiverId");
+        console.log("/testapi/getDiverId");
 
         const { routeId } = req.body;
         if (!routeId) {
@@ -136,7 +136,7 @@ module.exports = class testController {
 
     // order model
     async addPassengerToOrder(req, res) {
-        console.log("/test/addPassengerToOrder");
+        console.log("/testapi/addPassengerToOrder");
 
         const { passengerId, routeId, datetime, numOfPassenger, start, end } = req.body;
         if (!passengerId || !routeId || !datetime || !numOfPassenger || !start || !end) {
@@ -161,7 +161,7 @@ module.exports = class testController {
     }
 
     async getPassengerAllOrder(req, res) {
-        console.log("/test/getPassengerAllOrder");
+        console.log("/testapi/getPassengerAllOrder");
 
         const { passengerId } = req.body;
         if (!passengerId) {
@@ -178,7 +178,7 @@ module.exports = class testController {
     }
 
     async getDriverAllOrder(req, res) {
-        console.log("/test/getDriverAllOrder");
+        console.log("/testapi/getDriverAllOrder");
 
         const { driverId } = req.body;
         if (!driverId) {

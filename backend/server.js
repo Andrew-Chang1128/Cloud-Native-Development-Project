@@ -34,8 +34,8 @@ class Server {
         this.app.use('/user', userRoute);
         const routesRoute = require("./routes/route");
         this.app.use('/route', routesRoute);
-        const test = require("./routes/test")
-        this.app.use('/test', test)
+        const testapi = require("./routes/testapi")
+        this.app.use('/testapi', testapi)
         const check = require("./routes/check")
         this.app.use('/check', check)
     }
