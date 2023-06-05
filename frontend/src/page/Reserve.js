@@ -5,6 +5,9 @@ import buttonImage from '../image/back.png';
 import apiImage from '../image/api.png';
 function Reserve(){
   const navigate = useNavigate();
+  const handleChange = (e) => {
+    this.setState({ selectedValue: e.target.value })
+  }
     return (
       <>
         <div className="content" style={{ "flex-direction": "column" }}>
@@ -19,10 +22,13 @@ function Reserve(){
                 <img src={apiImage} alt="api1" />
                 <span>新竹火車站</span>
             </button>
-            <p>乘客人數</p>
-            <button onClick={() => navigate('/order')} style={{ width: '85vw', marginLeft: "7.5vw"}}>
-                <span>2</span>
-            </button>
+            <p style={{ fontSize: "calc(12px + 2vh)" }}>最大乘客人數</p>
+              <select onChange={(e) => handleChange2(e)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" }}>
+                <option value="1">1人</option>
+                <option value="2">2人</option>
+                <option value="3">3人</option>
+                <option value="4+">4+人</option>
+              </select>
           </div>
           <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
             <p>4/20的預約行程</p>
