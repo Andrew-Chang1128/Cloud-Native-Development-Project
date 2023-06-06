@@ -64,12 +64,13 @@ function Fixed(){
   return (
     <>
        <div style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontSize: "calc(12px + 4vh)", paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0 }}>固定路線</p>
-        <button onClick={() => navigate('/fixedadd')} style={{ position: "relative", paddingLeft: "50vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", backgroundColor: "white", border: "none", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-          <img src={plusImage} alt="Plus" />
-          <span style={{ fontSize: "calc(10px + 1vh)" }}>新增</span>
-        </button>
-      </div>
+          <p style={{ fontSize: "4vh", paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0, whiteSpace: "nowrap" }}>固定路線</p>
+          <button onClick={() => navigate('/fixedadd')} style={{ position: "relative", paddingLeft: "30vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", backgroundColor: "white", border: "none", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+            <img src={plusImage} alt="Plus" />
+            <span style={{ fontSize: "2vh" }}>新增</span>
+          </button>
+        </div>
+
       <div className="content" style={{ "flex-direction": "column" }}>
 
                 <div className="profile-button">
