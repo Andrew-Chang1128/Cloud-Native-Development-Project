@@ -10,20 +10,20 @@ function Grading(){
       <>
         <div className="content" style={{ "flex-direction": "column",marginTop: "10vw" }}>
           <div className="profile-button">
-            <button className="orderItem" onClick={() => navigate('/menu')}>
-                <span>★</span>
+            <button className="orderItem" onClick={() => navigate('/menu')} style={{justifyContent:"center"}} >
+                <span style={{padding:"0"}}>★</span>
             </button>
-            <button className="orderItem" onClick={() => navigate('/menu')}>
-                <span>★★</span>
+            <button className="orderItem" onClick={() => navigate('/menu')} style={{justifyContent:"center"}} >
+                <span style={{padding:"0"}}>★★</span>
             </button>
-            <button className="orderItem" onClick={() => navigate('/menu')}>
-                <span>★★★</span>
+            <button className="orderItem" onClick={() => navigate('/menu')} style={{justifyContent:"center"}} >
+                <span style={{padding:"0"}}>★★★</span>
             </button>
-            <button className="orderItem" onClick={() => navigate('/menu')}>
-                <span>★★★★</span>
+            <button className="orderItem" onClick={() => navigate('/menu')} style={{justifyContent:"center"}} >
+                <span style={{padding:"0"}}>★★★★</span>
             </button>
-            <button className="orderItem" onClick={() => navigate('/menu')}>
-                <span>★★★★★</span>
+            <button className="orderItem" onClick={() => navigate('/menu')} style={{justifyContent:"center"}} >
+                <span style={{padding:"0"}}>★★★★★</span>
             </button>
           </div>
           
