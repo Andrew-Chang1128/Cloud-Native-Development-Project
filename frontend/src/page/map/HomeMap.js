@@ -322,7 +322,7 @@ export default class HomeMap extends React.Component {
                     
                     var routeList = route.routeList.map(x => [x.lat, x.lng]);
                     const time = new Date(route.startTime);
-                    var text = "<div>" + route.routeList[0].loc + '→' + route.routeList.slice(-1)[0].loc + '<br>' + status.join("、") + '<br>' + pad(time.getHours(),2) + ':' + pad(time.getMinutes(),2) + ' 出發' + `<a href=\"/order?routeid=${route.routeId}\">Timetable</a></div>`;
+                    var text = "<div>" + route.routeList[0].loc + '→' + route.routeList.slice(-1)[0].loc + '<br>' + status.join("、") + '<br>' + pad(time.getHours(),2) + ':' + pad(time.getMinutes(),2) + ' 出發' + `<a href=\"/passroute?routeid=${route.routeId}\">Timetable</a></div>`;
                     console.log(routeList);
                     calculateRoute(platform, routeList, text);
                   }
