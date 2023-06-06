@@ -34,7 +34,11 @@ function Mycar() {
             <option value="1">1人</option>
             <option value="2">2人</option>
             <option value="3">3人</option>
-            <option value="4+">4+人</option>
+            <option value="4">4人</option>
+            <option value="5">5人</option>
+            <option value="6">6人</option>
+            <option value="7">7人</option>
+            <option value="8">8人</option>
           </select>
           <div className="auto-accept" style={{ paddingLeft: "10vw" ,marginTop: "5vw"}}>
             <label htmlFor="lagguage" className="checkbox-label">
