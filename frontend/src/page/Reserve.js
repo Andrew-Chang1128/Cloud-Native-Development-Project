@@ -18,32 +18,32 @@ function Reserve(){
       <>
         <div className="content" style={{ "flex-direction": "column" }}>
           <div className="profile-div" style={{ "flex-direction": "column" }}>
-            <p style={{ fontSize: "calc(12px + 2vh)", paddingBottom: "1vw" }}>出發地</p>
-            <button onClick={() => navigate('/reserve')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
+            <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
+            <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
               <span>交通大學</span>
             </button>
-            <p style={{ fontSize: "calc(12px + 2vh)" , paddingBottom: "1vw"}}>目的地</p>
-            <button onClick={() => navigate('/reserve')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
+            <p style={{ fontSize: "3vh" , paddingBottom: "1vw"}}>目的地</p>
+            <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
                 <span>新竹火車站</span>
             </button>
             <div style={{ display: "flex", alignItems: "center" }}>
-            <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
+            <div className="auto-accept" style={{ paddingLeft: "20vw", marginTop: "5vh" }}>
               <label htmlFor="departuretime" className="checkbox-label">
-                <input type="checkbox" id="departuretime" name="topping" value="departuretime" style={{ fontSize: "calc(12px + 1vh)" }} />
-                <span style={{ fontSize: "calc(12px + 2vh)", color: "black" }}>出發時間</span>
+                <input type="checkbox" id="departuretime" name="topping" value="departuretime" style={{ fontSize: "1vh" }} />
+                <span style={{ fontSize: "2vh", color: "black" }}>出發時間</span>
               </label>
             </div>
-            <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
+            <div className="auto-accept" style={{ paddingLeft: "20vw", marginTop: "5vh" }}>
               <label htmlFor="arrivaltime" className="checkbox-label">
-                <input type="checkbox" id="arrivaltime" name="topping2" value="arrivaltime" style={{ fontSize: "calc(12px + 1vh)" }} />
-                <span style={{ fontSize: "calc(12px + 2vh)", color: "black" }}>抵達時間</span>
+                <input type="checkbox" id="arrivaltime" name="topping2" value="arrivaltime" style={{ fontSize: "1vh" }} />
+                <span style={{ fontSize: "2vh", color: "black" }}>抵達時間</span>
               </label>
             </div>
             </div>
             </div>
-              <select onChange={(e) => handleChange(e)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
+              <select onChange={(e) => handleChange(e)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
                 <option value="1">1人</option>
                 <option value="2">2人</option>
                 <option value="3">3人</option>
@@ -51,19 +51,23 @@ function Reserve(){
               </select>
           
             <div style={{ display: "flex", alignItems: "center" }}>
-            <p style={{ fontSize: "calc(12px + 2vh)",paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0}}>乘客人數</p>
-            <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
+            <p style={{ fontSize: "3vh",paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0}}>乘客人數</p>
+            <div className="auto-accept" style={{ paddingLeft: "20vw", marginTop: "5vh" }}>
               <label htmlFor="carpooling" className="checkbox-label">
-                <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "calc(12px + 1vh)" }} />
-                <span style={{ fontSize: "calc(12px + 2vh)", color: "black" }}>允許共乘</span>
+                <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "1vh" }} />
+                <span style={{ fontSize: "2vh", color: "black" }}>允許共乘</span>
               </label>
             </div>
             </div>
-              <select onChange={(people) => handleChange2(people)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
+              <select onChange={(people) => handleChange2(people)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
                 <option value="1">1人</option>
                 <option value="2">2人</option>
                 <option value="3">3人</option>
-                <option value="4+">4+人</option>
+                <option value="4">4人</option>
+                <option value="5">5人</option>
+                <option value="6">6人</option>
+                <option value="7">7人</option>
+                <option value="8">8人</option>
               </select>
           
           <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
