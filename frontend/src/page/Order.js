@@ -3,6 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
 import apiImage from '../image/api.png';
+
+import H from "@here/maps-api-for-javascript";
+
 function Order() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,6 +23,61 @@ function Order() {
     const handleInputChange = (event) => {
         setDestination(event.target.value);
     };
+
+    async function reverseGeocode(lat, lng){
+      var re = '';
+      await fetch('https://revgeocode.search.hereapi.com/v1/revgeocode?apiKey='+
+          process.env.REACT_APP_HERE_MAP_APIKEY+
+          '&at='+lat.toString()+','+lng.toString(), {
+          method: 'GET'
+      }).then(async (response) => {
+          if (response.status === 200) {
+              const data = await response.json();
+              console.log(data);
+              if(data.items.length > 0){
+                re = data.items[0].title;
+              }
+          }else {
+              console.log("Status Code:", response.status);
+          }
+      }).catch(function(error) {
+          console.log('error = ' + error)
+      });
+      return re;
+    }
+
+    async function calculateRoute(points){
+        const pstr = points.map(x => x[0].toString()+','+x[1].toString());
+        var spstr = '';
+        if (pstr.length > 2){
+            spstr = "&via=" + pstr.slice(1,-1).join("!passThrough=true&via=")+'!passThrough=true';
+        }
+        var re = {};
+        await fetch('https://router.hereapi.com/v8/routes?apiKey='+
+            process.env.REACT_APP_HERE_MAP_APIKEY+
+            '&transportMode=car&origin='+pstr[0]+'&destination='+pstr.slice(-1)[0]+
+            '&return=travelSummary', {
+            method: 'GET'
+        }).then(async (response) => {
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log(data);
+                // console.log(data.routes[0].sections[0].travelSummary);
+                re = data.routes[0].sections[0].travelSummary;
+            }else {
+                console.log("Status Code:", response.status);
+            }
+        }).catch(function(error) {
+            console.log('error = ' + error)
+        });
+        // console.log(re);
+        return re;
+    }
+    var stops = [[25.02940176238104, 121.50055862568333], 
+        [25.048876668724624,121.50619014148239], 
+        [25.03991282424907,121.51290273721504]];
+    calculateRoute(stops);
+    
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
