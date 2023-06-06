@@ -26,6 +26,8 @@ import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
 import Locationchoose from './page/Locationchoose';
 import Passroute from './page/Passroute';
+import Fixedtoorder from './page/Fixedtoorder';
+import Ordertopassenger from './page/Ordertopassenger';
 
 function App() {
   const { token, setToken } = useToken();
@@ -115,6 +117,8 @@ function App() {
           <Route path="/test/map2" element={<TestMap2 />} />
           <Route path="/locationchoose" element={<Locationchoose />} />
           <Route path="/passroute" element={<Passroute />} />
+          <Route path="/fixedtoorder" element={<Fixedtoorder />} />
+          <Route path="/ordertopassenger" element={<Ordertopassenger />} />
         </Routes>
       </div>
    

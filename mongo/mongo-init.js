@@ -9,7 +9,7 @@ db.user.insertMany([{
     "name": "test",
     "email": "test@test",
     "password": "123456",
-    "avgStar": 0
+    "stars": []
 }]);
 
 db.route.insertMany([{

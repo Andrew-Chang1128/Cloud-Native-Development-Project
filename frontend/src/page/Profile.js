@@ -17,7 +17,7 @@ function Profile(){
             <h1>王小明</h1>
             <p>搭乘趟數: 10</p>
             <p>搭乘里數: 85 km</p>
-            <p>獲得評價: 5</p>
+            <p>獲得評價: ★ 5.0</p>
           </div>
           <div className="profile-button">
             <button onClick={() => navigate('/profilechange')}>
