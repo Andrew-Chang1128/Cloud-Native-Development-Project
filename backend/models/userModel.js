@@ -76,4 +76,25 @@ module.exports = class {
             reject(false);
         });
     };
+
+    user(userId) {
+        console.log("Get user with: ", userId);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = this.database.collection('user');
+                const query = {
+                    id: userId
+                };
+                console.log('query', query);
+                const data = await user.findOne(query);
+                console.log('data', data);
+                if (!data) resolve(-1);
+                else resolve(data);
+                return;
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
+        })
+    };
 }

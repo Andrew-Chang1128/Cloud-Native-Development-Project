@@ -69,6 +69,23 @@ module.exports = class testController {
         }
     }
 
+    async user(req, res) {
+        console.log("/testapi/user");
+
+        const { userId } = req.body;
+        if (!userId) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+        const userModel = new uModel();
+        const result = await  userModel.user(userId);
+        if (result == false) {
+            res.status(400).json({ error: 'No route found' });
+        } else {
+            res.status(200).json(result);
+        }
+    }
+
     // route model
     async createRoute(req, res) {
         console.log("/testapi/createRoute");
