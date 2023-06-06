@@ -24,7 +24,7 @@ function Order(){
               <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "75vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
               </button>
-              <input type="textbox" id="destination" name="topping3" value="destination" style={{ fontSize: "1vh",width: '85vw',marginLeft: "7.5vw" }} />
+              <input type="textbox" id="destination" name="topping3" value="" style={{ fontSize: "1vh",width: '85vw',marginLeft: "7.5vw" }} />
             </div>
             
             
