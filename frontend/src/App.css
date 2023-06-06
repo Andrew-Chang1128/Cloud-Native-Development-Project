@@ -120,29 +120,48 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: calc(12px + 1vh);
+    font-size: calc(2vh);
 }
 
 .profile-button>.orderItem>.timeString {
     position: absolute;
     bottom: 0;
     left: 0;
-    font-size: calc(12px + 1vh);
+    font-size: calc(2vh);
 }
 
 .profile-button>.orderItem>.orderStatus {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: calc(12px + 1vh);
+    font-size: calc(2vh);
 }
 
 .profile-button>.orderItem>.orderFee {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: calc(12px + 1vh);
+    font-size: calc(2vh);
 }
+.profile-button>.orderItem>.departure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: calc(2vh);
+}
+.profile-button>.orderItem>.destination {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: calc(2vh);
+}
+.profile-button>.orderItem>.Status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: calc(2vh);
+}
+
 
 .profile-button>button>img {
     width: 5vh;
