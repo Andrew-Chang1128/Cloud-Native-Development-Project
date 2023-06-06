@@ -41,6 +41,51 @@ function Fixedadd() {
           <p style={{ fontSize: "calc(12px + 2vh)", paddingBottom: "1vw" }}>出發時間</p>
         </div>
         <div className="profile-div" style={{ flexDirection: "row", paddingTop: "1vh", display: "flex", alignItems: "center" }}>
+        <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="monday" className="checkbox-label">
+              <input type="checkbox" id="monday" name="topping" value="monday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週一</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="tuesday" className="checkbox-label">
+              <input type="checkbox" id="tuesday" name="topping2" value="tuesday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週二</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="wednesday" className="checkbox-label">
+              <input type="checkbox" id="wednesday" name="topping3" value="wednesday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週三</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="thursday" className="checkbox-label">
+              <input type="checkbox" id="thursday" name="topping4" value="thursday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週四</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="friday" className="checkbox-label">
+              <input type="checkbox" id="friday" name="topping5" value="friday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週五</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="saturday" className="checkbox-label">
+              <input type="checkbox" id="saturday" name="topping6" value="saturday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週六</span>
+            </label>
+          </div>
+          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+            <label htmlFor="sunday" className="checkbox-label">
+              <input type="checkbox" id="sunday" name="topping7" value="sunday" style={{ fontSize: "1vh" }} />
+              <span style={{ fontSize: "2vh", color:"black" }}>週日</span>
+            </label>
+          </div>
+        </div>
+        
+        <div className="profile-div" style={{ flexDirection: "row", paddingTop: "0vh", display: "flex", alignItems: "center" }}>
               <select onChange={(e) => handleChange(e)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '20vw', marginLeft: "7.5vw"}}>
                 <option value="1">01</option>
                 <option value="2">02</option>
@@ -67,7 +112,8 @@ function Fixedadd() {
                 <option value="23">23</option>
                 <option value="24">00</option>
               </select>
-              <select onChange={(e) => handleChange2(e)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '20vw', marginLeft: "3.5vw"}}>
+              <p style={{ fontSize: "calc1vh", marginLeft: "-4.5vw"}}>:</p>
+              <select onChange={(e) => handleChange2(e)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '20vw', marginLeft: "1.5vw"}}>
               <option value="1">01</option>
                 <option value="2">02</option>
                 <option value="3">03</option>
