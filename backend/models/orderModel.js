@@ -9,8 +9,8 @@ module.exports = class {
         this.database = this.client.db('cnp');
     };
 
-    addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end, fee) {
-        console.log("Adding Passenger", passengerId, " to ", routeId, datetime, numOfPassenger, start, end, fee);
+    addPassengerToOrder(passengerId, orderId, datetime, numOfPassenger, start, end, fee) {
+        console.log("Adding Passenger", passengerId, " to ", orderId, datetime, numOfPassenger, start, end, fee);
         return new Promise(async (resolve, reject) => {
             try {
                 var dstart = new Date(datetime);
@@ -19,11 +19,7 @@ module.exports = class {
                 dend.setDate(dstart.getDate() + 1);
                 const order = this.database.collection('order');
                 const query = {
-                    routeId: routeId,
-                    datetime: {
-                        $gte: dstart.toISOString(),
-                        $lt: dend.toISOString()
-                    }
+                    orderId: orderId
                 };
                 const row = await order.findOne(query);
                 console.log("row", row);
