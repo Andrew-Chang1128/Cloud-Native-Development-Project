@@ -1,130 +1,183 @@
-html, body { 
-  height: 100%; 
-  width: 100%; 
-  margin: 0; 
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; 
-  width: 100vw;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
 .header, .menu-gesture {
-  width: 100%;
-  height: 13vh;
-  min-height: 50px;
-  background-color:  #D9D9D9;
-  align-items: center; 
-  display: flex;
+    width: 100%;
+    height: 13vh;
+    min-height: 50px;
+    background-color: #D9D9D9;
+    align-items: center;
+    display: flex;
 }
 
 .menu-gesture {
-  justify-content: center;
+    justify-content: center;
 }
 
 .header-text {
-  font-size: calc(25px + 1vh);
-  color: black;
-  padding-left: 2.5vw;
+    font-size: calc(25px + 1vh);
+    color: black;
+    padding-left: 2.5vw;
 }
 
 .content {
-  flex-grow: 1;
-  height: auto;
-  display: flex;
-  background-color: white;
-  overflow: auto;
+    flex-grow: 1;
+    height: auto;
+    display: flex;
+    background-color: white;
+    overflow: auto;
 }
 
 .profile-div {
-  display: flex;
+    display: flex;
 }
 
-.profile-div > h1 {
-  font-size: calc(25px + 2vh);
-  padding-left: 6vw;
-  padding-top: 2.5vw;
-  padding-bottom: 2.5vw;
-  margin: 0;
+.profile-div>h1 {
+    font-size: calc(25px + 2vh);
+    padding-left: 6vw;
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    margin: 0;
 }
 
-.profile-div > p {
-  font-size: calc(12px + 1vh);
-  padding-left: 6vw;
-  padding-top: 2.5vw;
-  padding-bottom: 2.5vw;
-  margin: 0;
+.profile-div>p {
+    font-size: calc(12px + 1vh);
+    padding-left: 6vw;
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    margin: 0;
 }
 
 .ges-icon {
-  width: calc(25px + 4.5vh);
-  height: calc(25px + 4.5vh);
-  left: 0vw;
-  margin-left: calc(5px + 4.5vw);
-  margin-right: calc(5px + 4.5vw);
+    width: calc(25px + 4.5vh);
+    height: calc(25px + 4.5vh);
+    left: 0vw;
+    margin-left: calc(5px + 4.5vw);
+    margin-right: calc(5px + 4.5vw);
 }
+
 .driver-button {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .profile-top {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.profile-top > button {
-  width: 70vw;
-  height: 20vh;
-  min-height: 40px !important;
-  margin-top: 2.5vw;
-  margin-bottom: 2.5vw;
-  display: flex;
-  align-items: center;
+.profile-top>button {
+    width: 70vw;
+    height: 20vh;
+    min-height: 40px !important;
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+    display: flex;
+    align-items: center;
 }
 
-.profile-top > button > span {
-  font-size: calc(12px + 2vh);
-  padding-left: 20vw;
-  display: flex;
+.profile-top>button>span {
+    font-size: calc(12px + 2vh);
+    padding-left: 20vw;
+    display: flex;
 }
 
 
 .profile-button {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.profile-button > button {
-  width: 88vw;
-  height: 8vh;
-  min-height: 40px !important;
-  margin-top: 2.5vw;
-  margin-bottom: 2.5vw;
-  display: flex;
-  align-items: center;
+.profile-button>.orderItem {
+    width: 88vw;
+    height: 8vh;
+    min-height: 40px !important;
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    background-color: #D9D9D9;
 }
 
-.profile-button > button > img {
-  width: 5vh;
-  height: 5vh;
-  min-height: 30px;
-  min-width: 30px;
-  display: flex;
+.orderItem>div {
+    padding: 10px;
 }
 
-.profile-button > button > span {
-  font-size: calc(12px + 1vh);
-  padding-left: 20vw;
-  display: flex;
+.profile-button>.orderItem>.dateString {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: calc(12px + 1vh);
+}
+
+.profile-button>.orderItem>.timeString {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: calc(12px + 1vh);
+}
+
+.profile-button>.orderItem>.orderStatus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: calc(12px + 1vh);
+}
+
+.profile-button>.orderItem>.orderFee {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: calc(12px + 1vh);
+}
+
+.profile-button>button>img {
+    width: 5vh;
+    height: 5vh;
+    min-height: 30px;
+    min-width: 30px;
+    display: flex;
+}
+
+.profile-button>button>span {
+    font-size: calc(12px + 1vh);
+    padding-left: 20vw;
+    display: flex;
 }
 
 .inner {
-  width: 50%;
-  height: 50%;
-  float: left;
-  text-align: center;
+    width: 50%;
+    height: 50%;
+    float: left;
+    text-align: center;
 }
+
+.auto-accept {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5vh;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-right: 2.5vw;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 2.5vw;
+  }
+  

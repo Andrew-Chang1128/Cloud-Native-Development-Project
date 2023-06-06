@@ -24,6 +24,7 @@ import driverImage from './image/driver.png'
 import passengerImage from './image/passenger.png'
 import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
+import Locationchoose from './page/Locationchoose';
 
 
 function App() {
@@ -54,7 +55,16 @@ function App() {
         </button>
       </div>
     );
-  } else if (window.location.pathname === '/menudriver') {
+  }else if (window.location.pathname === '/') {
+    checkid = (
+      <div className="header">
+        <p className="header-text">TSMC Uber</p>
+        <button className="driver-button" onClick={handleClick} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <img className="ges-icon" src={driverImage} alt="driver" />
+        </button>
+      </div>
+    );
+  }else if (window.location.pathname === '/menudriver') {
     checkid = (
       <div className="header">
         <p className="header-text">TSMC Uber</p>
@@ -97,6 +107,7 @@ function App() {
           <Route path='/mycar' element={<Mycar />}></Route>
           <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/test/map2' element={<TestMap2 />}></Route>
+          <Route path='/locationchoose' element={<Locationchoose />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

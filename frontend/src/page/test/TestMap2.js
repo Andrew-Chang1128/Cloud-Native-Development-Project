@@ -1,4 +1,5 @@
 import React from "react";
+import './TestMap2.css';
 import Map2 from './Map2';
 import { useNavigate } from 'react-router-dom';
 function TestMap2(){

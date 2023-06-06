@@ -193,4 +193,21 @@ module.exports = class testController {
             res.status(200).json(result);
         }
     }
+    
+    async getRouteOrder(req, res) {
+        console.log("/testapi/getRouteOrder");
+
+        const { routeId } = req.body;
+        if (!routeId) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+        const orderModel = new oModel();
+        const result = await orderModel.getRouteOrder(routeId);
+        if (result == false) {
+            res.status(400).json({ error: 'No route found' });
+        } else {
+            res.status(200).json(result);
+        }
+    }
 }

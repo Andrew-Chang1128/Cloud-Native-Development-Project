@@ -14,7 +14,7 @@ router.post('/getDiverId', testController.getDiverId)
 router.post('/addPassengerToOrder', testController.addPassengerToOrder)
 router.post('/getPassengerAllOrder', testController.getPassengerAllOrder)
 router.post('/getDriverAllOrder', testController.getDriverAllOrder)
-
+router.post('/getRouteOrder', testController.getRouteOrder)
 
 
 module.exports = router
