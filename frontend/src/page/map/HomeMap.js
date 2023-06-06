@@ -342,7 +342,7 @@ export default class HomeMap extends React.Component {
         <>
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
             <div
-                style={{ width: '100%', height:'700px' }}
+                style={{ width: '100%', height:'auto' }}
                 ref={this.ref}
             />
             <div
