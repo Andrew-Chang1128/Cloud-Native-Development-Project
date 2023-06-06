@@ -55,9 +55,10 @@ function App() {
   let checkid;
 
   if (window.location.pathname === '/menu' || window.location.pathname === '/') {
+    localStorage.setItem("pattern", "passenger");
     checkid = (
       <div className="header">
-        <p className="header-text">TSMC Uber</p>
+        <p className="header-text" >TSMC Uber</p>
         <button
           className="driver-button"
           onClick={handleClick}
@@ -68,6 +69,7 @@ function App() {
       </div>
     );
   } else if (window.location.pathname === '/menudriver') {
+    localStorage.setItem("pattern", "driver");
     checkid = (
       <div className="header">
         <p className="header-text">TSMC Uber</p>
@@ -81,11 +83,19 @@ function App() {
       </div>
     );
   } else {
-    checkid = (
-      <div className="header">
-        <p className="header-text">TSMC Uber</p>
-      </div>
-    );
+    if(localStorage.getItem("pattern") === "driver") {
+      checkid = (
+        <div className="header">
+          <span className="header-text" onClick={handleClick}>TSMC Uber</span>
+        </div>
+      );
+    } else {
+      checkid = (
+        <div className="header">
+          <span className="header-text" onClick={handleClick2}>TSMC Uber</span>
+        </div>
+      );
+    }
   }
 
   return (
