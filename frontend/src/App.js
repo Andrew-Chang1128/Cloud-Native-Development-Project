@@ -55,7 +55,16 @@ function App() {
         </button>
       </div>
     );
-  } else if (window.location.pathname === '/menudriver') {
+  }else if (window.location.pathname === '/') {
+    checkid = (
+      <div className="header">
+        <p className="header-text">TSMC Uber</p>
+        <button className="driver-button" onClick={handleClick} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <img className="ges-icon" src={driverImage} alt="driver" />
+        </button>
+      </div>
+    );
+  }else if (window.location.pathname === '/menudriver') {
     checkid = (
       <div className="header">
         <p className="header-text">TSMC Uber</p>
