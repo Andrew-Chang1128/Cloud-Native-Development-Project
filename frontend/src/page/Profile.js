@@ -36,7 +36,6 @@ function Profile(){
                 <img src={askhelpImage} alt="Askhelp" />
                 <span>尋求協助</span>
             </button>
-            
             <button onClick={() => {localStorage.removeItem('token');navigate('/menu');window.location.reload(false);}}>
                 <img src={profileImage} alt="logout" />
                 <span>登出</span>
