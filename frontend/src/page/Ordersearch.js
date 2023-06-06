@@ -8,6 +8,13 @@ function Ordersearch() {
     const [divElements, setDivElements] = useState([]);
     const backend_url = process.env.REACT_APP_BACKEND_URL;
 
+    
+    function pad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+    }
+
     useEffect(() => {
         fetch(backend_url + '/route/reservation', {
             method: 'GET',
@@ -21,7 +28,7 @@ function Ordersearch() {
                 const generatedDivs = data.map(item => {
                     let datetime = new Date(item.datetime);
                     let dateString = datetime.getFullYear() + "/" + (datetime.getMonth() + 1) + "/" + datetime.getDate();
-                    let timeString = datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+                    let timeString = pad(datetime.getHours(),2) + ":" + pad(datetime.getMinutes(),2);
                     let status;
 
                     let curtime = new Date();
