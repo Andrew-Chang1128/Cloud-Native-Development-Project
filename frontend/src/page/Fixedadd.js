@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
 import apiImage from '../image/api.png';
-import plusImage from '../image/plus.png'
+
 
 function Fixedadd() {
   const navigate = useNavigate();
@@ -15,72 +15,87 @@ function Fixedadd() {
   const handleChange2 = (people) => {
     setSelectedValue(people.target.value);
   }
+  const [depart1, setDepart1] = useState('');
+  const handleInputDepart1Change = (depart1) => {
+    setDepart1(depart1.target.value);
+  };
+  const [depart2, setDepart2] = useState('');
+  const handleInputDepart2Change = (depart2) => {
+    setDepart2(depart2.target.value);
+  };
+  const [depart3, setDepart3] = useState('');
+  const handleInputDepart3Change = (depart3) => {
+    setDepart3(depart3.target.value);
+  };
   return (
     <>
       <div className="content" style={{ flexDirection: "column" }}>
-        <div className="profile-button" style={{ flexDirection: "column" }}>
-          <h1 style={{ paddingBottom: "1vw" }}>固定路線設定</h1>
-          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
-            <img src={apiImage} alt="api1" />
-            <span>新竹火車站</span>
-          </button>
-          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
-            <img src={apiImage} alt="api1" />
-            <span>交通大學南大門</span>
-          </button>
-          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
-            <img src={apiImage} alt="api1" />
-            <span>台積電12A</span>
-          </button>
-          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
-            <img src={plusImage} alt="plus" />
-            <span  style={{ color: "#969696" }}>新增地點</span>
-          </button>
+      <div className="reserve-div" style={{ flexDirection: "column" }}>
+        <div className="content" style={{ flexDirection: "column" }}>
+          <div>
+            <input type="text" id="depart1" name="depart1" value={depart1} onChange={handleInputDepart1Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+            <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
+              <img src={apiImage} alt="api1" />
+            </button>
+          </div>
+          <div>
+            <input type="text" id="depart2" name="depart2" value={depart2} onChange={handleInputDepart2Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+            <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
+              <img src={apiImage} alt="api1" />
+            </button>
+          </div>
+          <div>
+            <input type="text" id="depart3" name="depart3" value={depart3} onChange={handleInputDepart3Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+            <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
+              <img src={apiImage} alt="api1" />
+            </button>
+          </div>
         </div>
-        <div className="profile-div" style={{ flexDirection: "column", paddingTop: "10vh" }}>
+      </div>
+        <div className="profile-div" style={{ flexDirection: "column", paddingTop: "8vh" }}>
           <p style={{ fontSize: "calc(12px + 2vh)", paddingBottom: "1vw" }}>出發時間</p>
         </div>
         <div className="profile-div" style={{ flexDirection: "row", paddingTop: "1vh", display: "flex", alignItems: "center" }}>
         <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
             <label htmlFor="monday" className="checkbox-label">
               <input type="checkbox" id="monday" name="topping" value="monday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週一</span>
+              <span style={{ fontSize: "2vh", color:"black", whiteSpace: "nowrap" }}>週一</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="tuesday" className="checkbox-label">
               <input type="checkbox" id="tuesday" name="topping2" value="tuesday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週二</span>
+              <span style={{ fontSize: "2vh", color:"black" , whiteSpace: "nowrap"}}>週二</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="wednesday" className="checkbox-label">
               <input type="checkbox" id="wednesday" name="topping3" value="wednesday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週三</span>
+              <span style={{ fontSize: "2vh", color:"black" , whiteSpace: "nowrap"}}>週三</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="thursday" className="checkbox-label">
               <input type="checkbox" id="thursday" name="topping4" value="thursday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週四</span>
+              <span style={{ fontSize: "2vh", color:"black", whiteSpace: "nowrap" }}>週四</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="friday" className="checkbox-label">
               <input type="checkbox" id="friday" name="topping5" value="friday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週五</span>
+              <span style={{ fontSize: "2vh", color:"black", whiteSpace: "nowrap" }}>週五</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="saturday" className="checkbox-label">
               <input type="checkbox" id="saturday" name="topping6" value="saturday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週六</span>
+              <span style={{ fontSize: "2vh", color:"black" , whiteSpace: "nowrap"}}>週六</span>
             </label>
           </div>
           <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="sunday" className="checkbox-label">
               <input type="checkbox" id="sunday" name="topping7" value="sunday" style={{ fontSize: "1vh" }} />
-              <span style={{ fontSize: "2vh", color:"black" }}>週日</span>
+              <span style={{ fontSize: "2vh", color:"black" , whiteSpace: "nowrap"}}>週日</span>
             </label>
           </div>
         </div>
