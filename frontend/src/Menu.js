@@ -5,12 +5,14 @@ import signinImage from './image/signin.png'
 import orderImage from './image/order.png'
 import './App.css'
 
+import HomeMap from './page/map/HomeMap';
+
 function Menu() {
     const navigate = useNavigate();
     return (
      <>
         <div className="content">
-            <p> map </p>
+            <HomeMap />
         </div>
         <div className="menu-gesture">
             <button onClick={() => navigate('/reserve')} style={{ background: 'none', border: 'none', padding: 0 }}>
