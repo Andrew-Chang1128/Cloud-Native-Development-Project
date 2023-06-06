@@ -133,4 +133,23 @@ module.exports = class routeController {
 
         res.status(200).json(result);
     };
+
+    async getRouteOrder(req, res) {
+        const routeId = req.params.rid;
+
+        // check if routeId is integer
+        if (!Number.isInteger(parseInt(routeId, 10))) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+
+        const orderModel = new oModel();
+        const result = await orderModel.getRouteOrder(parseInt(routeId, 10));
+
+        if (result == false) {
+            res.status(500).json({ error: 'Failed to get orders of a route' });
+        } else {
+            res.status(200).json(result);
+        }
+    };
 }
