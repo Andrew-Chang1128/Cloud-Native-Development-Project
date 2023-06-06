@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
@@ -10,6 +10,28 @@ function Order() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    async function reverseGeocode(lat, lng) {
+        var re = '';
+        await fetch('https://revgeocode.search.hereapi.com/v1/revgeocode?apiKey=' +
+            process.env.REACT_APP_HERE_MAP_APIKEY +
+            '&at=' + lat.toString() + ',' + lng.toString(), {
+            method: 'GET'
+        }).then(async (response) => {
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log(data);
+                if (data.items.length > 0) {
+                    re = data.items[0].title;
+                }
+            } else {
+                console.log("Status Code:", response.status);
+            }
+        }).catch(function (error) {
+            console.log('error = ' + error)
+        });
+        return re;
+    }
+
     let defaultDepart = '';
     let defaultDestination = '';
     let defaultIsChecked = false;
@@ -18,11 +40,11 @@ function Order() {
     if (location.state != null) {
         console.log(location.state);
         if (location.state.type === 1) {
-            defaultDepart = JSON.stringify(location.state.status.depart);
+            defaultDepart = reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng);
             defaultDestination = location.state.status.destination.destination;
         } else if (location.state.type === 2) {
             defaultDepart = location.state.status.depart.depart;
-            defaultDestination = JSON.stringify(location.state.status.destination);
+            defaultDestination = reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng);
         }
         defaultIsChecked = location.state.status.isChecked.isChecked;
         defaultSelectedValue = location.state.status.selectedValue.selectedValue;
@@ -51,28 +73,6 @@ function Order() {
     const handleSelectedChange = (e) => {
         setSelectedValue(e.target.value);
         console.log("selectedValue: ", selectedValue);
-    }
-
-    async function reverseGeocode(lat, lng) {
-        var re = '';
-        await fetch('https://revgeocode.search.hereapi.com/v1/revgeocode?apiKey=' +
-            process.env.REACT_APP_HERE_MAP_APIKEY +
-            '&at=' + lat.toString() + ',' + lng.toString(), {
-            method: 'GET'
-        }).then(async (response) => {
-            if (response.status === 200) {
-                const data = await response.json();
-                console.log(data);
-                if (data.items.length > 0) {
-                    re = data.items[0].title;
-                }
-            } else {
-                console.log("Status Code:", response.status);
-            }
-        }).catch(function (error) {
-            console.log('error = ' + error)
-        });
-        return re;
     }
 
     async function calculateRoute(points) {
