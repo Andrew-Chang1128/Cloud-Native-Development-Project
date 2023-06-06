@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
@@ -6,11 +6,13 @@ import apiImage from '../image/api.png';
 
 function Reserve(){
   const navigate = useNavigate();
+  const [selectedValue, setSelectedValue] = useState("1");
   const handleChange = (e) => {
-    this.setState({ selectedValue: e.target.value })
+    setSelectedValue(e.target.value);
   }
-  const handleChange2 = (e) => {
-    this.setState({ selectedValue: e.target.value })
+
+  const handleChange2 = (people) => {
+    setSelectedValue(people.target.value);
   }
     return (
       <>
@@ -57,7 +59,7 @@ function Reserve(){
               </label>
             </div>
             </div>
-              <select onChange={(e) => handleChange2(e)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
+              <select onChange={(people) => handleChange2(people)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
                 <option value="1">1人</option>
                 <option value="2">2人</option>
                 <option value="3">3人</option>

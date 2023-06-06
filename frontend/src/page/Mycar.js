@@ -1,15 +1,18 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import homeImage from '../image/home.png'
 import '../App.css'
 
 function Mycar() {
   const navigate = useNavigate();
+  const [selectedValue, setSelectedValue] = useState("1");
   const handleChange = (e) => {
-    this.setState({ selectedValue: e.target.value })
+    setSelectedValue(e.target.value);
   }
+
   const handleChange2 = (e) => {
-    this.setState({ selectedValue: e.target.value })
+    setSelectedValue(e.target.value);
   }
   return (
     <>
