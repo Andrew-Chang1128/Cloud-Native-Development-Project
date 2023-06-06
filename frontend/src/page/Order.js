@@ -3,80 +3,80 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
 import apiImage from '../image/api.png';
-function Order(){
-  const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location.state);
-  
-  const [selectedValue, setSelectedValue] = useState('');
-  const handleChange = (e) => {
-    setSelectedValue(e.target.value);
-  }
-  const [depart, setDepart] = useState('');
-  const handleInputDepartChange = (depart) => {
-    setDepart(depart.target.value);
-  };
-  const [destination, setDestination] = useState('');
-  const handleInputChange = (event) => {
-    setDestination(event.target.value);
-  };
+function Order() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location.state);
+
+    const [selectedValue, setSelectedValue] = useState('');
+    const handleChange = (e) => {
+        setSelectedValue(e.target.value);
+    }
+    const [depart, setDepart] = useState('');
+    const handleInputDepartChange = (depart) => {
+        setDepart(depart.target.value);
+    };
+    const [destination, setDestination] = useState('');
+    const handleInputChange = (event) => {
+        setDestination(event.target.value);
+    };
     return (
-      <>
-      <div className="content" style={{ "flex-direction": "column" }}>
-          <div className="profile-div" style={{ "flex-direction": "column" }}>
-            <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
-            <button onClick={() => navigate('/locationchoose', {state:{id:1,name:'sabaoon'}})} style={{ width: '10vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
-                <img src={apiImage} alt="api1" />
-            </button>
-            <input type="text" id="depart" name="topping2" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "1vh",width: '60vw',marginLeft: "7.5vw" }} />
-            <p style={{ fontSize: "3vh" , paddingBottom: "1vw"}}>目的地</p>
-            <div>
-              <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "75vw",backgroundColor: "#D9D9D9"}}>
-                <img src={apiImage} alt="api1" />
-              </button>
-              <input type="text" id="destination" name="topping3" value={destination} onChange={handleInputChange} style={{ fontSize: "1vh",width: '60vw',marginLeft: "7.5vw" }} />
+        <>
+            <div className="content" style={{ "flex-direction": "column" }}>
+                <div className="profile-div" style={{ "flex-direction": "column" }}>
+                    <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
+                    <button onClick={() => navigate('/locationchoose', { state: { id: 1, name: 'sabaoon' } })} style={{ width: '10vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9" }}>
+                        <img src={apiImage} alt="api1" />
+                    </button>
+                    <input type="text" id="depart" name="topping2" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
+                    <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>目的地</p>
+                    <div>
+                        <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "75vw", backgroundColor: "#D9D9D9" }}>
+                            <img src={apiImage} alt="api1" />
+                        </button>
+                        <input type="text" id="destination" name="topping3" value={destination} onChange={handleInputChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
+                    </div>
+
+
+                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <p style={{ fontSize: "3vh", paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0 }}>乘客人數</p>
+                    <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
+                        <label htmlFor="carpooling" className="checkbox-label">
+                            <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "2vh" }} />
+                            <p style={{ fontSize: "3vh)", color: "black" }}>允許共乘</p>
+                        </label>
+                    </div>
+                </div>
+                <select onChange={(e) => handleChange(e)} style={{ fontSize: "1vh", backgroundColor: "#D9D9D9", width: '85vw', marginLeft: "7.5vw" }}>
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                    <option value="5">5人</option>
+                    <option value="6">6人</option>
+                    <option value="7">7人</option>
+                    <option value="8">8人</option>
+                </select>
+
+                <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
+                    <p>出發時間: 12 : 22</p>
+                    <p>抵達時間: 12 : 57</p>
+                    <p>預估車資: 80元</p>
+                </div>
+
             </div>
-            
-            
+
+            <div className="menu-gesture">
+                <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0 }}>
+                    <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
+                </button>
+                <button onClick={() => navigate('/ordercomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+                    <img className="ges-icon" src={nextImage} alt="Next" />
+                </button>
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-            <p style={{ fontSize: "3vh",paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0}}>乘客人數</p>
-            <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
-              <label htmlFor="carpooling" className="checkbox-label">
-                <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "2vh" }} />
-                <p style={{ fontSize: "3vh)", color: "black" }}>允許共乘</p>
-              </label>
-            </div>
-            </div>
-              <select onChange={(e) => handleChange(e)} style={{fontSize: "1vh" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
-                <option value="1">1人</option>
-                <option value="2">2人</option>
-                <option value="3">3人</option>
-                <option value="4">4人</option>
-                <option value="5">5人</option>
-                <option value="6">6人</option>
-                <option value="7">7人</option>
-                <option value="8">8人</option>
-              </select>
-          
-          <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
-            <p>出發時間: 12 : 22</p>
-            <p>抵達時間: 12 : 57</p>
-            <p>預估車資: 80元</p>
-          </div>
-          
-        </div>
-        
-        <div className="menu-gesture">
-          <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0}}>
-              <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
-          </button>
-          <button onClick={() => navigate('/ordercomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
-              <img className="ges-icon" src={nextImage} alt="Next" />
-          </button>
-        </div>
-    </>
-        
+        </>
+
     );
 }
 
