@@ -15,19 +15,19 @@ function Fixedadd() {
       <div className="content" style={{ flexDirection: "column" }}>
         <div className="profile-button" style={{ flexDirection: "column" }}>
           <h1 style={{ paddingBottom: "1vw" }}>固定路線設定</h1>
-          <button onClick={() => navigate('/fixedadd')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
+          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
             <img src={apiImage} alt="api1" />
             <span>新竹火車站</span>
           </button>
-          <button onClick={() => navigate('/fixedadd')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
+          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
             <img src={apiImage} alt="api1" />
             <span>交通大學南大門</span>
           </button>
-          <button onClick={() => navigate('/fixed')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
+          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
             <img src={apiImage} alt="api1" />
             <span>台積電12A</span>
           </button>
-          <button onClick={() => navigate('/fixed')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
+          <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9", fontSize: "calc(12px + 2vh)" }}>
             <img src={plusImage} alt="plus" />
             <span  style={{ color: "#969696" }}>新增地點</span>
           </button>

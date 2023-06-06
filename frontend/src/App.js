@@ -24,6 +24,7 @@ import driverImage from './image/driver.png'
 import passengerImage from './image/passenger.png'
 import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
+import Locationchoose from './page/Locationchoose';
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
           <Route path='/mycar' element={<Mycar />}></Route>
           <Route path='/test/map' element={<TestMap />}></Route>
           <Route path='/test/map2' element={<TestMap2 />}></Route>
+          <Route path='/locationchoose' element={<Locationchoose />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

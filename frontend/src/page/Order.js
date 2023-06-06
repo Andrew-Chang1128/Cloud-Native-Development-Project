@@ -13,12 +13,12 @@ function Order(){
       <div className="content" style={{ "flex-direction": "column" }}>
           <div className="profile-div" style={{ "flex-direction": "column" }}>
             <p style={{ fontSize: "calc(12px + 2vh)", paddingBottom: "1vw" }}>出發地</p>
-            <button onClick={() => navigate('/reserve')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
+            <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
               <span>交通大學</span>
             </button>
             <p style={{ fontSize: "calc(12px + 2vh)" , paddingBottom: "1vw"}}>目的地</p>
-            <button onClick={() => navigate('/reserve')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
+            <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
                 <span>新竹火車站</span>
             </button>
