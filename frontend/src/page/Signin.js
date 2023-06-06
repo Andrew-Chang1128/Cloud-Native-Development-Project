@@ -8,11 +8,13 @@ function Signin({ setToken }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
+    const backend_url = process.env.REACT_APP_BACKEND_URL;
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         
         if (activeItem === 'register') {
-            const response = await fetch('http://localhost:4000/user/createUser', {
+            const response = await fetch(backend_url+'/user/createUser', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -31,7 +33,7 @@ function Signin({ setToken }) {
                 }
               });
         } else if (activeItem === 'signin') {
-            const response = await fetch('http://localhost:4000/user/login', {
+            const response = await fetch(backend_url+'/user/login', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

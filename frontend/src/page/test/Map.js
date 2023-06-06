@@ -14,7 +14,7 @@ export default class Map extends React.Component {
     if (!this.map) {
       // instantiate a platform, default layers and a map as usual
       const platform = new H.service.Platform({
-        apikey: '5sBMwlWaGv5EG1yaxjcIGjbuJ5MyLO08PPHDQqkEDBI'
+        apikey: process.env.REACT_APP_HERE_MAP_APIKEY
       });
       const layers = platform.createDefaultLayers({
         lg: 'zh-tw'

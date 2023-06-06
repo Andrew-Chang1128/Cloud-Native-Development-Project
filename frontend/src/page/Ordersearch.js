@@ -6,9 +6,10 @@ import '../App.css';
 function Ordersearch() {
     const navigate = useNavigate();
     const [divElements, setDivElements] = useState([]);
+    const backend_url = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
-        fetch('http://localhost:4000/route/reservation', {
+        fetch(backend_url+'/route/reservation', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`

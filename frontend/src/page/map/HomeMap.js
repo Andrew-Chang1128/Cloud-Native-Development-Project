@@ -18,7 +18,7 @@ export default class HomeMap extends React.Component {
     if (!this.map) {
       // instantiate a platform, default layers and a map as usual
       const platform = new H.service.Platform({
-        apikey: '5sBMwlWaGv5EG1yaxjcIGjbuJ5MyLO08PPHDQqkEDBI'
+        apikey: process.env.REACT_APP_HERE_MAP_APIKEY
       });
       const layers = platform.createDefaultLayers({
         lg: 'zh-tw'
@@ -54,6 +54,7 @@ export default class HomeMap extends React.Component {
           [25.048876668724624,121.50619014148239], 
           [25.03991282424907,121.51290273721504]];
 
+    
       function calculateRoute(platform, points) {
         const pstr = points.map(x => x[0].toString()+','+x[1].toString());
         var router = platform.getRoutingService(null, 8),
@@ -275,6 +276,27 @@ export default class HomeMap extends React.Component {
           return Math.floor(duration / 60) + ' minutes ' + (duration % 60) + ' seconds.';
       }
 
+      const backend_url = process.env.REACT_APP_BACKEND_URL;
+      console.log(backend_url);
+      
+      fetch(backend_url+'/route/reservation', {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+        }).then(async (response) => {
+            console.log("HEHEHE2");
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log(data);
+            } else if (response.status === 401) {
+                console.log("Unauthorized");
+            } else {
+                console.log("Status Code:", response.status);
+            }
+        }).catch(function(error) {
+            console.log('error = ' + error)
+        })
       calculateRoute(platform, stops);
     }
     
