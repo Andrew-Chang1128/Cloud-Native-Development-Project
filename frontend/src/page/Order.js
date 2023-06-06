@@ -38,18 +38,14 @@ function Order() {
     let defaultSelectedValue = 1;
 
     if (location.state != null) {
-        console.log(location.state);
         if (location.state.type === 1) {
-            defaultDepart = reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng);
             defaultDestination = location.state.status.destination.destination;
         } else if (location.state.type === 2) {
             defaultDepart = location.state.status.depart.depart;
-            defaultDestination = reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng);
         }
         defaultIsChecked = location.state.status.isChecked.isChecked;
         defaultSelectedValue = location.state.status.selectedValue.selectedValue;
     }
-
 
     const [depart, setDepart] = useState(defaultDepart);
     const handleInputDepartChange = (depart) => {
@@ -73,6 +69,21 @@ function Order() {
     const handleSelectedChange = (e) => {
         setSelectedValue(e.target.value);
         console.log("selectedValue: ", selectedValue);
+    }
+
+    if (location.state != null) {
+        console.log(location.state);
+        if (location.state.type === 1) {
+            reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng)
+                .then(result => {
+                    setDepart(result);
+                });
+        } else if (location.state.type === 2) {
+            reverseGeocode(location.state.status.destination.lat, location.state.status.destination.lng)
+                .then(result => {
+                    setDestination(result);
+                });
+        }
     }
 
     async function calculateRoute(points) {
