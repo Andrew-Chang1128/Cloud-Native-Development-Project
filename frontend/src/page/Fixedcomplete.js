@@ -16,7 +16,7 @@ function Fixedcomplete() {
         </div>
         
         <div className="menu-gesture">
-          <button onClick={() => navigate('/menudriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <button onClick={() => navigate('/fixed')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={checkImage} alt="check" />
           </button>
         </div>
