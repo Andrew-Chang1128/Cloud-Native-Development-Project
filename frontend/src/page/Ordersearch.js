@@ -32,10 +32,10 @@ function Ordersearch() {
 
                     return (
                         <div class="orderItem">
-                            <div class="dateString">{dateString}</div>
+                            <div class="dateString">{dateString}的行程</div>
                             <div class="orderStatus">{status}</div>
-                            <div class="timeString">{timeString}</div>
-                            <div class="orderFee">{item.passenger[0].fee}</div>
+                            <div class="timeString">{timeString} 出發</div>
+                            <div class="orderFee">{item.passenger[0].fee} 元</div>
                         </div>
                     );
                 });
