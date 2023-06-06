@@ -38,7 +38,7 @@ function Profiledriver(){
             </button>
             <button onClick={() => {localStorage.removeItem('token');navigate('/menu');window.location.reload(false);}}>
                 <img src={profileImage} alt="logout" />
-                <span>登出</span>
+                <span>人物登出</span>
             </button>
           </div>
         </div>
