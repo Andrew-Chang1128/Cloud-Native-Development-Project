@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Navigate } from 'react-router-dom';
 
 import './HomeMap.css';
 import H from "@here/maps-api-for-javascript";
@@ -12,6 +13,9 @@ export default class HomeMap extends React.Component {
     this.ref2 = React.createRef();
     // reference to the map
     this.map = null;
+    this.state = {
+      shouldRedirect: false,
+    };
   }
 
   componentDidMount() {
@@ -189,7 +193,7 @@ export default class HomeMap extends React.Component {
                 lng: s[1]},
                 {icon: dotIcon});
             marker.instruction = text;
-            group.addObject(marker);
+            group.addObject(marker)
           }
 
           group.addEventListener('tap', function (evt) {
@@ -318,7 +322,7 @@ export default class HomeMap extends React.Component {
                     
                     var routeList = route.routeList.map(x => [x.lat, x.lng]);
                     const time = new Date(route.startTime);
-                    var text = route.routeList[0].loc + '→' + route.routeList.slice(-1)[0].loc + '<br>' + status.join("、") + '<br>' + pad(time.getHours(),2) + ':' + pad(time.getMinutes(),2) + ' 出發';
+                    var text = "<div>" + route.routeList[0].loc + '→' + route.routeList.slice(-1)[0].loc + '<br>' + status.join("、") + '<br>' + pad(time.getHours(),2) + ':' + pad(time.getMinutes(),2) + ' 出發' + `<a href=\"/order?routeid=${route.routeId}\">Timetable</a></div>`;
                     console.log(routeList);
                     calculateRoute(platform, routeList, text);
                   }
@@ -336,8 +340,10 @@ export default class HomeMap extends React.Component {
     
   }
 
-
   render() {
+    if (this.state.shouldRedirect) {
+      return <Navigate to="/order" />;
+    }
     return (
         <>
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
