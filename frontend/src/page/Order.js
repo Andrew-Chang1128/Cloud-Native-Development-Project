@@ -38,13 +38,15 @@ function Order() {
     let defaultSelectedValue = 1;
 
     if (location.state != null) {
-        if (location.state.type === 1) {
-            defaultDestination = location.state.status.destination.destination;
-        } else if (location.state.type === 2) {
-            defaultDepart = location.state.status.depart.depart;
+        if(location.state.from === "Locationchoose"){
+            if (location.state.type === 1) {
+                defaultDestination = location.state.status.destination.destination;
+            } else if (location.state.type === 2) {
+                defaultDepart = location.state.status.depart.depart;
+            }
+            defaultIsChecked = location.state.status.isChecked.isChecked;
+            defaultSelectedValue = location.state.status.selectedValue.selectedValue;
         }
-        defaultIsChecked = location.state.status.isChecked.isChecked;
-        defaultSelectedValue = location.state.status.selectedValue.selectedValue;
     }
 
     const [depart, setDepart] = useState(defaultDepart);
@@ -73,17 +75,20 @@ function Order() {
 
     if (location.state != null) {
         console.log(location.state);
-        if (location.state.type === 1) {
-            reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng)
-                .then(result => {
-                    setDepart(result);
-                });
-        } else if (location.state.type === 2) {
-            reverseGeocode(location.state.status.destination.lat, location.state.status.destination.lng)
-                .then(result => {
-                    setDestination(result);
-                });
+        if(location.state.from === "Locationchoose"){
+            if (location.state.type === 1) {
+                reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng)
+                    .then(result => {
+                        setDepart(result);
+                    });
+            } else if (location.state.type === 2) {
+                reverseGeocode(location.state.status.destination.lat, location.state.status.destination.lng)
+                    .then(result => {
+                        setDestination(result);
+                    });
+            }
         }
+        
     }
 
     async function calculateRoute(points) {
