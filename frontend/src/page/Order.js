@@ -27,7 +27,7 @@ function Order() {
                 <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
                 <div>
                     <input type="text" id="depart" name="depart" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
-                    <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
+                    <button onClick={() => navigate('/locationchoose', { state: { id: 1, name: 'sabaoon' } })} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
                     <img src={apiImage} alt="api1" />
                     </button>
                 </div>
