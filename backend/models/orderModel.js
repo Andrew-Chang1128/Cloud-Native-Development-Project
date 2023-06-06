@@ -159,4 +159,24 @@ module.exports = class {
             reject(false);
         })
     }
+
+    getRouteOrder(routeId) {
+        console.log("Fetching all orders of route: ", routeId);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const order = this.database.collection('order');
+                const query = {
+                    routeId: routeId
+                };
+                const data = await order.find(query).toArray();
+                console.log('data', data);
+                if(!data) resolve([]);
+                else resolve(data);
+                return;
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
+        })
+    }
 }
