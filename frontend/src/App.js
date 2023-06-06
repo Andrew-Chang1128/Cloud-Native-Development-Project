@@ -28,6 +28,7 @@ import Locationchoose from './page/Locationchoose';
 import Passroute from './page/Passroute';
 import Fixedtoorder from './page/Fixedtoorder';
 import Ordertopassenger from './page/Ordertopassenger';
+import Grading from './page/Grading';
 
 function App() {
   const { token, setToken } = useToken();
@@ -119,6 +120,7 @@ function App() {
           <Route path="/passroute" element={<Passroute />} />
           <Route path="/fixedtoorder" element={<Fixedtoorder />} />
           <Route path="/ordertopassenger" element={<Ordertopassenger />} />
+          <Route path="/grading" element={<Grading />} />
         </Routes>
       </div>
    
