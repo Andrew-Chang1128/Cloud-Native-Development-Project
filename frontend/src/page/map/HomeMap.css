@@ -1,0 +1,21 @@
+.directions li span.arrow {
+  display:inline-block;
+  min-width:28px;
+  min-height:28px;
+  background-position:0px;
+  background-image: url("https://heremaps.github.io/maps-api-for-javascript-examples/map-with-route-from-a-to-b/img/arrows.png");
+  position:relative;
+  top:8px;
+}
+.directions li span.depart  {
+  background-position:-28px;
+}
+.directions li span.rightturn  {
+  background-position:-224px;
+}
+.directions li span.leftturn{
+  background-position:-252px;
+}
+.directions li span.arrive  {
+  background-position:-1288px;
+}

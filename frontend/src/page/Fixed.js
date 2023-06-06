@@ -18,24 +18,32 @@ function Fixed(){
             const data = await response.json();
             console.log(data);
             const generatedDivs = data.map(item => {
-                let datetime = new Date(item.datetime);
-                let dateString = datetime.getFullYear() + "/" + (datetime.getMonth() + 1) + "/" + datetime.getDate();
-                let timeString = datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
-                let status;
+              let datetime = new Date(item.startTime);
+              let timeString = datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+              let departure = item.routeList[0].loc;
+              let destination = item.routeList[item.routeList.length - 1].loc;
+              let status = [];
+              const weekdays = {
+                "Sunday": "週日",
+                "Monday": "週一",
+                "Tuesday": "週二",
+                "Wednesday": "週三",
+                "Thursday": "週四",
+                "Friday": "週五",
+                "Saturday": "週六"
+              };
 
-                let curtime = new Date();
-                if (curtime > datetime) {
-                    status = "已完成";
-                } else {
-                    status = "已預約";
+              Object.keys(weekdays).map((key) => {
+                if (item.dayOfWeek.includes(key)) {
+                  status.push(weekdays[key]);
                 }
-
+              });
                 return (
                     <div class="orderItem">
-                        <div class="dateString">{dateString}</div>
-                        <div class="orderStatus">{status}</div>
-                        <div class="timeString">{timeString} </div>
-                        <div class="orderFee">{item.passenger[0].fee}</div>
+                      <div class="departure">{departure}</div>
+                      <div class="destination">{destination}</div>
+                      <div class="timeString">{timeString} 出發</div>
+                      <div class="Status">{status.join("、")}</div>
                     </div>
                 );
             });
@@ -54,7 +62,13 @@ function Fixed(){
           <span style={{ fontSize: "calc(10px + 1vh)" }}>新增</span>
         </button>
       </div>
+      <div className="content" style={{ "flex-direction": "column" }}>
 
+                <div className="profile-button">
+                    {divElements}
+                </div>
+
+            </div>
         <div className="menu-gesture">
           <button onClick={() => navigate('/menudriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={homeImage} alt="Home" />

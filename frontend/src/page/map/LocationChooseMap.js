@@ -1,5 +1,6 @@
 import React from 'react';
 import H from "@here/maps-api-for-javascript";
+import './LocationChooseMap.css';
 
 export default class LocationChooseMap extends React.Component {
   constructor(props) {
