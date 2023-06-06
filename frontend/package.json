@@ -17,6 +17,9 @@
     "semantic-ui-react": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
