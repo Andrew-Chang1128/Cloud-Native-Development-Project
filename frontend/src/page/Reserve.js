@@ -24,22 +24,22 @@ function Reserve(){
   };
   return (
     <div className="content" style={{ flexDirection: "column" }}>
-      <div className="profile-div" style={{ flexDirection: "column" }}>
+      <div className="reserve-div" style={{ flexDirection: "column" }}>
         <div className="content" style={{ flexDirection: "column" }}>
           <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
           <div>
-            <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9" }}>
+            <input type="text" id="depart" name="depart" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+            <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
               <img src={apiImage} alt="api1" />
             </button>
-            <input type="text" id="depart" name="depart" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
           </div>
   
           <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>目的地</p>
           <div>
-            <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9" }}>
+            <input type="text" id="destination" name="destination" value={destination} onChange={handleInputChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+            <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh' }}>
               <img src={apiImage} alt="api2" />
             </button>
-            <input type="text" id="destination" name="destination" value={destination} onChange={handleInputChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
           </div>
         </div>
   

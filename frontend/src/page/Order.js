@@ -23,22 +23,23 @@ function Order() {
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
-                <div className="profile-div" style={{ "flex-direction": "column" }}>
-                    <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
-                    <button onClick={() => navigate('/locationchoose', { state: { id: 1, name: 'sabaoon' } })} style={{ width: '10vw', marginLeft: "7.5vw", backgroundColor: "#D9D9D9" }}>
-                        <img src={apiImage} alt="api1" />
+            <div className="content" style={{ flexDirection: "column" }}>
+                <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
+                <div>
+                    <input type="text" id="depart" name="depart" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+                    <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh'}}>
+                    <img src={apiImage} alt="api1" />
                     </button>
-                    <input type="text" id="depart" name="topping2" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
-                    <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>目的地</p>
-                    <div>
-                        <button onClick={() => navigate('/locationchoose')} style={{ width: '10vw', marginLeft: "75vw", backgroundColor: "#D9D9D9" }}>
-                            <img src={apiImage} alt="api1" />
-                        </button>
-                        <input type="text" id="destination" name="topping3" value={destination} onChange={handleInputChange} style={{ fontSize: "1vh", width: '60vw', marginLeft: "7.5vw" }} />
-                    </div>
-
-
                 </div>
+        
+                <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>目的地</p>
+                <div>
+                    <input type="text" id="destination" name="destination" value={destination} onChange={handleInputChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+                    <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw',marginTop: "-2.5vh",border:"None",backgroundColor:"white", position: 'relative', top: '1vh' }}>
+                    <img src={apiImage} alt="api2" />
+                    </button>
+                </div>
+            </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <p style={{ fontSize: "3vh", paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0 }}>乘客人數</p>
                     <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>

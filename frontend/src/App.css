@@ -178,6 +178,19 @@ html, body {
 }
 
 
+.reserve-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reserve-button>button>img {
+    width: 1vh;
+    height: 1vh;
+    display: flex;
+}
+
+
 .inner {
     width: 50%;
     height: 50%;
