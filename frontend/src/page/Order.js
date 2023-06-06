@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import nextImage from '../image/next.png'
 import buttonImage from '../image/back.png';
 import apiImage from '../image/api.png';
 function Order(){
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state);
+  
   const [selectedValue, setSelectedValue] = useState("1");
   const handleChange = (e) => {
     setSelectedValue(e.target.value);
@@ -15,7 +18,7 @@ function Order(){
       <div className="content" style={{ "flex-direction": "column" }}>
           <div className="profile-div" style={{ "flex-direction": "column" }}>
             <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
-            <button onClick={() => navigate('/locationchoose')} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
+            <button onClick={() => navigate('/locationchoose', {state:{id:1,name:'sabaoon'}})} style={{ width: '85vw', marginLeft: "7.5vw",backgroundColor: "#D9D9D9"}}>
                 <img src={apiImage} alt="api1" />
               <span>交通大學</span>
             </button>
