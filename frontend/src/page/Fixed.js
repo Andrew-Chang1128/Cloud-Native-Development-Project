@@ -7,8 +7,10 @@ import '../App.css';
 function Fixed(){
   const navigate = useNavigate();
   const [divElements, setDivElements] = useState([]);
+  const backend_url = process.env.REACT_APP_BACKEND_URL;
+  
   useEffect(() => {
-    fetch('http://localhost:4000/route', {
+    fetch(backend_url+'/route', {
         method: 'GET',
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
