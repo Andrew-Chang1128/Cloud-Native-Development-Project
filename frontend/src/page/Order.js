@@ -6,20 +6,50 @@ import apiImage from '../image/api.png';
 function Order() {
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.state);
 
-    const [selectedValue, setSelectedValue] = useState('');
-    const handleChange = (e) => {
-        setSelectedValue(e.target.value);
+    let defaultDepart = '';
+    let defaultDestination = '';
+    let defaultIsChecked = false;
+    let defaultSelectedValue = 1;
+
+    if (location.state != null) {
+        console.log(location.state);
+        if (location.state.type === 1) {
+            defaultDepart = JSON.stringify(location.state.status.depart);
+            defaultDestination = location.state.status.destination.destination;
+        } else if (location.state.type === 2) {
+            defaultDepart = location.state.status.depart.depart;
+            defaultDestination = JSON.stringify(location.state.status.destination);
+        }
+        defaultIsChecked = location.state.status.isChecked.isChecked;
+        defaultSelectedValue = location.state.status.selectedValue.selectedValue;
     }
-    const [depart, setDepart] = useState('');
+
+
+    const [depart, setDepart] = useState(defaultDepart);
     const handleInputDepartChange = (depart) => {
         setDepart(depart.target.value);
+        console.log("depart: ", depart);
     };
-    const [destination, setDestination] = useState('');
-    const handleInputChange = (event) => {
+
+    const [destination, setDestination] = useState(defaultDestination);
+    const handleInputDestinationChange = (event) => {
         setDestination(event.target.value);
+        console.log("destination: ", destination);
     };
+
+    const [isChecked, setIsChecked] = useState(defaultIsChecked);
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
+        console.log("isChecked: ", isChecked);
+    };
+
+    const [selectedValue, setSelectedValue] = useState(defaultSelectedValue);
+    const handleSelectedChange = (e) => {
+        setSelectedValue(e.target.value);
+        console.log("selectedValue: ", selectedValue);
+    }
+
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
@@ -27,15 +57,25 @@ function Order() {
                     <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>出發地</p>
                     <div>
                         <input type="text" id="depart" name="depart" value={depart} onChange={handleInputDepartChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
-                        <button onClick={() => navigate('/locationchoose', { state: { id: 1, name: 'sabaoon' } })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
+                        <button onClick={() => navigate('/locationchoose', {
+                            state: {
+                                from: "order", type: 1,
+                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } }
+                            }
+                        })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api1" />
                         </button>
                     </div>
 
                     <p style={{ fontSize: "3vh", paddingBottom: "1vw" }}>目的地</p>
                     <div>
-                        <input type="text" id="destination" name="destination" value={destination} onChange={handleInputChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
-                        <button onClick={() => navigate('/locationchoose')} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
+                        <input type="text" id="destination" name="destination" value={destination} onChange={handleInputDestinationChange} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
+                        <button onClick={() => navigate('/locationchoose', {
+                            state: {
+                                from: "order", type: 2,
+                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } }
+                            }
+                        })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api2" />
                         </button>
                     </div>
@@ -44,12 +84,12 @@ function Order() {
                     <p style={{ fontSize: "3vh", paddingLeft: "6vw", paddingTop: "2.5vw", paddingBottom: "2.5vw", margin: 0 }}>乘客人數</p>
                     <div className="auto-accept" style={{ paddingLeft: "30vw", marginTop: "5vh" }}>
                         <label htmlFor="carpooling" className="checkbox-label">
-                            <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "2vh" }} />
+                            <input type="checkbox" id="carpooling" name="topping3" value="carpooling" style={{ fontSize: "2vh" }} checked={isChecked} onChange={(e) => handleCheckboxChange(e)} />
                             <p style={{ fontSize: "3vh)", color: "black" }}>允許共乘</p>
                         </label>
                     </div>
                 </div>
-                <select onChange={(e) => handleChange(e)} style={{ fontSize: "1vh", backgroundColor: "#D9D9D9", width: '85vw', marginLeft: "7.5vw" }}>
+                <select defaultValue={selectedValue} onChange={(e) => handleSelectedChange(e)} style={{ fontSize: "1vh", backgroundColor: "#D9D9D9", width: '85vw', marginLeft: "7.5vw" }}>
                     <option value="1">1人</option>
                     <option value="2">2人</option>
                     <option value="3">3人</option>

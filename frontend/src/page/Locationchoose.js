@@ -13,7 +13,39 @@ function Locationchoose() {
     function click() {
         var cnt = ref.current.map.getCenter();
         console.log('CC Center at ', cnt.lat, cnt.lng);
-        navigate('/order', { state: { id: 2, name: 'hehe' } });
+        const lat = cnt.lat;
+        const lng = cnt.lng;
+        if (location.state.from === "order") {
+            const depart = location.state.status.depart.depart;
+            const destination = location.state.status.destination.destination;
+            const isChecked = location.state.status.isChecked.isChecked;
+            const selectedValue = location.state.status.selectedValue.selectedValue;
+            if (location.state.type === 1) {
+                navigate('/order', {
+                    state: {
+                        type: 1,
+                        status: {
+                            depart: { lat, lng },
+                            destination: { destination },
+                            isChecked: { isChecked },
+                            selectedValue: { selectedValue },
+                        }
+                    }
+                });
+            } else if (location.state.type === 2) {
+                navigate('/order', {
+                    state: {
+                        type: 2,
+                        status: {
+                            depart: { depart },
+                            destination: { lat, lng },
+                            isChecked: { isChecked },
+                            selectedValue: { selectedValue },
+                        }
+                    }
+                });
+            }
+        }
     }
     return (
         <div style={{ position: 'relative' }}>
