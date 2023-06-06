@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
-const uri = "mongodb://mongo:27017/";
-
+const uri = process.env.mongoUri;
+console.log(`mongoUri: ${uri}`)
 module.exports = class {
     constructor() {
         this.client = new MongoClient(uri);
