@@ -47,37 +47,37 @@ function Fixedadd() {
               <span style={{ fontSize: "2vh", color:"black" }}>週一</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="tuesday" className="checkbox-label">
               <input type="checkbox" id="tuesday" name="topping2" value="tuesday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週二</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="wednesday" className="checkbox-label">
               <input type="checkbox" id="wednesday" name="topping3" value="wednesday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週三</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="thursday" className="checkbox-label">
               <input type="checkbox" id="thursday" name="topping4" value="thursday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週四</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="friday" className="checkbox-label">
               <input type="checkbox" id="friday" name="topping5" value="friday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週五</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="saturday" className="checkbox-label">
               <input type="checkbox" id="saturday" name="topping6" value="saturday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週六</span>
             </label>
           </div>
-          <div className="auto-accept" style={{ paddingLeft: "1.5vw" ,marginTop: "1vw"}}>
+          <div className="auto-accept" style={{ paddingLeft: "0.5vw" ,marginTop: "1vw"}}>
             <label htmlFor="sunday" className="checkbox-label">
               <input type="checkbox" id="sunday" name="topping7" value="sunday" style={{ fontSize: "1vh" }} />
               <span style={{ fontSize: "2vh", color:"black" }}>週日</span>

@@ -6,6 +6,7 @@ import profilechangeImage from '../image/profilechange.png'
 import paymentImage from '../image/payment.png'
 import ordersearchImage from '../image/ordersearch.png'
 import askhelpImage from '../image/askhelp.png'
+import profileImage from '../image/people.png';
 
 function Profiledriver(){
     const navigate = useNavigate();
@@ -34,6 +35,10 @@ function Profiledriver(){
             <button onClick={() => navigate('/askhelp')}>
                 <img src={askhelpImage} alt="Askhelp" />
                 <span>尋求協助</span>
+            </button>
+            <button onClick={() => {localStorage.removeItem('token');navigate('/menu');window.location.reload(false);}}>
+                <img src={profileImage} alt="logout" />
+                <span>登出</span>
             </button>
           </div>
         </div>

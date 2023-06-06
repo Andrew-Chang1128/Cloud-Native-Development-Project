@@ -11,11 +11,11 @@ function Askhelp(){
   return (
     <>
     <div className="content" style={{ "flex-direction": "column" }}>
-          <div className="profile-button">
-            <button onClick={() => navigate('/menu')}>
+          <div className="profile-button" style={{ paddingTop: "calc(20px + 15vh)" }}>
+            {/*<button onClick={() => navigate('/menu')}>
               <img src={messageImage} alt="Message" />
               <span>傳送訊息給司機</span>
-            </button>
+  </button>*/}
             <button onClick={handleClick}>
                 <img src={cellphoneImage} alt="Cellphone" />
                 <span>致電給司機</span>
