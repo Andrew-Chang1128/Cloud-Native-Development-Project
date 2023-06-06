@@ -14,5 +14,6 @@ router.get('/reservation', authentication.auth, routeController.getPassengerAllR
 router.post('/fee', authentication.auth, routeController.getFee);
 router.get('/allOrders', authentication.auth, routeController.getDriverAllOrders);
 router.get('/routeId/:rid', authentication.auth, routeController.getRoute);
+router.get('/order/:rid', authentication.auth, routeController.getRouteOrder);
 
 module.exports = router

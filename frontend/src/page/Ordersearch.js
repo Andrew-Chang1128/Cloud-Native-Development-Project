@@ -9,7 +9,7 @@ function Ordersearch() {
     const backend_url = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
-        fetch(backend_url+'/route/reservation', {
+        fetch(backend_url + '/route/reservation', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
