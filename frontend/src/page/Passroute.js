@@ -34,8 +34,13 @@ function Passroute(){
 
                 console.log(dt);
                 return (
-                  <button className="orderItem"  onClick={() => navigate("/order")} style={{alignContent:"center", justifyContent:"center"}}>
-                    <div   key={item.orderId}>
+                  <button className="orderItem"  onClick={() => navigate("/order", 
+                  {
+                    // state: {
+                    //     orderId: item.orderId
+                    // }
+                  })} style={{alignContent:"center", justifyContent:"center"}}>
+                    <div key={item.orderId}>
                       <div>{dt.toLocaleString()}</div>
                     </div>
                   </button>
@@ -62,7 +67,7 @@ function Passroute(){
 
             </div>
         <div className="menu-gesture">
-          <button onClick={() => navigate('/menudriver')} style={{ background: 'none', border: 'none', padding: 0 }}>
+          <button onClick={() => navigate('/menu')} style={{ background: 'none', border: 'none', padding: 0 }}>
               <img className="ges-icon" src={homeImage} alt="Home" />
           </button>
         </div>
