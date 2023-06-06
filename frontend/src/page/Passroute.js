@@ -36,9 +36,10 @@ function Passroute(){
                 return (
                   <button className="orderItem"  onClick={() => navigate("/order", 
                   {
-                    // state: {
-                    //     orderId: item.orderId
-                    // }
+                    state: {
+                        from: "Passroute",
+                        orderId: item.orderId
+                    }
                   })} style={{alignContent:"center", justifyContent:"center"}}>
                     <div key={item.orderId}>
                       <div>{dt.toLocaleString()}</div>

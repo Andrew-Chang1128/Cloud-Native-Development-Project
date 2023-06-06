@@ -23,6 +23,7 @@ function Locationchoose() {
             if (location.state.type === 1) {
                 navigate('/order', {
                     state: {
+                        from: "Locationchoose",
                         type: 1,
                         status: {
                             depart: { lat, lng },
@@ -35,6 +36,7 @@ function Locationchoose() {
             } else if (location.state.type === 2) {
                 navigate('/order', {
                     state: {
+                        from: "Locationchoose",
                         type: 2,
                         status: {
                             depart: { depart },
