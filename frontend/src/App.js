@@ -25,6 +25,9 @@ import passengerImage from './image/passenger.png'
 import TestMap from './page/test/TestMap';
 import TestMap2 from './page/test/TestMap2';
 import Locationchoose from './page/Locationchoose';
+import Passroute from './page/Passroute';
+import Fixedtoorder from './page/Fixedtoorder';
+import Ordertopassenger from './page/Ordertopassenger';
 
 function App() {
   const { token, setToken } = useToken();
@@ -52,9 +55,10 @@ function App() {
   let checkid;
 
   if (window.location.pathname === '/menu' || window.location.pathname === '/') {
+    localStorage.setItem("pattern", "passenger");
     checkid = (
       <div className="header">
-        <p className="header-text">TSMC Uber</p>
+        <p className="header-text" >TSMC Uber</p>
         <button
           className="driver-button"
           onClick={handleClick}
@@ -65,6 +69,7 @@ function App() {
       </div>
     );
   } else if (window.location.pathname === '/menudriver') {
+    localStorage.setItem("pattern", "driver");
     checkid = (
       <div className="header">
         <p className="header-text">TSMC Uber</p>
@@ -78,11 +83,19 @@ function App() {
       </div>
     );
   } else {
-    checkid = (
-      <div className="header">
-        <p className="header-text">TSMC Uber</p>
-      </div>
-    );
+    if(localStorage.getItem("pattern") === "driver") {
+      checkid = (
+        <div className="header">
+          <span className="header-text" onClick={handleClick}>TSMC Uber</span>
+        </div>
+      );
+    } else {
+      checkid = (
+        <div className="header">
+          <span className="header-text" onClick={handleClick2}>TSMC Uber</span>
+        </div>
+      );
+    }
   }
 
   return (
@@ -113,6 +126,9 @@ function App() {
           <Route path="/test/map" element={<TestMap />} />
           <Route path="/test/map2" element={<TestMap2 />} />
           <Route path="/locationchoose" element={<Locationchoose />} />
+          <Route path="/passroute" element={<Passroute />} />
+          <Route path="/fixedtoorder" element={<Fixedtoorder />} />
+          <Route path="/ordertopassenger" element={<Ordertopassenger />} />
         </Routes>
       </div>
    

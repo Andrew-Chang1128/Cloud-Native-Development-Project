@@ -118,6 +118,30 @@ function Order() {
     [25.03991282424907, 121.51290273721504]];
     calculateRoute(stops);
 
+    const orderComplete = () => {
+        let oid = 1;
+        let numOfPassenger = selectedValue;
+        let datetime = "2023-06-11T08:00:00.000Z";
+        let start = { loc: depart, lat: -1, lng: -1 };
+        let end = { loc: destination, lat: -1, lng: -1 };
+        console.log("numOfPassenger", numOfPassenger)
+        console.log("datetime", datetime)
+        console.log("start", start)
+        console.log("end", end)
+        console.log(JSON.stringify({ numOfPassenger, datetime, start, end }))
+        fetch(process.env.REACT_APP_BACKEND_URL + '/route/reservation/' + oid, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ numOfPassenger, datetime, start, end }),
+        }).then(async (response) => {
+            console.log(response);
+            navigate('/ordercomplete');
+        })
+    }
+
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
@@ -180,7 +204,7 @@ function Order() {
                 <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0 }}>
                     <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
                 </button>
-                <button onClick={() => navigate('/ordercomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+                <button onClick={orderComplete} style={{ background: 'none', border: 'none', padding: 0 }}>
                     <img className="ges-icon" src={nextImage} alt="Next" />
                 </button>
             </div>
