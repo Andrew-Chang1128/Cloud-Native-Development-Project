@@ -38,7 +38,8 @@ function Passroute(){
                   {
                     state: {
                         from: "Passroute",
-                        orderId: item.orderId
+                        orderId: item.orderId,
+                        date: dt.toISOString()
                     }
                   })} style={{alignContent:"center", justifyContent:"center"}}>
                     <div key={item.orderId}>

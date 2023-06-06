@@ -10,6 +10,32 @@ function Order() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    var date;
+    var orderId;
+    
+    if (location.state != null) {
+        if(location.state.from === "Passroute"){
+            date = location.state.date;
+            orderId = location.state.orderId;
+        }else if(location.state.from === "Locationchoose"){
+            date = location.state.status.date.date;
+            orderId = location.state.status.orderId.orderId;
+        }
+        // console.log('xxx', date, orderId);
+    }
+
+    // const [date, setDate] = useState(defaultDate);
+    // const handleInputDateChange = (e) => {
+    //     setDate(date.target.value);
+    //     console.log("date: ", e);
+    // };
+    
+    // const [orderId, setOrderId] = useState(defaultOrderId);
+    // const handleInputOrderIdChange = (e) => {
+    //     setOrderId(orderId.target.value);
+    //     console.log("orderId: ", e);
+    // };
+
     async function reverseGeocode(lat, lng) {
         var re = '';
         await fetch('https://revgeocode.search.hereapi.com/v1/revgeocode?apiKey=' +
@@ -124,9 +150,9 @@ function Order() {
     calculateRoute(stops);
 
     const orderComplete = () => {
-        let oid = 1;
+        let oid = orderId;
         let numOfPassenger = selectedValue;
-        let datetime = "2023-06-11T08:00:00.000Z";
+        let datetime = date;
         let start = { loc: depart, lat: -1, lng: -1 };
         let end = { loc: destination, lat: -1, lng: -1 };
         console.log("numOfPassenger", numOfPassenger)
@@ -157,7 +183,8 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 1,
-                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } }
+                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
+                                orderId: { orderId }, date: { date } }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api1" />
@@ -170,7 +197,8 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 2,
-                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } }
+                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } ,
+                                orderId: { orderId }, date: { date } }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api2" />
