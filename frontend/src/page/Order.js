@@ -132,6 +132,7 @@ function Order() {
         fetch(process.env.REACT_APP_BACKEND_URL + '/route/reservation/' + oid, {
             method: 'POST',
             headers: {
+                'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ numOfPassenger, datetime, start, end }),
