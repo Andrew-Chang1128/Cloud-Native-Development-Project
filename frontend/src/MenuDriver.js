@@ -12,7 +12,7 @@ function MenuDriver() {
     return (
      <>
         <div className="content">
-        <HomeMap />
+            <HomeMap />
         </div>
         <div className="menu-gesture">
             <button onClick={() => navigate('/fixed')} style={{ background: 'none', border: 'none', padding: 0 }}>
