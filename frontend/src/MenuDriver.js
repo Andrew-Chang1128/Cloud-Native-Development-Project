@@ -5,12 +5,14 @@ import fixedImage from './image/fixed.png';
 import orderdriverImage from './image/orderdriver.png'
 import './App.css'
 
+import HomeMap from './page/map/HomeMap';
+
 function MenuDriver() {
     const navigate = useNavigate();
     return (
      <>
         <div className="content">
-            <p> map </p>
+        <HomeMap />
         </div>
         <div className="menu-gesture">
             <button onClick={() => navigate('/fixed')} style={{ background: 'none', border: 'none', padding: 0 }}>
