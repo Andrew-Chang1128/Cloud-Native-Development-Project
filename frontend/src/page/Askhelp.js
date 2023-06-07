@@ -18,7 +18,7 @@ function Askhelp(){
   </button>*/}
             <button onClick={handleClick} className="orderItem" >
                 <img src={cellphoneImage} alt="Cellphone" />
-                <span>致電給客服</span>
+                <span>致電客服</span>
             </button>
             
           </div>
