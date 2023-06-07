@@ -53,7 +53,55 @@ function Locationchoose() {
                     }
                 });
             }
+        } else if (location.state.from === "Fixedadd") {
+            const depart1 = location.state.status.depart1;
+            const depart2 = location.state.status.depart2;
+            const depart3 = location.state.status.depart3;
+            const isChecked1 = location.state.status.isChecked1;
+            const isChecked2 = location.state.status.isChecked2;
+            const isChecked3 = location.state.status.isChecked3;
+            const isChecked4 = location.state.status.isChecked4;
+            const isChecked5 = location.state.status.isChecked5;
+            const isChecked6 = location.state.status.isChecked6;
+            const isChecked7 = location.state.status.isChecked7;
+            const hour = location.state.status.hour;
+            const minute = location.state.status.minute;
+            if (location.state.type === 1) {
+                depart1.lat = lat;
+                depart1.lng = lng;
+            }
+            else if (location.state.type === 2) {
+                depart2.lat = lat;
+                depart2.lng = lng;
+            }
+            else if (location.state.type === 3) {
+                depart3.lat = lat;
+                depart3.lng = lng;
+            }
+            navigate('/Fixedadd', {
+                state: {
+                    from: "Locationchoose",
+                    type: location.state.type,
+                    status: {
+                        depart1: depart1,
+                        depart2: depart2,
+                        depart3: depart3,
+                        isChecked1: isChecked1,
+                        isChecked2: isChecked2,
+                        isChecked3: isChecked3,
+                        isChecked4: isChecked4,
+                        isChecked5: isChecked5,
+                        isChecked6: isChecked6,
+                        isChecked7: isChecked7,
+                        hour: hour,
+                        minute: minute
+                    }
+                }
+            });
+
+
         }
+
     }
     return (
         <div style={{ position: 'relative' }}>
