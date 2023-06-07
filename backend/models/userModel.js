@@ -97,4 +97,30 @@ module.exports = class {
             reject(false);
         })
     };
+
+    star(userId, receiver, rate) {
+        console.log("Star user with: ", receiver, rate);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = this.database.collection('user');
+                const query = {
+                    id: receiver
+                };
+                const command = {
+                    $push: {
+                        stars: rate
+                    }
+                }
+                const options = { upsert: false };
+                const result = await user.updateOne(query, command, options);
+                console.log('result', result);
+                if (result.modifiedCount == 0) resolve(false);
+                else resolve(true);
+                return;
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
+        })
+    };
 }
