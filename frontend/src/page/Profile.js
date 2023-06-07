@@ -45,7 +45,7 @@ function Profile(){
           <div className="profile-div" style={{ "flex-direction": "column" }}>
             <h1>{ name }</h1>
             <p>搭乘趟數: {round} </p>
-            <p>搭乘里數: 8 km</p>
+            {/* <p>搭乘里數: {0} km</p> */}
             <p>獲得評價: ★ { rate }</p>
           </div>
           <div className="profile-button">

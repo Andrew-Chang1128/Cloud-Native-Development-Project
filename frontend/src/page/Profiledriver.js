@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import homeImage from '../image/home.png'
 import '../App.css'
@@ -10,14 +10,42 @@ import profileImage from '../image/people.png';
 
 function Profiledriver(){
     const navigate = useNavigate();
+
+    const [name, setName] = useState("王小明");
+    const [round, setRound] = useState(10);
+    const [rate, setRate] = useState(5.0);
+
+    fetch(process.env.REACT_APP_BACKEND_URL + '/user', {
+      method: 'GET',
+      headers: {
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+      }
+      }).then(async (response) => {
+          if (response.status === 200) {
+              const data = await response.json();
+              console.log(data);
+              var round = 0, sum = 0;
+              for(let i of data.stars){
+                if(Number.isInteger(i)){
+                  round += 1;
+                  sum += i;
+                }
+              }
+              setName(data.name);
+              setRound(round);
+              setRate(Math.round(sum/round*10)/10 || 0.0);
+          } else {
+              console.log("Status Code:", response.status);
+          }
+      })
     return (
       <>
         <div className="content" style={{ "flex-direction": "column" }}>
           <div className="profile-div" style={{ "flex-direction": "column" }}>
-            <h1>張小華</h1>
-            <p>駕駛趟數: 38</p>
-            <p>駕駛里程: 276 km</p>
-            <p>獲得評價: 4.9</p>
+            <h1>{name}</h1>
+            <p>駕駛趟數: {0}</p>
+            {/* <p>駕駛里程: {0}</p> */}
+            <p>獲得評價: ★ {rate}</p>
           </div>
           <div className="profile-button">
             <button onClick={() => navigate('/profilechange')} className="orderItem" >
