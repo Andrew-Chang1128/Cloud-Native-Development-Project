@@ -210,7 +210,13 @@ function Order() {
             body: JSON.stringify({ numOfPassenger, datetime, start, end }),
         }).then(async (response) => {
             console.log(response);
-            navigate('/ordercomplete');
+            navigate('/ordercomplete',{
+                    state: {
+                        orderId: oid,
+                        date: datetime,
+                        depart: depart
+                    }
+                });
         })
     }
 
