@@ -12,13 +12,13 @@ function Order() {
 
     var date;
     var orderId;
-    var lat1 = 0.0,lng1 = 0.0,lat2 = 0.0,lng2 = 0.0;
+    var lat1 = 0.0, lng1 = 0.0, lat2 = 0.0, lng2 = 0.0;
 
     if (location.state != null) {
-        if(location.state.from === "Passroute"){
+        if (location.state.from === "Passroute") {
             date = location.state.date;
             orderId = location.state.orderId;
-        }else if(location.state.from === "Locationchoose"){
+        } else if (location.state.from === "Locationchoose") {
             date = location.state.status.date.date;
             orderId = location.state.status.orderId.orderId;
             if (location.state.type === 1) {
@@ -36,12 +36,16 @@ function Order() {
         // console.log('xxx', date, orderId);
     }
 
+    var startDate = new Date(date);
+
+    const [endDate, setEndDate] = useState(date);
+    const [fee, setFee] = useState(0);
     // const [date, setDate] = useState(defaultDate);
     // const handleInputDateChange = (e) => {
     //     setDate(date.target.value);
     //     console.log("date: ", e);
     // };
-    
+
     // const [orderId, setOrderId] = useState(defaultOrderId);
     // const handleInputOrderIdChange = (e) => {
     //     setOrderId(orderId.target.value);
@@ -76,7 +80,7 @@ function Order() {
     let defaultSelectedValue = 1;
 
     if (location.state != null) {
-        if(location.state.from === "Locationchoose"){
+        if (location.state.from === "Locationchoose") {
             if (location.state.type === 1) {
                 defaultDestination = location.state.status.destination.destination;
             } else if (location.state.type === 2) {
@@ -113,7 +117,7 @@ function Order() {
 
     if (location.state != null) {
         console.log(location.state);
-        if(location.state.from === "Locationchoose"){
+        if (location.state.from === "Locationchoose") {
             if (location.state.type === 1) {
                 reverseGeocode(location.state.status.depart.lat, location.state.status.depart.lng)
                     .then(result => {
@@ -126,8 +130,33 @@ function Order() {
                     });
             }
         }
-        
+
     }
+
+    if (location.state != null && location.state.from === "Locationchoose") {
+        if (lat1 != 0.0 && lng1 != 0.0 && lat2 != 0.0 && lng2 != 0.0) {
+            calculateRoute([[lat1, lng1], [lat2, lng2]])
+                .then(result => {
+                    console.log(result);
+                    setFee(Math.ceil((result.length / 1000 * 5 + 20) * (1 + (selectedValue - 1) * 0.5)));
+                    console.log("fee", Math.ceil((result.length / 1000 * 5 + 20) * (1 + (selectedValue - 1) * 0.5)));
+                });
+        }
+    }
+
+    // if (location.state != null && location.state.from === "Locationchoose") {
+    //     if (lat1 != 0.0 && lng1 != 0.0 && lat2 != 0.0 && lng2 != 0.0) {
+    //         calculateRoute([[lat1, lng1], [lat2, lng2]])
+    //             .then(result => {
+    //                 if (result != {}) {
+    //                     console.log(result);
+    //                     let tmp = new Date(endDate);
+    //                     tmp.setSeconds(tmp.getSeconds() + result.duration);
+    //                     setEndDate(tmp.toISOString());
+    //                 }
+    //             });
+    //     }
+    // }
 
     async function calculateRoute(points) {
         const pstr = points.map(x => x[0].toString() + ',' + x[1].toString());
@@ -171,20 +200,33 @@ function Order() {
         console.log("datetime", datetime)
         console.log("start", start)
         console.log("end", end)
-        console.log(JSON.stringify({ numOfPassenger, datetime, start, end }))
+        console.log("fee", fee)
+        console.log(JSON.stringify({ numOfPassenger, datetime, start, end, fee }))
         fetch(process.env.REACT_APP_BACKEND_URL + '/route/reservation/' + oid, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({ numOfPassenger, datetime, start, end }),
+            body: JSON.stringify({ numOfPassenger, datetime, start, end, fee }),
         }).then(async (response) => {
             console.log(response);
-            navigate('/ordercomplete');
+            navigate('/ordercomplete',{
+                    state: {
+                        orderId: oid,
+                        date: datetime,
+                        depart: depart
+                    }
+                });
         })
     }
 
+    function pad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+      }
+    
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
@@ -195,8 +237,10 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 1,
-                                status: { depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
-                                orderId: { orderId }, date: { date } }
+                                status: {
+                                    depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
+                                    orderId: { orderId }, date: { date }
+                                }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api1" />
@@ -209,8 +253,10 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 2,
-                                status: { depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue } ,
-                                orderId: { orderId }, date: { date } }
+                                status: {
+                                    depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
+                                    orderId: { orderId }, date: { date }
+                                }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                             <img src={apiImage} alt="api2" />
@@ -238,9 +284,9 @@ function Order() {
                 </select>
 
                 <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
-                    <p>出發時間: 12 : 22</p>
-                    <p>抵達時間: 12 : 57</p>
-                    <p>預估車資: 80元</p>
+                    <p>出發時間: {pad(startDate.getHours(),2)} : {pad(startDate.getMinutes(),2)}</p>
+                    {/* <p>抵達時間: {endDate}</p> */}
+                    <p>預估車資: {fee}元</p>
                 </div>
 
             </div>

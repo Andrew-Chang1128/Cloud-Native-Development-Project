@@ -40,7 +40,7 @@ module.exports = class {
                     name: name,
                     email: email.toString(),
                     password: password.toString(),
-                    avgStar: 0
+                    stars: []
                 };
                 console.log('data', data);
                 const result = await user.insertOne(data);

@@ -26,7 +26,7 @@ export default class LocationChooseMap extends React.Component {
         layers.vector.normal.map,
         {
           pixelRatio: window.devicePixelRatio,
-          center: {lat: 25.04, lng: 121.52},
+          center: {lat: 24.80, lng: 120.98},
           zoom: 14,
         },
       );

@@ -33,7 +33,7 @@ export default class HomeMap extends React.Component {
         layers.vector.normal.map,
         {
           pixelRatio: window.devicePixelRatio,
-          center: {lat: 25.04, lng: 121.52},
+          center: {lat: 24.80, lng: 120.98},
           zoom: 14,
         },
       );
@@ -130,9 +130,9 @@ export default class HomeMap extends React.Component {
           // Add the polyline to the map
           map.addObject(polyline);
           // And zoom to its bounding rectangle
-          map.getViewModel().setLookAtData({
-          bounds: polyline.getBoundingBox()
-          });
+          // map.getViewModel().setLookAtData({
+          // bounds: polyline.getBoundingBox()
+          // });
       });
       }
 
