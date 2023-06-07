@@ -13,7 +13,10 @@ module.exports = class {
             try {
                 const route = this.database.collection('route');
                 const row = await route.find({}).sort({"routeId":-1}).limit(1).toArray();
-                const id = (row[0].routeId + 1) || 1;
+                var id = 1;
+                if(row.length > 0){
+                    id = (row[0].routeId + 1) || 1;
+                }
                 const data = {
                     routeId: id,
                     driverId: driverId,
@@ -32,8 +35,12 @@ module.exports = class {
 
                 const order = this.database.collection('order');
                 const orow = await order.find({}).sort({"orderId":-1}).limit(1).toArray();
-                var oid = (orow[0].orderId + 1) || 1;
 
+                var oid = 1;
+                if(orow.length > 0){
+                    oid = (orow[0].orderId + 1) || 1;
+                }
+                
                 const daymap = {'SUNDAY': 0, 'MONDAY': 1, 'TUESDAY': 2, 'WEDNESDAY': 3, 'THURSDAY': 4, 'FRIDAY': 5, 'SATURDAY': 6};
                 var odata = []
                 for (var i = 0; i < 2; i++) {
