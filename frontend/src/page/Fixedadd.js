@@ -180,6 +180,52 @@ function Fixedadd() {
 
     }
 
+    const addRoute = () => {
+        let dayOfWeek = [];
+        if (isChecked1) {
+            dayOfWeek.push("Monday");
+        }
+        if (isChecked2) {
+            dayOfWeek.push("Tuesday");
+        }
+        if (isChecked3) {
+            dayOfWeek.push("Wednesday");
+        }
+        if (isChecked4) {
+            dayOfWeek.push("Thursday");
+        }
+        if (isChecked5) {
+            dayOfWeek.push("Friday");
+        }
+        if (isChecked6) {
+            dayOfWeek.push("Saturday");
+        }
+        if (isChecked7) {
+            dayOfWeek.push("Sunday");
+        }
+        let maxNumOfPassenger = 4;
+        let date = new Date();
+        date.setHours(hour);
+        date.setMinutes(minute);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+        let startTime = date.toISOString();
+        let routeList = [{ loc: depart1, lat: depart1_lat, lng: depart1_lng }, { loc: depart2, lat: depart2_lat, lng: depart2_lng }, { loc: depart3, lat: depart3_lat, lng: depart3_lng }];
+
+        fetch(process.env.REACT_APP_BACKEND_URL + '/route', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ dayOfWeek, maxNumOfPassenger, startTime, routeList }),
+        }).then(async (response) => {
+            console.log(response);
+            navigate('/fixedcomplete');
+        })
+
+    }
+
 
     return (
         <>
@@ -382,7 +428,7 @@ function Fixedadd() {
                 <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', padding: 0 }}>
                     <img className="ges-icon" src={buttonImage} style={{ marginRight: '40vw' }} alt="Back" />
                 </button>
-                <button onClick={() => navigate('/fixedcomplete')} style={{ background: 'none', border: 'none', padding: 0 }}>
+                <button onClick={addRoute} style={{ background: 'none', border: 'none', padding: 0 }}>
                     <img className="ges-icon" src={nextImage} alt="Next" />
                 </button>
             </div>
