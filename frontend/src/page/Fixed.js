@@ -47,15 +47,15 @@ function Fixed(){
                 }
               });
                 return (
-                  <button onClick={() => navigate('/fixedtoorder', { state: { id: item.routeId } })}>
-                    <div class="orderItem">
-                      <div class="departure">{departure} → {destination}</div>
-                      {/* <div class="destination">{destination}</div> */}
+                  
+                
+                    <button onClick={() => navigate('/fixedtoorder', { state: { id: item.routeId } })}>
+                      <div class="orderItem">
+                      <div class="departure">{departure} → {destination}</div>             
                       <div class="timeString">{timeString} 出發</div>
                       <div class="Status">{status.join("、")}</div>
-                    </div>
-                  </button>
-                    
+                        </div>
+                    </button> 
                 );
             });
             setDivElements(generatedDivs);
@@ -76,9 +76,8 @@ function Fixed(){
 
       <div className="content" style={{ "flex-direction": "column" }}>
 
-                <div className="profile-button">
+               
                     {divElements}
-                </div>
 
             </div>
         <div className="menu-gesture">
