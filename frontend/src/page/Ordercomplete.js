@@ -14,7 +14,7 @@ function OrderComplete() {
   //   depart: 'HEHE'
   // }
   const orderId = location.state.orderId || 0;
-  const date = location.state.date || new Date();
+  const date = new Date(location.state.date) || new Date();
   const depart = location.state.depart || '';
   console.log(location.state);
 
