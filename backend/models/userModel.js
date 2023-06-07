@@ -76,4 +76,74 @@ module.exports = class {
             reject(false);
         });
     };
+
+    user(userId) {
+        console.log("Get user with: ", userId);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = this.database.collection('user');
+                const query = {
+                    id: userId
+                };
+                console.log('query', query);
+                const data = await user.findOne(query);
+                console.log('data', data);
+                if (!data) resolve(-1);
+                else resolve(data);
+                return;
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
+        })
+    };
+
+    star(userId, orderId, rate) {
+        console.log("Star user with: ", orderId, rate);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = this.database.collection('user');
+                const route = this.database.collection('route');
+                const order = this.database.collection('order');
+                var query = {
+                    orderId: orderId
+                };
+                console.log('query', query);
+                const data = await order.findOne(query);
+                if (!data) {
+                    resolve(false);
+                    return;
+                }
+                console.log('data', data);
+                query = {
+                    routeId: data.routeId
+                };
+                console.log('query', query);
+                const data2 = await route.findOne(query);
+                if (!data2) {
+                    resolve(false);
+                    return;
+                }
+                console.log('data2', data2);
+
+                query = {
+                    id: data2.driverId
+                };
+                const command = {
+                    $push: {
+                        stars: rate
+                    }
+                }
+                const options = { upsert: false };
+                const result = await user.updateOne(query, command, options);
+                console.log('result', result);
+                if (result.modifiedCount == 0) resolve(false);
+                else resolve(true);
+                return;
+            } catch (err) {
+                console.error('Error:', err);
+            }
+            reject(false);
+        })
+    };
 }

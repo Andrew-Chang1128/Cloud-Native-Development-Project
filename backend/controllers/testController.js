@@ -69,6 +69,40 @@ module.exports = class testController {
         }
     }
 
+    async user(req, res) {
+        console.log("/testapi/user");
+
+        const { userId } = req.body;
+        if (!userId) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+        const userModel = new uModel();
+        const result = await  userModel.user(userId);
+        if (result == false) {
+            res.status(400).json({ error: 'No route found' });
+        } else {
+            res.status(200).json(result);
+        }
+    }
+
+    async user(req, res) {
+        console.log("/testapi/star");
+
+        const { userId, receiver, rate } = req.body;
+        if (!userId) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+        const userModel = new uModel();
+        const result = await  userModel.star(userId, receiver, rate);
+        if (result == false) {
+            res.status(500).json({ error: 'Failed to star' });
+        } else {
+            res.status(200).json({ message: 'Star inserted successfully' });
+        }
+    }
+
     // route model
     async createRoute(req, res) {
         console.log("/testapi/createRoute");
@@ -138,17 +172,17 @@ module.exports = class testController {
     async addPassengerToOrder(req, res) {
         console.log("/testapi/addPassengerToOrder");
 
-        const { passengerId, routeId, datetime, numOfPassenger, start, end } = req.body;
-        if (!passengerId || !routeId || !datetime || !numOfPassenger || !start || !end) {
+        const { passengerId, routeId, datetime, numOfPassenger, start, end, fee } = req.body;
+        if (!passengerId || !routeId || !datetime || !numOfPassenger || !start || !end || !fee) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
 
-        const latDiff = end.lat - start.lat;
-        const lngDiff = end.lng - start.lng;
+        // const latDiff = end.lat - start.lat;
+        // const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt((latDiff*110) ** 2 + (lngDiff*101) ** 2);
-        const fee = Math.ceil((distance * 5 + 20)*(1 + (numOfPassenger-1)*0.5));
+        // const distance = Math.sqrt((latDiff*110) ** 2 + (lngDiff*101) ** 2);
+        // const fee = Math.ceil((distance * 5 + 20)*(1 + (numOfPassenger-1)*0.5));
 
         const orderModel = new oModel();
         const result = await orderModel.addPassengerToOrder(passengerId, routeId, datetime, numOfPassenger, start, end, fee);

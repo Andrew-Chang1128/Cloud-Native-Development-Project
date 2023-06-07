@@ -1,16 +1,23 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import homeImage from '../image/home.png'
 import '../App.css'
 
 function Mycar() {
   const navigate = useNavigate();
+  const [selectedValue, setSelectedValue] = useState("1");
   const handleChange = (e) => {
-    this.setState({ selectedValue: e.target.value })
+    setSelectedValue(e.target.value);
   }
+
   const handleChange2 = (e) => {
-    this.setState({ selectedValue: e.target.value })
+    setSelectedValue(e.target.value);
   }
+  const [car, setCar] = useState('');
+  const handleInputCarChange = (car) => {
+    setCar(car.target.value);
+  };
   return (
     <>
       <div className="content" style={{ flexDirection: "column" }}>
@@ -23,12 +30,8 @@ function Mycar() {
             </label>
           </div>
           <p style={{ fontSize: "calc(12px + 2vh)" }}>車型</p>
-          <select onChange={(e) => handleChange(e)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9" ,width: '85vw', marginLeft: "7.5vw"}}>
-            <option value="ALTIS Safety+">ALTIS Safety+</option>
-            <option value="PRIUS C">PRIUS C</option>
-            <option value="ALTIS">ALTIS</option>
-            <option value="bZ4X">bZ4X</option>
-          </select>
+          <input type="text" id="car" name="topping3" value={car} onChange={handleInputCarChange} style={{ fontSize: "1vh",width: '85vw',marginLeft: "7.5vw",backgroundColor: "#D9D9D9" }} />
+           
           <p style={{ fontSize: "calc(12px + 2vh)" }}>最大乘客人數</p>
           <select onChange={(e) => handleChange2(e)} style={{fontSize: "calc(12px + 1vh)" ,backgroundColor: "#D9D9D9",width: '85vw', marginLeft: "7.5vw" }}>
             <option value="1">1人</option>

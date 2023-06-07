@@ -6,19 +6,19 @@ import { useNavigate } from 'react-router-dom';
 function Askhelp(){
   const navigate = useNavigate();
   const handleClick = () => {
-    window.location.replace('tel:+886-900-000-000');
+    window.location.replace('tel:+886-988-464-283');
   };
   return (
     <>
     <div className="content" style={{ "flex-direction": "column" }}>
-          <div className="profile-button">
-            <button onClick={() => navigate('/menu')}>
+          <div className="profile-button" style={{ paddingTop: "calc(20px + 15vh)" }}>
+            {/*<button onClick={() => navigate('/menu')}>
               <img src={messageImage} alt="Message" />
               <span>傳送訊息給司機</span>
-            </button>
-            <button onClick={handleClick}>
+  </button>*/}
+            <button onClick={handleClick} className="orderItem" >
                 <img src={cellphoneImage} alt="Cellphone" />
-                <span>致電給司機</span>
+                <span>致電客服</span>
             </button>
             
           </div>

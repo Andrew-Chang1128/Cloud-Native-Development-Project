@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Navigate } from 'react-router-dom';
 
 import './HomeMap.css';
 import H from "@here/maps-api-for-javascript";
@@ -12,13 +13,16 @@ export default class HomeMap extends React.Component {
     this.ref2 = React.createRef();
     // reference to the map
     this.map = null;
+    this.state = {
+      shouldRedirect: false,
+    };
   }
 
   componentDidMount() {
     if (!this.map) {
       // instantiate a platform, default layers and a map as usual
       const platform = new H.service.Platform({
-        apikey: '5sBMwlWaGv5EG1yaxjcIGjbuJ5MyLO08PPHDQqkEDBI'
+        apikey: process.env.REACT_APP_HERE_MAP_APIKEY
       });
       const layers = platform.createDefaultLayers({
         lg: 'zh-tw'
@@ -54,7 +58,8 @@ export default class HomeMap extends React.Component {
           [25.048876668724624,121.50619014148239], 
           [25.03991282424907,121.51290273721504]];
 
-      function calculateRoute(platform, points) {
+    
+      function calculateRoute(platform, points, text) {
         const pstr = points.map(x => x[0].toString()+','+x[1].toString());
         var router = platform.getRoutingService(null, 8),
           routeRequestParams = {
@@ -72,9 +77,12 @@ export default class HomeMap extends React.Component {
             onError
           );
         function onSuccess(result) {
+          // console.log(result.routes);
+          if(result.routes.length > 0){
             var route = result.routes[0];
             addRouteShapeToMap(route);
-            addStopsToMap(points);
+            addStopsToMap(points, text);
+          }
         }
         function onError(error) {
             alert('Can\'t reach the remote server');
@@ -167,7 +175,7 @@ export default class HomeMap extends React.Component {
             map.addObject(group);
         });
       }
-      function addStopsToMap(stops) {
+      function addStopsToMap(stops, text) {
         var svgMarkup = '<svg width="18" height="18" ' +
             'xmlns="http://www.w3.org/2000/svg">' +
             '<circle cx="8" cy="8" r="8" ' +
@@ -184,8 +192,8 @@ export default class HomeMap extends React.Component {
                 lat: s[0],
                 lng: s[1]},
                 {icon: dotIcon});
-            marker.instruction = "交通大學 - 台積電<br>週二、週四 15:00";
-            group.addObject(marker);
+            marker.instruction = text;
+            group.addObject(marker)
           }
 
           group.addEventListener('tap', function (evt) {
@@ -275,18 +283,72 @@ export default class HomeMap extends React.Component {
           return Math.floor(duration / 60) + ' minutes ' + (duration % 60) + ' seconds.';
       }
 
-      calculateRoute(platform, stops);
+      function pad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+      }
+      const backend_url = process.env.REACT_APP_BACKEND_URL;
+      console.log(backend_url);
+
+      fetch(backend_url+'/route/allRoutes', {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+        }).then(async (response) => {
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log(data);
+                for(let route of data){
+                  if(route.routeList.length >= 2){
+                    let status = [];
+                    const weekdays = {
+                      "Sunday": "週日",
+                      "Monday": "週一",
+                      "Tuesday": "週二",
+                      "Wednesday": "週三",
+                      "Thursday": "週四",
+                      "Friday": "週五",
+                      "Saturday": "週六"
+                    };
+
+                    Object.keys(weekdays).map((key) => {
+                      if (route.dayOfWeek.includes(key)) {
+                        status.push(weekdays[key]);
+                      }
+                    });
+                    console.log(status);
+                    
+                    var routeList = route.routeList.map(x => [x.lat, x.lng]);
+                    const time = new Date(route.startTime);
+                    var text = "<div>" + route.routeList[0].loc + '→' + route.routeList.slice(-1)[0].loc + '<br>' + status.join("、") + '<br>' + pad(time.getHours(),2) + ':' + pad(time.getMinutes(),2) + ' 出發' + `<a href=\"/passroute?routeid=${route.routeId}\">Timetable</a></div>`;
+                    console.log(routeList);
+                    calculateRoute(platform, routeList, text);
+                  }
+                }
+            } else if (response.status === 401) {
+                console.log("Unauthorized");
+            } else {
+                console.log("Status Code:", response.status);
+            }
+        }).catch(function(error) {
+            console.log('error = ' + error)
+        })
+      //calculateRoute(platform, stops);
     }
     
   }
 
-
   render() {
+    if (this.state.shouldRedirect) {
+      return <Navigate to="/order" />;
+    }
     return (
         <>
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
             <div
-                style={{ width: '100%', height:'700px' }}
+                style={{ width: '100%', height:'auto' }}
                 ref={this.ref}
             />
             <div

@@ -6,6 +6,7 @@ import profilechangeImage from '../image/profilechange.png'
 import paymentImage from '../image/payment.png'
 import ordersearchImage from '../image/ordersearch.png'
 import askhelpImage from '../image/askhelp.png'
+import profileImage from '../image/people.png';
 
 function Profiledriver(){
     const navigate = useNavigate();
@@ -19,21 +20,25 @@ function Profiledriver(){
             <p>獲得評價: 4.9</p>
           </div>
           <div className="profile-button">
-            <button onClick={() => navigate('/profilechange')}>
+            <button onClick={() => navigate('/profilechange')} className="orderItem" >
               <img src={profilechangeImage} alt="Profilechange" />
               <span>修改資訊</span>
             </button>
-            <button onClick={() => navigate('/payments')}>
+            <button onClick={() => navigate('/payments')} className="orderItem" >
                 <img src={paymentImage} alt="Payments" />
                 <span>付款資訊</span>
             </button>
-            <button onClick={() => navigate('/ordersearch')}>
+            <button onClick={() => navigate('/ordersearch')} className="orderItem" >
                 <img src={ordersearchImage} alt="Ordersearch" />
                 <span>訂單查詢</span>
             </button>
-            <button onClick={() => navigate('/askhelp')}>
+            <button onClick={() => navigate('/askhelp')} className="orderItem" >
                 <img src={askhelpImage} alt="Askhelp" />
                 <span>尋求協助</span>
+            </button>
+            <button onClick={() => {localStorage.removeItem('token');navigate('/menu');window.location.reload(false);}} className="orderItem" >
+                <img src={profileImage} alt="logout" />
+                <span>人物登出</span>
             </button>
           </div>
         </div>

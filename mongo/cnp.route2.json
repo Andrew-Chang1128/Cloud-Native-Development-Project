@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "647b12a553a4128ae523e0aa"
+  },
+  "routeId": 1,
+  "driverId": 1,
+  "dayOfWeek": [
+    "Sunday",
+    "Tuesday"
+  ],
+  "maxNumOfPassenger": 4,
+  "startTime": "2023-06-06T08:00:00.000Z",
+  "routeList": [
+    {
+      "loc": "place1",
+      "lat": 25.02940176238104,
+      "lng": 121.50055862568333
+    },
+    {
+      "loc": "place2",
+      "lat": 25.048876668724624,
+      "lng": 121.50619014148239
+    },
+    {
+      "loc": "place3",
+      "lat": 25.03991282424907,
+      "lng": 121.51290273721504
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "647b5121e4cb555487584c42"
+  },
+  "routeId": 2,
+  "driverId": 1,
+  "dayOfWeek": [
+    "Wednesday"
+  ],
+  "maxNumOfPassenger": 3,
+  "startTime": "2023-06-02T11:30:00.000Z",
+  "routeList": [
+    {
+      "loc": "place5",
+      "lat": 24.78761145567479,
+      "lng": 120.99646857968959
+    },
+    {
+      "loc": "place6",
+      "lat": 24.796093044387217,
+      "lng": 120.99797625037401
+    },
+    {
+      "loc": "place3",
+      "lat": 24.802067820808485,
+      "lng": 120.97167130747557
+    }
+  ]
+}]

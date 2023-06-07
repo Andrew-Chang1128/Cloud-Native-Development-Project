@@ -17,31 +17,31 @@ function Profile(){
             <h1>王小明</h1>
             <p>搭乘趟數: 10</p>
             <p>搭乘里數: 85 km</p>
-            <p>獲得評價: 5</p>
+            <p>獲得評價: ★ 5.0</p>
           </div>
           <div className="profile-button">
-            <button onClick={() => navigate('/profilechange')}>
+            <button onClick={() => navigate('/profilechange')} className="orderItem"  style={{ "flex-direction": "row" }}>
               <img src={profilechangeImage} alt="Profilechange" />
               <span>修改資訊</span>
             </button>
-            <button onClick={() => navigate('/payments')}>
+            <button onClick={() => navigate('/payments')} className="orderItem" style={{ "flex-direction": "row" }}>
                 <img src={paymentImage} alt="Payments" />
                 <span>付款資訊</span>
             </button>
-            <button onClick={() => navigate('/ordersearch')}>
+            <button onClick={() => navigate('/ordersearch')} className="orderItem" style={{ "flex-direction": "row" }}>
                 <img src={ordersearchImage} alt="Ordersearch" />
                 <span>訂單查詢</span>
             </button>
-            <button onClick={() => navigate('/askhelp')}>
+            <button onClick={() => navigate('/askhelp')} className="orderItem" style={{ "flex-direction": "row" }}>
                 <img src={askhelpImage} alt="Askhelp" />
                 <span>尋求協助</span>
             </button>
-            
-            <button onClick={() => {localStorage.removeItem('token');window.location.reload(false);navigate('/menu');}}>
+            <button onClick={() => {localStorage.removeItem('token'); navigate('/menu'); window.location.reload(false);}} className="orderItem" style={{ "flex-direction": "row" }}>
                 <img src={profileImage} alt="logout" />
-                <span>登出</span>
+                <span>人物登出</span>
             </button>
           </div>
+          
         </div>
         
         <div className="menu-gesture">
