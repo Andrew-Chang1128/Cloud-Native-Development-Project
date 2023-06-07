@@ -1,4 +1,4 @@
-name: Cloud Native Development backend CI
+name: Cloud Native Development Backend CI
 
 on:
   push:
