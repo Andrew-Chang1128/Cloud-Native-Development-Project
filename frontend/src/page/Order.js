@@ -200,6 +200,7 @@ function Order() {
         console.log("datetime", datetime)
         console.log("start", start)
         console.log("end", end)
+        console.log("fee", fee)
         console.log(JSON.stringify({ numOfPassenger, datetime, start, end, fee }))
         fetch(process.env.REACT_APP_BACKEND_URL + '/route/reservation/' + oid, {
             method: 'POST',
@@ -207,7 +208,7 @@ function Order() {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({ numOfPassenger, datetime, start, end }),
+            body: JSON.stringify({ numOfPassenger, datetime, start, end, fee }),
         }).then(async (response) => {
             console.log(response);
             navigate('/ordercomplete',{
