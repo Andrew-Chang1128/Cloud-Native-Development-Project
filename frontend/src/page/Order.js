@@ -12,7 +12,8 @@ function Order() {
 
     var date;
     var orderId;
-    
+    var lat1 = 0.0,lng1 = 0.0,lat2 = 0.0,lng2 = 0.0;
+
     if (location.state != null) {
         if(location.state.from === "Passroute"){
             date = location.state.date;
@@ -20,6 +21,17 @@ function Order() {
         }else if(location.state.from === "Locationchoose"){
             date = location.state.status.date.date;
             orderId = location.state.status.orderId.orderId;
+            if (location.state.type === 1) {
+                lat1 = location.state.status.depart.lat;
+                lng1 = location.state.status.depart.lng;
+                lat2 = location.state.status.destination.lat2;
+                lng2 = location.state.status.destination.lng2;
+            } else if (location.state.type === 2) {
+                lat1 = location.state.status.depart.lat1;
+                lng1 = location.state.status.depart.lng1;
+                lat2 = location.state.status.destination.lat;
+                lng2 = location.state.status.destination.lng;
+            }
         }
         // console.log('xxx', date, orderId);
     }
@@ -152,9 +164,9 @@ function Order() {
     const orderComplete = () => {
         let oid = orderId;
         let numOfPassenger = selectedValue;
-        let datetime = date;
-        let start = { loc: depart, lat: -1, lng: -1 };
-        let end = { loc: destination, lat: -1, lng: -1 };
+        let datetime = date || new Date().toISOString();
+        let start = { loc: depart, lat: lat1, lng: lng1 };
+        let end = { loc: destination, lat: lat2, lng: lng2 };
         console.log("numOfPassenger", numOfPassenger)
         console.log("datetime", datetime)
         console.log("start", start)
@@ -183,7 +195,7 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 1,
-                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
+                                status: { depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue },
                                 orderId: { orderId }, date: { date } }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
@@ -197,7 +209,7 @@ function Order() {
                         <button onClick={() => navigate('/locationchoose', {
                             state: {
                                 from: "order", type: 2,
-                                status: { depart: { depart }, destination: { destination }, isChecked: { isChecked }, selectedValue: { selectedValue } ,
+                                status: { depart: { lat1, lng1, depart }, destination: { lat2, lng2, destination }, isChecked: { isChecked }, selectedValue: { selectedValue } ,
                                 orderId: { orderId }, date: { date } }
                             }
                         })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>

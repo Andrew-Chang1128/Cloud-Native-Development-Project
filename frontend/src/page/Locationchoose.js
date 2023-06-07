@@ -22,6 +22,10 @@ function Locationchoose() {
             const selectedValue = location.state.status.selectedValue.selectedValue;
             const orderId = location.state.status.orderId.orderId;
             const date = location.state.status.date.date;
+            const lat1 = location.state.status.depart.lat1;
+            const lng1 = location.state.status.depart.lng1;
+            const lat2 = location.state.status.destination.lat2;
+            const lng2 = location.state.status.destination.lng2;
             if (location.state.type === 1) {
                 navigate('/order', {
                     state: {
@@ -29,7 +33,7 @@ function Locationchoose() {
                         type: 1,
                         status: {
                             depart: { lat, lng },
-                            destination: { destination },
+                            destination: { destination, lat2, lng2 },
                             isChecked: { isChecked },
                             selectedValue: { selectedValue },
                             orderId: { orderId },
@@ -43,7 +47,7 @@ function Locationchoose() {
                         from: "Locationchoose",
                         type: 2,
                         status: {
-                            depart: { depart },
+                            depart: { depart, lat1, lng1 },
                             destination: { lat, lng },
                             isChecked: { isChecked },
                             selectedValue: { selectedValue },
