@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Askhelp(){
   const navigate = useNavigate();
   const handleClick = () => {
-    window.location.replace('tel:+886-900-000-000');
+    window.location.replace('tel:+886-988-464-283');
   };
   return (
     <>
