@@ -231,8 +231,8 @@ function Fixedadd() {
         <>
             <div className="content" style={{ flexDirection: "column" }}>
                 <div className="reserve-div" style={{ flexDirection: "column" }}>
-                    <div className="content" style={{ flexDirection: "column" }}>
-                        <div>
+                    <div className="content" style={{ flexDirection: "column" , alignItems: "center"}}>
+                        <div style={{marginTop: "5vh",justifyContent:"center",display: "flex"}}>
                             <input type="text" id="depart1" name="depart1" value={depart1} onChange={handleInputDepart1Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
                             <button onClick={() => navigate('/locationchoose', {
                                 state: {
@@ -247,7 +247,7 @@ function Fixedadd() {
                                 <img src={apiImage} alt="api1" />
                             </button>
                         </div>
-                        <div>
+                        <div style={{marginTop: "5vh",justifyContent:"center",display: "flex"}}>
                             <input type="text" id="depart2" name="depart2" value={depart2} onChange={handleInputDepart2Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
                             <button onClick={() => navigate('/locationchoose', {
                                 state: {
@@ -261,8 +261,8 @@ function Fixedadd() {
                             })} style={{ height: '4vh', width: '5vw', marginTop: "-2.5vh", border: "None", backgroundColor: "white", position: 'relative', top: '1vh' }}>
                                 <img src={apiImage} alt="api1" />
                             </button>
-                        </div>
-                        <div>
+                        </div >
+                        <div style={{marginTop: "5vh",justifyContent:"center",display: "flex"}}>
                             <input type="text" id="depart3" name="depart3" value={depart3} onChange={handleInputDepart3Change} style={{ fontSize: "3vh", width: '60vw', marginLeft: "7.5vw" }} />
                             <button onClick={() => navigate('/locationchoose', {
                                 state: {
@@ -282,7 +282,7 @@ function Fixedadd() {
                 <div className="profile-div" style={{ flexDirection: "column", paddingTop: "8vh" }}>
                     <p style={{ fontSize: "calc(12px + 2vh)", paddingBottom: "1vw" }}>出發時間</p>
                 </div>
-                <div className="profile-div" style={{ flexDirection: "row", paddingTop: "1vh", display: "flex", alignItems: "center" }}>
+                <div className="profile-div" style={{ flexDirection: "row", paddingTop: "1vh", display: "flex", alignItems: "center" ,justifyContent:"center"}}>
                     <div className="auto-accept" style={{ paddingLeft: "5vw", marginTop: "1vw" }}>
                         <label htmlFor="monday" className="checkbox-label">
                             <input type="checkbox" id="monday" name="topping" value="monday" style={{ fontSize: "1vh" }} checked={isChecked1} onChange={(e) => handleInputIsChecked1Change(e)} />
@@ -307,6 +307,8 @@ function Fixedadd() {
                             <span style={{ fontSize: "2vh", color: "black", whiteSpace: "nowrap" }}>週四</span>
                         </label>
                     </div>
+                </div>
+                <div className="profile-div" style={{ flexDirection: "row", paddingTop: "1vh", display: "flex", alignItems: "center" ,justifyContent:"center"}}>
                     <div className="auto-accept" style={{ paddingLeft: "0.5vw", marginTop: "1vw" }}>
                         <label htmlFor="friday" className="checkbox-label">
                             <input type="checkbox" id="friday" name="topping5" value="friday" style={{ fontSize: "1vh" }} checked={isChecked5} onChange={(e) => handleInputIsChecked5Change(e)} />
@@ -326,7 +328,6 @@ function Fixedadd() {
                         </label>
                     </div>
                 </div>
-
                 <div className="profile-div" style={{ flexDirection: "row", paddingTop: "0vh", display: "flex", alignItems: "center" }}>
                     <select defaultValue={hour} onChange={(e) => handleInputHourChange(e)} style={{ fontSize: "1vh", backgroundColor: "#D9D9D9", width: '20vw', marginLeft: "7.5vw" }}>
                         <option value="0">00</option>
