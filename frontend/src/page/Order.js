@@ -221,6 +221,12 @@ function Order() {
         })
     }
 
+    function pad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+      }
+    
     return (
         <>
             <div className="content" style={{ "flex-direction": "column" }}>
@@ -278,7 +284,7 @@ function Order() {
                 </select>
 
                 <div className="profile-div" style={{ "flex-direction": "column", paddingTop: "15vh" }}>
-                    <p>出發時間: {startDate.getHours()} : {startDate.getMinutes()}</p>
+                    <p>出發時間: {pad(startDate.getHours(),2)} : {pad(startDate.getMinutes(),2)}</p>
                     {/* <p>抵達時間: {endDate}</p> */}
                     <p>預估車資: {fee}元</p>
                 </div>
