@@ -19,7 +19,7 @@ function OrderComplete() {
   console.log(location.state);
 
   const handleClick = () => {
-    window.location.replace('tel:+886-988-464-283');
+    window.location.replace('tel:0988-464-283');
   };
 
   function pad(num, size) {
