@@ -73,18 +73,18 @@ module.exports = class routeController {
     };
 
     async addPassengerToRoute(req, res) {
-        const { numOfPassenger, datetime, start, end } = req.body;
+        const { numOfPassenger, datetime, start, end, fee } = req.body;
 
-        if (!numOfPassenger || !datetime || !start || !end) {
+        if (!numOfPassenger || !datetime || !start || !end || !fee) {
             res.status(422).json({ error: 'inappropriate parameters' });
             return;
         }
 
-        const latDiff = end.lat - start.lat;
-        const lngDiff = end.lng - start.lng;
+        // const latDiff = end.lat - start.lat;
+        // const lngDiff = end.lng - start.lng;
 
-        const distance = Math.sqrt((latDiff * 110) ** 2 + (lngDiff * 101) ** 2);
-        const fee = Math.ceil((distance * 5 + 20) * (1 + (numOfPassenger - 1) * 0.5));
+        // const distance = Math.sqrt((latDiff * 110) ** 2 + (lngDiff * 101) ** 2);
+        // const fee = Math.ceil((distance * 5 + 20) * (1 + (numOfPassenger - 1) * 0.5));
 
         const rid = parseInt(req.params.rid, 10);
         const orderModel = new oModel();
