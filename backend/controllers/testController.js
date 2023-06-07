@@ -86,6 +86,23 @@ module.exports = class testController {
         }
     }
 
+    async user(req, res) {
+        console.log("/testapi/star");
+
+        const { userId, receiver, rate } = req.body;
+        if (!userId) {
+            res.status(422).json({ error: 'inappropriate parameters' });
+            return;
+        }
+        const userModel = new uModel();
+        const result = await  userModel.star(userId, receiver, rate);
+        if (result == false) {
+            res.status(500).json({ error: 'Failed to star' });
+        } else {
+            res.status(200).json({ message: 'Star inserted successfully' });
+        }
+    }
+
     // route model
     async createRoute(req, res) {
         console.log("/testapi/createRoute");
