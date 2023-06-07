@@ -130,9 +130,9 @@ export default class HomeMap extends React.Component {
           // Add the polyline to the map
           map.addObject(polyline);
           // And zoom to its bounding rectangle
-          map.getViewModel().setLookAtData({
-          bounds: polyline.getBoundingBox()
-          });
+          // map.getViewModel().setLookAtData({
+          // bounds: polyline.getBoundingBox()
+          // });
       });
       }
 
